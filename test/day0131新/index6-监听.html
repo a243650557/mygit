@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			a:<input type="number" v-model.number="a" />
+			b:<input type="number" v-model.number="b" />
+			<br />
+			count: {{count}}
+			
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					a: 1,
+					b: 2
+				},
+				computed: {
+					count(){
+						return this.a*this.b;
+					}
+				},
+				//监听属性
+				watch: {
+					
+				},
+				methods:{
+					
+				}
+				
+			})
+			
+			let a = 1;
+			vm.$watch(
+			  function () {
+			  	//需要返回值，
+			  	//需要实例的属性关联
+			    return a + this.b
+			  },
+			  function (newVal, oldVal) {
+			    console.log('表达式监听执行了');
+			    console.log('newVal:'+newVal);
+			    console.log('oldVal:'+oldVal);
+			  }
+			)
+			
+			
+		</script>
+	</body>
+</html>

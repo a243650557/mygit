@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<add-com></add-com>
+			<add-com></add-com>
+			<add-com></add-com>
+			<add-com></add-com>
+			
+			<modify-com></modify-com>
+			
+			
+			
+			
+			<div class="show-card"></div>
+			<ul class="list"></ul>
+			
+		</div>
+		
+		
+		<hr />
+		
+		<div id="app2">
+			
+			<add-com></add-com>
+			
+			<modify-com></modify-com>
+		</div>		
+		
+		<script src="../vue.js"></script>
+		<script>
+			let addCom = {
+				template:`<div class="add-card">
+							<h1>新增模块</h1>
+						</div>`
+			}
+			
+			//1.声明全局组件
+			//参数1：组件名字
+			//参数2：组件内容
+			Vue.component('add-com', addCom);
+			
+			
+			let modifyCom = {
+				template: `<div class="modify-card">
+								<h1>修改模块</h1>
+							</div>`
+			}
+			
+			var vm = new Vue({
+				el:'#app',
+				components: {
+					//2.声明局部组件
+					//key值：组件名字，
+					//value值：组件内容
+					'modify-com': modifyCom
+				}
+			});
+			
+			
+			var vm2 = new Vue({
+				el: '#app2'
+			})
+			
+		</script>
+		
+	</body>
+</html>

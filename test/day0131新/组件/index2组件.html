@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<add-com></add-com>
+			
+			<modify-com></modify-com>
+			
+			
+		</div>
+		
+			
+		
+		<script src="../vue.js"></script>
+		<script>
+			//声明组件的所有内容
+			let addCom = {
+				//组件dom结构
+				template:`<div class="add-card">
+							<h1>新增模块</h1>
+						</div>`,
+//				data: {},
+//				methods: {},
+//				computed: {},
+//				watch: {},
+//				components:{},
+				//生命周期方法
+			}
+			
+			//1.声明全局组件
+			//参数1：组件名字
+			//参数2：组件内容
+			Vue.component('add-com', addCom);
+			
+			
+			let modifyCom = {
+				template: `<div class="modify-card">
+								<h1>修改模块</h1>
+							</div>`
+			}
+			
+			var vm = new Vue({
+				el:'#app',
+				components: {
+					//2.声明局部组件
+					//key值：组件名字，
+					//value值：组件内容
+					'modify-com': modifyCom
+				}
+			});
+			
+			
+		</script>
+		
+	</body>
+</html>

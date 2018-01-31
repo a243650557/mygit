@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>{{message}}</h1>
+			
+			<p>a: <input type="number" v-model.number="a"/></p>
+			<p>b: <input type="number" v-model.number="b"/></p>
+			<p>总和: {{count}}</p>
+			<p>总和2: {{count2}}</p>
+			<p>总和: {{countAction()}}</p>
+			<hr />
+			
+			<p>num: <input type="number" v-model.number="num"/></p>
+			
+			<button @click="btnAction()">打印</button>
+			
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					message: 'hello vue',
+					a: 1,
+					b: 2
+				},
+				//计算属性
+				//使用规则跟属性是一模一样
+				//setter  getter函数有自己实现
+				//计算完毕后将结果进行缓存，如果相关联的属性没有发生变化，那么getter函数不会在再执行，直接缓存的值。
+				/*
+				 在dom结构中访问，    {{message}}
+				 在js中，实例外部访问  vm.message
+				 在js中，实例内部访问  this.message
+				 * */
+				computed: {
+					count(){//getter函数
+						console.log('count');
+						return this.a+this.b;
+					},
+					count2: {
+						get(){
+							return this.a+this.b;
+						}
+					},
+					num: {
+						set(...rest){
+							console.log('set函数执行了');
+							console.log(rest);
+						},
+						get(){
+							console.log('get函数执行了');
+							return 1;
+						}
+					}
+				},
+				methods: {
+					countAction(){
+						console.log('countAction');
+						return this.a+this.b;
+					},
+					btnAction(){
+						//访问a,b总和
+						console.log('count:'+this.count);
+						console.log('countAction:'+this.countAction());
+					}
+				} 
+			})
+			
+			console.log(vm)
+			
+			
+			/*
+			 商品单价：299
+			 商品数量：用户输入
+			 总价：
+			 运费：20元（599包邮）
+			 应付：
+			 * 
+			 * 
+			 * */
+			
+			
+		</script>
+	</body>
+</html>

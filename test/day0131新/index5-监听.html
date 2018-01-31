@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<p>{{textVal}}</p>
+			<input type="text" v-model="textVal" />
+			<hr />
+			
+			a:<input type="number" v-model.number="a" />
+			b:<input type="number" v-model.number="b" />
+			<br />
+			count: {{count}}
+			
+			<hr />
+			
+			obj.name:<input type="text" v-model="obj.name" />
+			obj.age:<input type="number" v-model.number="obj.age" />
+			
+			
+			<button @click="btnAction()">启动监听</button>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					textVal: '',
+					a: 1,
+					b: 2,
+					obj: {
+						name: 'zhangsan',
+						age: 40
+					}
+				},
+				computed: {
+					count(){
+						return this.a*this.b;
+					}
+				},
+				//监听属性
+				watch: {
+					
+				},
+				methods:{
+					btnAction(){
+						
+						this.$watch('textVal', (newVal, oldVal)=>{
+							console.log('textVal的监听触发了');
+							console.log('newVal:'+newVal);
+							console.log('oldVal:'+oldVal);
+						})
+						
+						this.$watch('count', (newVal, oldVal)=>{
+							console.log('count的监听触发了');
+							console.log('newVal:'+newVal);
+							console.log('oldVal:'+oldVal);
+						})
+						
+						this.$watch('obj', (newVal, oldVal)=>{
+							console.log('obj的监听触发了');
+							console.log('newVal:'+newVal);
+							console.log('oldVal:'+oldVal);
+						}, {
+							deep: true
+						});//深度监听
+						
+						
+						this.$watch('obj.name', (newVal, oldVal)=>{
+							console.log('obj.name的监听触发了');
+							console.log('newVal:'+newVal);
+							console.log('oldVal:'+oldVal);
+						});
+						
+						
+						
+					}
+				}
+				
+			})
+			
+			
+//			vm.$watch('textVal', (newVal, oldVal)=>{
+//				console.log('textVal的监听触发了');
+//				console.log('newVal:'+newVal);
+//				console.log('oldVal:'+oldVal);
+//			})
+//			
+//			vm.$watch('count', (newVal, oldVal)=>{
+//				console.log('count的监听触发了');
+//				console.log('newVal:'+newVal);
+//				console.log('oldVal:'+oldVal);
+//			})
+//			
+//			vm.$watch('obj', (newVal, oldVal)=>{
+//				console.log('obj的监听触发了');
+//				console.log('newVal:'+newVal);
+//				console.log('oldVal:'+oldVal);
+//			}, {
+//				deep: true
+//			});//深度监听
+//			
+//			
+//			vm.$watch('obj.name', (newVal, oldVal)=>{
+//				console.log('obj.name的监听触发了');
+//				console.log('newVal:'+newVal);
+//				console.log('oldVal:'+oldVal);
+//			});
+			
+			
+		</script>
+	</body>
+</html>

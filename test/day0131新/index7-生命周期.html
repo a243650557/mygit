@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+			<div id="test">{{message}}</div>
+			<input type="text" v-model="message" />
+		</div>
+		
+		<script src="vue.js"></script>
+		<script>
+			//每个 Vue 实例在被创建时都要经过一系列的初始化过程
+			//在这个过程中也会运行一些叫做生命周期钩子的函数，
+			//这给了用户在不同阶段添加自己的代码的机会。
+			var vm = new Vue({
+				data: {
+					message: 'hello vue'
+				},
+				beforeCreate(){
+					console.log('beforeCreate');
+					console.log(this.message);//undefine
+					
+				},
+				created(){
+					console.log('created');
+					console.log(this.message);//hello vue
+				},
+				beforeMount(){
+					console.log('beforeMount');
+					console.log(document.querySelector('#test')); //<div id="test">{{message}</div>
+				},
+				mounted(){
+					console.log('mounted');
+					console.log(document.querySelector('#test'));//<div id="test">{{hello vue}</div>
+					
+				},
+				beforeUpdate(){
+					console.log('beforeUpdate');
+					console.log(document.querySelector('#test').innerText);
+				},
+				updated(){
+					console.log('updated');
+					console.log(document.querySelector('#test').innerText);
+					
+				},
+				beforeDestroy(){
+					console.log('beforeDestroy');
+				},
+				destroyed(){
+					console.log('destroyed');
+				}
+			})
+			
+			//动态挂载
+			vm.$mount('#app');
+			
+			
+			
+			/*
+			 vue生命周期函数
+			 
+			 vue生命周期过程:
+			 new Vue()
+				加载生命周期函数
+			 beforeCreate()实例创建前
+			 	加载属性和计算属性，方法（data，computed，methods，watch）
+			 	给属性添加setter  getter
+			 created()创建完成
+			
+			判断实例对象有没有配置el，/判断是否执行了$mount()
+			判断是否拥有这个选择器的dom结构
+			
+			beforeMount()挂载前，vue实例作用在dom结构上
+			mounted()挂载完毕了，vue实例已经作用在dom结构上。
+			 
+			vm实例上的属性，计算属性如果发生变化，
+			导致会执行更新的生命周期方法：
+			beforeUpdate()
+			updated()   注：更新指的不是数据的更新，（因为执行这两个方法的时候，数据已经更新完成了），是dom结构的更新，数据变化导致的
+			
+			
+			实例销毁    执行$destroy()销毁实例，销毁只是将vue实例作用的dom结构和实例的关联断开，但是dom结构还有vue对象都还存在。
+			beforeDestroy()
+			destroyed
+			两种方法触发这两个方法：
+			1.用vm.$.destory();
+			2.删除掉所关联的dom结构，会自动触发vm.$.destory();
+			
+			
+			通常在组件的生命周期方法中执行的操作：
+			created()  可以开始进行属性的操作
+			mounted()  可以开始执行dom操作
+			updated()  在数据更新后，需要刷新dom，或者是重置样式的操作
+			beforeDestroy()   释放内存空间，移除监听
+			
+			
+			
+			 * 
+			 * */
+			
+			
+			//实例方法
+			//挂载  $mount()
+			//销毁  $destroy()
+			
+		</script>
+	</body>
+</html>

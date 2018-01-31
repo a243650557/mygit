@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<p>单价： {{price}}</p>
+			<p>数量：<input type="number" v-model.number="count"/></p>
+			<p>总价： {{totalPrice}}</p>
+			<p>运费： {{free}}</p>
+			<p>应付： {{pay}}</p>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					price: 299,
+					tmpCount: 0
+				},
+				
+				computed: {
+					count: {
+						set(val){
+							this.tmpCount = val;
+						},
+						get(){
+							if(this.tmpCount >= 0){
+								return this.tmpCount;
+							}else{
+								return 0;
+							}
+						}
+					},
+					totalPrice(){
+						return this.price*this.count;
+					},
+					free(){
+						return this.totalPrice>599?0:20;
+					},
+					pay(){
+						return this.count==0?0:(this.totalPrice + this.free);
+					}
+				}
+			})
+			
+			
+			/*
+			 商品单价：299
+			 商品数量：用户输入
+			 总价：
+			 运费：20元（599包邮）
+			 应付：
+			 * 
+			 * 
+			 * */
+			
+			
+		</script>
+	</body>
+</html>

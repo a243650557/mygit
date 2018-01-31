@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<p>{{textVal}}</p>
+			<input type="text" v-model="textVal" />
+			<hr />
+			
+			a:<input type="number" v-model.number="a" />
+			b:<input type="number" v-model.number="b" />
+			<br />
+			count: {{count}}
+			
+			<hr />
+			
+			obj.name:<input type="text" v-model="obj.name" />
+			obj.age:<input type="number" v-model.number="obj.age" />
+			
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					textVal: '',
+					a: 1,
+					b: 2,
+					obj: {
+						name: 'zhangsan',
+						age: 40
+					}
+				},
+				computed: {
+					count(){
+						return this.a*this.b;
+					}
+				},
+				//监听属性
+				watch: {
+					//key值为属性（data，computed）
+					//value值是函数，当属性发生变化，函数就会执行
+					textVal(newVal, oldVal){
+						//newVal：变化后的值，oldVal: 变化前的值
+						console.log('textVal监听执行了');
+						console.log('newVal：'+newVal);
+						console.log('oldVal：'+oldVal);
+					},
+					//计算属性监听
+					count(newVal, oldVal){
+						console.log('count监听执行了');
+						console.log('newVal：'+newVal);
+						console.log('oldVal：'+oldVal);
+					},
+//					obj(newVal, oldVal){
+//						console.log('obj监听执行了');
+//						console.log('newVal：'+newVal);
+//						console.log('oldVal：'+oldVal);
+//					},
+//					obj: {
+//						//监听函数
+//						handler(newVal, oldVal){
+//							console.log('obj监听执行了');
+//							console.log('newVal：');
+//							console.log(newVal);
+//							console.log('oldVal：');
+//							console.log(oldVal);
+//						},
+//						deep: true//深度监听
+//					},
+					'obj.name': function(newVal, oldVal){
+						console.log('obj.name监听执行了');
+						console.log('newVal：'+newVal);
+						console.log('oldVal：'+oldVal);
+					}
+					
+				}
+			})
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

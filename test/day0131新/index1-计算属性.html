@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>{{message}}</h1>
+			<h1>{{countAction()}}</h1>
+			<button @click="testAction()">按钮</button>
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				//属性
+				/*
+				 在dom结构中访问，    {{message}}
+				 在js中，实例外部访问  vm.message
+				 在js中，实例内部访问  this.message
+				 * */
+				data: {
+					message: 'hello vue'
+				},
+				//方法
+				/*
+				 在dom结构中访问，    {{countAction()}}
+				 在dom结构中事件触发，    @click="countAction()"
+				 在js中，实例外部访问  vm.countAction()
+				 在js中，实例内部访问  this.countAction()
+				 * */
+				methods: {
+					testAction(){
+						console.log(this.message);
+						this.countAction();
+					},
+					countAction(){
+						return 123;
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>
