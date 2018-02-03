@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			html, body{
+				width: 100%;
+				height: 100%;
+			}
+			.header{
+				width: 100%;
+				height: 44px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.header:after{
+				content: '';
+				display: block;
+				width: 100%;
+				height: 1px;
+				border-bottom: 1px solid #000;
+				position: absolute;
+				bottom: -1px;
+				left: 0;
+				transform: scaleY(0.5);
+			}
+			.header .title{
+				width: 100%;
+				height: 44px;
+				text-align: center;
+				line-height: 44px;
+				color: #fff;
+				background: palegoldenrod;
+			}
+			.header .btn{
+				position: absolute;
+				top: 5px;
+				height: 34px;
+				padding: 5px;
+				box-sizing: border-box;
+				background: firebrick;
+				color: #fff;
+				border-radius: 4px;
+			}
+			.header .left-btn{
+				left: 6px;
+			}
+			.header .right-btn{
+				right: 6px;
+			}
+			.content{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 44px;
+				bottom: 49px;
+				overflow: hidden;
+			}
+			.content .wrapper{
+				width: 200%;
+			}
+			.content .wrapper p{
+				background: palegreen;
+				border-bottom: 1px solid #ddd;
+				line-height: 40px;
+			}
+			.tabs{
+				width: 100%;
+				height: 49px;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				background: #fff;
+				display: flex;
+			}
+			.tabs:before{
+				content: '';
+				display: block;
+				width: 100%;
+				height: 1px;
+				border-top: 1px solid #000;
+				position: absolute;
+				top: -1px;
+				left: 0;
+				transform: scaleY(0.5);
+			}
+			.tabs .tab{
+				flex: 1;
+				line-height: 49px;
+				text-align: center;
+			}
+			
+			
+			
+			
+		</style>
+	
+	</head>
+
+	<body>
+		
+		<header class="header">
+			<span class="btn left-btn">定位定位定位</span>
+			<h1 class="title">首页</h1>
+			<span class="btn right-btn">定位</span>
+		</header>
+		
+		<!-- 滚动视图 -->
+		<div class="content">
+			<!-- 滚动容器 -->
+			<div class="wrapper">
+				<!-- 需要滚动的内容 -->
+				<!--<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>
+				<p>大是大非卡死金风科技啊桥接男解答</p>-->
+				
+			</div>
+			
+		</div>
+		
+		<nav class="tabs">
+			<li class="tab">首页</li>
+			<li class="tab">发现</li>
+			<li class="tab">热门</li>
+			<li class="tab">设置</li>
+		</nav>
+		
+		<!--<script src="build/iscroll.js"></script>-->
+		<script src="build/iscroll-probe.js"></script>//有监听的要用probe这个js
+		<script>
+			
+			//滚动需要满足的条件
+			/*
+			 1.滚动视图，大小固定，overflow:hidden
+			 2.需要滚动的内容都放置在滚动容器中，滚动容器高度由内容撑开，宽度根据具体情况设置
+			 	滚动容器是滚动视图的第一个子元素
+			 3.当滚动容器的大小超出滚动视图大小时，就可以滚动了。
+			 */
+			
+			
+			//创建滚动对象
+			//参数1：滚动视图的dom选择器，或者是dom对象
+			//参数2：滚动的配置项
+//			var myScroll = new IScroll('.content', {
+			var myScroll = new IScroll(document.querySelector('.content'), {
+//				bounceEasing: 'elastic', bounceTime: 1200
+
+				//滚动视图的常见配置项
+				bounce: true, //弹簧效果
+				//iscroll为了性能考虑，将touch相关的点击事件关闭了。
+//				click: true,
+//				tap: true,//打开移动端的点击事件
+				mouseWheel: true,//支持滚轮事件
+				scrollbars: true,//滚动条
+				scrollX: true,//默认为false ,x轴方向是否可以滚动
+				scrollY: true,//默认为true ,y轴方向是否可以滚动
+				startX: 0,//x轴滚动的起始位置
+				startY: 0,//y轴滚动的起始位置
+				fadeScrollbars: true,//当滚动条显示时，不滚动时就看不到滚动条，前提是scrollBars要设为true
+				
+				//配置滚动事件的侦听方式
+				probeType: 1//1,2,3 ，3最耗性能，1只会在最上端或者最下端滚动时触发
+			});
+			
+			
+			//滚动的常见方法
+			document.querySelector('.right-btn').addEventListener('click', function(){
+				
+				//让滚动视图滚动到指定位置
+				//x,y,speed
+				myScroll.scrollTo(-200, -200, 0);////在(0,0)点的基础上进行滚动
+//				myScroll.scrollBy(-200, -200, 1000);//在目前位置的基础上进行滚动
+				
+				
+			})
+			
+			//使用setTimeout模拟ajax请求滚动的数据
+			setTimeout(function(){
+				var html = '';
+				for(var i = 0; i < 20; i++){
+					html += '<p>大是大非卡死金风科技啊桥接男解答'+(i+1)+'</p>';
+				}
+				document.querySelector('.wrapper').innerHTML = html;
+				
+				//更新滚动视图
+				myScroll.refresh();
+				//最大范围
+				console.log(myScroll.maxScrollX);
+				console.log(myScroll.maxScrollY);
+			})
+			
+			
+			//滚动的事件监听
+			//iscroll.js对iscroll对象提供的事件监听方法
+			myScroll.on('beforeScrollStart', function(){
+				console.log('滚动开始前');
+			})
+			
+			myScroll.on('scrollCancel', function(){
+				console.log('滚动取消了');//来电，来消息通知
+			})
+			
+			myScroll.on('scrollStart', function(){
+				console.log('滚动开始了');
+			})
+			
+			myScroll.on('scroll', function(){
+				console.log('正在滚动');
+				console.log('x:'+myScroll.x); //
+				console.log('y:'+myScroll.y);//向上滚动，y为负值，向下滚动，y为正值，类似于top值
+			})
+			
+			myScroll.on('scrollEnd', function(){
+				console.log('滚动结束了');
+			})
+			
+			//常用滚动属性
+			console.log(myScroll);
+			//最大范围
+			console.log(myScroll.maxScrollX);
+			console.log(myScroll.maxScrollY);
+			//目前的滚动位置
+			console.log('x:'+myScroll.x);
+			console.log('y:'+myScroll.y);
+			
+			
+			
+			
+
+//			console.log(document.querySelector('.wrapper p'));
+//			
+//			document.querySelector('.wrapper p').addEventListener('click', function(){
+//				console.log('点击了');
+//			})
+			
+		</script>
+		
+	</body>
+
+</html>

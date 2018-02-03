@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<input type="text" v-model="textVal"/>
+			
+			<button @click="addAction()">新增</button>
+			
+			<ul>
+				<li v-for="(item, index) in data">
+					{{item}}
+					<button @click="showAction(index)">查看</button>
+					<button @click="modifyAction(index)">修改</button>
+					<button @click="deleteAction(index)">删除</button>
+				</li>
+			</ul>
+			
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					textVal: '',
+					data: []
+				},
+				methods: {
+					addAction: function(){
+						var val = this.textVal;
+						console.log(val)
+						//保存数据
+						this.data.push(val);
+						//清空输入框
+						this.textVal = '';
+					},
+					showAction(index){
+						console.log('查看:'+index);
+//						this.data[index]
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

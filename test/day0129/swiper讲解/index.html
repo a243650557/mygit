@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="dist/css/swiper.css">
+		<link rel="stylesheet" href="dist/ani/animate.css" />
+		<script src="dist/js/swiper.js"></script>
+		<script src="dist/ani/swiper.animate.min.js"></script>
+		<style>
+			.swiper-container {
+			    width: 600px;
+			    height: 300px;
+			    background: red;
+			}
+			.box{
+				width: 200px;
+				height: 100px;
+				background: darkcyan;
+				color: #fff;
+				font-size: 40px;
+				line-height: 100px;
+				text-align: center;
+				font-weight: 600;
+				margin: 0 auto;
+			}
+			.box2{
+				animation-duration: 5s;
+			}
+			
+			@keyframes my-ani{
+				from{transform: translateX(0) scaleX(0);}
+				to{transform: translateX(100%) scaleX(1);}
+			}
+			.my-ani{
+				animation-name: my-ani;
+				/*animation-duration: 3s;*/
+				animation-timing-function: step-start;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide">
+		        	<div class="box ani" swiper-animate-effect="swing"
+		        		swiper-animate-duration="1s"
+		        		swiper-animate-delay="0s">千锋教育1</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="box  ani" swiper-animate-effect="flipInX"
+		        		swiper-animate-duration="2s"
+		        		swiper-animate-delay="0.5s">千锋教育2</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="box ani "  swiper-animate-effect="my-ani"
+		        		swiper-animate-duration="2s"
+		        		swiper-animate-delay="0s">千锋教育3</div>
+		        </div>
+		    </div>
+		    <!-- 如果需要分页器 -->
+		    <div class="swiper-pagination"></div>
+		</div>
+		
+		
+		<script>
+			
+			var mySwiper = new Swiper ('.swiper-container', {
+			    direction: 'vertical',
+			    loop: true,
+			    // 如果需要分页器
+			    pagination: '.swiper-pagination',
+			    onInit: function(swiper){ //初始化
+				    swiperAnimateCache(swiper); //隐藏动画元素 
+				    swiperAnimate(swiper); //初始化完成开始动画
+				}, 
+				onSlideChangeEnd: function(swiper){ 
+				    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+				} 
+			    
+			}) 
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

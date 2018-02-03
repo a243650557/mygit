@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+			.wrapper{
+				width: 400px;
+				height: 400px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<div ></div>
+			
+			<!--<div class="box" v-on:click="boxAction()">box</div>
+			<div class="box" v-on:mousemove="box1Action()">box1</div>-->
+			
+			<!-- 简写方式   v-on:  等价  @ -->
+			<div class="box" @click="boxAction()">box</div>
+			<div class="box" @mousemove="box1Action()">box1</div>
+			
+			
+			<!-- on指令修饰符  -->
+			<!-- 
+				.stop阻止事件冒泡   
+				.prevent阻止默认事件
+				.once触发一次事件
+			 -->
+			<div class="wrapper" @click="wrapperAction()"
+				@contextmenu.prevent="menuAction()">
+				<div class="box" @click.stop.once="boxAction()">box</div>
+			</div>
+			
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			/*
+			 指令：给标签添加属性，属性写法都是以‘v-’开头:v-指令名字, 指令所对应的值是js表达式
+			 指令作用：给不同的标签添加不同的行为
+			 */
+			
+			
+			
+			//创建vue实例对象
+			const vm = new Vue(
+				//vue实例的配置项
+				{
+					//vue实例作用的dom结构, 值为该dom节点的选择器
+					el: '#app',
+					//vue实例配置属性
+					data: {
+						word: 'qianfeng',
+						arr: ['item1', 'item2', 'item3', 'item4'],
+						obj: {
+							name: 'zhangsan',
+							age: 40,
+							height: 180
+						}
+					},
+					//vue实例的方法
+					methods: {
+						boxAction: function(){
+							console.log('box点击了');
+						},
+						box1Action: function(){
+							console.log('鼠标移动');
+						},
+						wrapperAction: function(){
+							console.log('wrapper点击了');
+						},
+						menuAction: function(){
+							console.log('按了鼠标的右键');
+						}
+					}
+					
+				}
+			);
+
+			
+		</script>
+		
+	</body>
+</html>

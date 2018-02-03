@@ -1,0 +1,13 @@
+p{
+	width: 400px;
+	height: 100px;
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+	background-color: red;
+	color: palevioletred;
+	background-size: contain;
+	
+/*		这个路径是根据html的路径来设置的.因为相当于直接把css文件放入html的<style></style>中
+*/	background-image: url('/img/bd_logo1.png');
+}

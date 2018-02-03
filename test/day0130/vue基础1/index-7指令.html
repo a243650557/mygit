@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+			.wrapper{
+				width: 400px;
+				height: 400px;
+				background: yellow;
+			}
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" v-cloak>
+			<!-- v-pre 不解析指令作用标签内部的{{}} -->
+			<p v-pre>如果需要解析title的值到p标签中，需要使用{{title}}</p>
+			
+			<!-- 使用一次title值 -->
+			<p>{{title}}</p>
+			<p v-once>{{title}}</p>
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			/*
+			 指令：给标签添加属性，属性写法都是以‘v-’开头:v-指令名字, 指令所对应的值是js表达式
+			 指令作用：给不同的标签添加不同的行为
+			 */
+			
+			
+			
+			//创建vue实例对象
+			const vm = new Vue(
+				//vue实例的配置项
+				{
+					//vue实例作用的dom结构, 值为该dom节点的选择器
+					el: '#app',
+					//vue实例配置属性
+					data: {
+						title: '千锋教育'
+					}
+					
+					
+				}
+			);
+
+			
+		</script>
+		
+	</body>
+</html>

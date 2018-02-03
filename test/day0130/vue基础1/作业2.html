@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 新增卡片 -->
+		<div class="add-card" v-if="cardId == 0">
+			<h1>新增</h1>
+			<p>
+				<label>姓名：</label>
+				<input type="text" v-model="name"/>
+			</p>
+			<p>
+				<label>性别：</label>
+				<label v-for="item in sexArr">
+					<input type="radio" :value="item" v-model="sex"/>
+					{{item}}
+				</label>
+			</p>
+			<p>
+				<label>出生年份：</label>
+				<select v-model="year">
+					<option v-for="item in yearArr" :value="item">{{item}}</option>
+				</select>
+			</p>
+			<p>
+				<label>兴趣爱好：</label>
+				<label v-for="item in likeArr">
+					<input type="checkbox" :value="item" v-model="like"/>
+					{{item}}
+				</label>
+			</p>
+			<p>
+				<label>个性签名：</label>
+				<textarea v-model="sign"></textarea>
+			</p>
+			<button @click="addAction()">新增</button>
+			<button @click="cancelAction()">取消</button>
+		</div>
+		
+		<!-- 修改卡片 -->
+		<div class="modify-card"  v-if="cardId == 1">
+			<h1>修改</h1>
+			<p>
+				<label>姓名：</label>
+				<input type="text" v-model="name"/>
+			</p>
+			<p>
+				<label>性别：</label>
+				<label v-for="item in sexArr">
+					<input type="radio" :value="item" v-model="sex"/>
+					{{item}}
+				</label>
+			</p>
+			<p>
+				<label>出生年份：</label>
+				<select v-model="year">
+					<option v-for="item in yearArr" :value="item">{{item}}</option>
+				</select>
+			</p>
+			<p>
+				<label>兴趣爱好：</label>
+				<label v-for="item in likeArr">
+					<input type="checkbox" :value="item" v-model="like"/>
+					{{item}}
+				</label>
+			</p>
+			<p>
+				<label>个性签名：</label>
+				<textarea v-model="sign"></textarea>
+			</p>
+			<button @click="handleModifyAction()">完成修改</button>
+			<button @click="cancelModifyAction()">取消修改</button>
+		</div>
+		
+		<div class="show-card"  v-if="cardId == 2">
+			<h1>查看</h1>
+			<p>姓名：{{showInfo.name}}</p>
+			<p>性别：{{showInfo.sex}}</p>
+			<p>出生年份：{{showInfo.year}}</p>
+			<p>兴趣爱好：{{showInfo.like}}</p>
+			<p>个性签名：{{showInfo.sign}}</p>
+			<button @click="handleShowAction()">查看完成</button>
+		</div>
+		
+		<ul class="list">
+			<li v-for="(item, index) in listData">
+				<h1>{{item.name}}</h1>
+				<p>{{item.sign}}</p>
+				<button @click="deleteAction(index)">删除</button>
+				<button @click="modifyAction(index)">修改</button>
+				<button @click="showAction(index)">查看</button>
+			</li>
+		</ul>
+		
+		</div>
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					//页面显示的初始值
+					sexArr: ['男', '女'],
+					yearArr: [1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997],
+					likeArr: ['吃', '喝', '玩', '乐'],
+					
+					//用户选择的值
+					name: '',
+					sex: '',
+					year: '',
+					like: [],
+					sign: '',
+					
+					//显示那个卡片
+					cardId: 0,//0:新增， 1：修改，2：查看
+					
+					//数据源
+					listData: [],
+					
+					//需要修改的数据对象的下标
+					modifyIndex: -1,
+					
+					showInfo: {}
+					
+				},
+				methods: {
+					//新增按钮事件
+					addAction(){
+						//保存用户数据，放置到数据源中
+						this.listData.push({
+							name: this.name,
+							sex: this.sex,
+							year: this.year,
+							like: this.like,
+							sign: this.sign
+						})
+						//清空输入框
+						this.cancelAction();
+					},
+					//新增取消事件
+					cancelAction(){
+						//清空输入框
+						this.name = '';
+						this.sex = '';
+						this.year = '';
+						this.like = [];
+						this.sign = '';
+					},
+					//删除点击事件
+					deleteAction(index){
+						console.log('删除'+index);
+						//删除数据源中对应下标的数据
+						this.listData.splice(index, 1);
+					},
+					//修改点击事件
+					modifyAction(index){
+						console.log('修改'+index);
+						//修改卡片的显示条件
+						this.cardId = 1;
+						//获得需要修改的对象 ： this.listData[index]
+						this.name = this.listData[index].name;
+						this.sex = this.listData[index].sex;
+						this.year = this.listData[index].year;
+						this.like = this.listData[index].like;
+						this.sign = this.listData[index].sign;
+						
+						//保存修改的下标
+						this.modifyIndex = index;
+					},
+					//查看点击事件
+					showAction(index){
+						console.log('查看'+index);
+						//显示查看卡片
+						this.cardId = 2;
+						//将需要查看的值告诉查看卡片
+						this.showInfo = this.listData[index];
+						
+					},
+					//完成修改
+					handleModifyAction(){
+						//将修改好的值赋值给原来的对象
+						this.listData[this.modifyIndex] = {
+							name: this.name,
+							sex: this.sex,
+							year: this.year,
+							like: this.like,
+							sign: this.sign
+						};
+						this.cancelModifyAction();
+						
+					},
+					//取消修改
+					cancelModifyAction(){
+						//显示会新增界面
+						this.cardId = 0;
+						//清空输入框
+						this.cancelAction();
+						//修改下标重置回-1
+						this.modifyIndex = -1;
+					},
+					//查看完成
+					handleShowAction(){
+						//重置查看条件
+						this.cardId = 0;
+						this.showInfo = {};
+						
+					}
+				}
+			})
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

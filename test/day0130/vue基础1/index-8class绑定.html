@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				border: 10px solid saddlebrown;
+			}
+			.red{
+				background: red;
+			}
+			.yellow{
+				background: yellow;
+			}
+			.green{
+				background: green;
+			}
+			.blue{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app" v-cloak>
+			
+			
+			<div class="box" :class="classVal"></div>
+			<div class="box" :class="classVal2"></div>
+			<div class="box" :class="classVal3"></div>
+			<div class="box" :class="classVal4"></div>
+			<div class="box" :class="classVal5"></div>
+			
+			
+			<hr />
+			
+			<div class="box" :class="'red'"></div>
+			<div class="box" :class="['red', 'yellow', 'green']"></div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			/*
+			 指令：给标签添加属性，属性写法都是以‘v-’开头:v-指令名字, 指令所对应的值是js表达式
+			 指令作用：给不同的标签添加不同的行为
+			 */
+			//创建vue实例对象
+			const vm = new Vue(
+				//vue实例的配置项
+				{
+					//vue实例作用的dom结构, 值为该dom节点的选择器
+					el: '#app',
+					//vue实例配置属性
+					data: {
+						//class值为字符串，直接添加到已有的class中
+						classVal: 'red',
+						classVal2: 'red yellow',
+						//将数组中的每一项值添加到数组中
+						classVal3: ['red', 'yellow', 'green'],
+						//key值为class值，value为布尔值，判断该标签是否拥有这个class
+						classVal4: {
+							'red': false,
+							'green': true,
+							yellow: true
+						},
+						classVal5: ['blue', {
+							red: false,
+							green: true,
+							yellow: true
+						}]
+					}
+					
+					
+				}
+			);
+
+			
+		</script>
+		
+	</body>
+</html>

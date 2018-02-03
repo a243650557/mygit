@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!-- v-for 遍历字符串    -->
+			<ul>
+				<li v-for="s in word">
+					{{s}}
+				</li>
+				<li v-for="(s, index) in '千锋教育'" :key="index">
+					{{s}}---{{index}}
+				</li>
+			</ul>
+			
+			<hr />
+			
+			<!-- v-for 数字    -->
+			<ul>
+				<li v-for="(num, index) in 10" :key="index">
+					{{num}}---{{index}}
+				</li>
+			</ul>
+			
+			<hr />
+			
+			<!-- v-for 数组    -->
+			<ul>
+				<li v-for="item in arr">
+					{{item}}
+				</li>
+			</ul>
+			<ul>
+				<li v-for="(item, index) in arr" :key="index">
+					值：{{item}}，下标：{{index}}
+				</li>
+			</ul>
+			
+			<hr />
+			<!-- v-for 对象    -->
+			<ul>
+				<li v-for="item in obj">
+					{{item}}
+				</li>
+				<li v-for="(item, key) in obj" :key="key">
+					item: {{item}}, key: {{key}}
+				</li>
+			</ul>
+			
+			
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		<script src="vue.js"></script>
+		<script>
+			/*
+			 指令：给标签添加属性，属性写法都是以‘v-’开头:v-指令名字, 指令所对应的值是js表达式
+			 指令作用：给不同的标签添加不同的行为
+			 
+			 
+			 */
+			
+			
+			//创建vue实例对象
+			const vm = new Vue(
+				//vue实例的配置项
+				{
+					//vue实例作用的dom结构, 值为该dom节点的选择器
+					el: '#app',
+					//vue实例配置属性
+					data: {
+						word: 'qianfeng',
+						arr: ['item1', 'item2', 'item3', 'item4'],
+						obj: {
+							name: 'zhangsan',
+							age: 40,
+							height: 180
+						}
+					}
+				}
+			);
+
+			
+		</script>
+		
+	</body>
+</html>
