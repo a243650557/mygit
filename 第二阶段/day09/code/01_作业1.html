@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var oBox = document.getElementById("box");
+				
+				var change = 5;
+				var n = 0;
+				setInterval(function(){
+					n++;
+					
+					oBox.style.color = randomColor();
+					
+					oBox.style.fontSize = parseInt(oBox.style.fontSize) + change + "px";
+					
+					if (n%6 == 0) {
+						change *= -1;
+					}
+					
+				}, 100);
+				
+				
+				
+				//随机颜色
+				//rgb(255,255,255)
+//				function randomColor(){
+//					return "rgb(" + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + "," + parseInt(Math.random()*256) + ")";
+//				}
+				
+				//#FFFFFF
+				function randomColor(){
+					var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+					var str = "#";
+					for (var i=0; i<6; i++) {
+						str += arr[ parseInt(Math.random()*arr.length) ];
+					}
+					return str;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 300px; height: 200px; background: green; font-size: 16px;">看我72变</div>
+	</body>
+</html>

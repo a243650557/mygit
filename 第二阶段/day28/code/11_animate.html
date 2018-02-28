@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//关闭页面上所有的动画。
+				//$.fx.off = true;
+
+				//设置动画的显示帧速。
+				//$.fx.interval = 50;
+
+
+				
+				//animate()
+				$("#btn1").click(function(){
+					
+					//同时改变多个属性
+//					$("div").animate({left:300, top:300, width:200, height:200}, 4000, function(){
+//						console.log("动画完成");
+//					});
+					
+					//队列动画
+					$("div")
+						.animate({left:300}, 1000)
+						.fadeOut(1000)
+						.show(1000)
+						.animate({top:300}, 1000)
+						.animate({width:300}, 1000)
+						.animate({height:300}, 1000)
+					
+				}) 
+				
+				//stop() : 停止动画
+				$("#btn2").click(function(){
+					//$("div").stop(); //只会停止当前正在执行的动画，后面的继续执行
+					$("div").stop(); //停止所有动画
+				})
+				
+				//finish() ： 停止所有动画，并立刻到达目标位置
+				$("#btn3").click(function(){
+					$("div").finish(); 
+				})
+				
+				//只保留最后一个动画
+				//stop(true).animate({})
+				
+				//delay() ： 延迟操作
+				$("#btn4").click(function(){
+					$("div").animate({left:300},3000)
+							.delay(2000)
+							.animate({left:100}, 2000);
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button id="btn1">开始运动</button>
+		<button id="btn2">stop</button>
+		<button id="btn3">finish</button>
+		<button id="btn4">delay</button>
+		
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 100px; top: 100px;"></div>
+	</body>
+</html>

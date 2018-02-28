@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//示例: 
+			//1, 鼠标点击某处, 让精灵移动到该处 
+			//2, 鼠标移动时, 让精灵跟随鼠标移动			
+			
+			//元素节点的属性
+			//位置：  offsetLeft, offsetTop
+			//大小： offsetWidth, offsetHeight
+			
+			//事件对象event
+			// offsetX, offsetY
+			// pageX, pageY
+			// clientX, clientY
+			// screenX, screenY
+			
+			
+			onload = function(){
+				
+				var oImg = document.getElementsByTagName("img")[0];
+				
+				//1, 鼠标点击某处, 让精灵移动到该处 
+				document.onclick = function(e){
+					e = e || event;
+					
+					oImg.style.left = e.pageX-100 + "px";
+					oImg.style.top = e.pageY-100 + "px";
+				}
+				
+				//2, 鼠标移动时, 让精灵跟随鼠标移动		
+				document.onmousemove = function(e){
+					e = e || event;
+					oImg.style.left = e.pageX-100 + "px";
+					oImg.style.top = e.pageY-100 + "px";
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body style="background: black;">
+		<img src="images/girl.gif" style="width: 200px; height: 200px; position: absolute; left: 10px; top: 10px;" />
+	</body>
+</html>

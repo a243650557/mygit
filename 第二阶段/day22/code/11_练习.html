@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0;}
+			ul, li {list-style: none;}
+			#txt {
+				width: 300px;
+				height: 30px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+			#list {
+				width: 300px;
+				border: 1px solid #ccc;
+			}
+			#list li {
+				width: 300px;
+				height: 26px;
+			}
+			
+		</style>
+		<script>
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+			
+			onload = function(){
+				// https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=mi&cb=fn1
+				
+				$("txt").onkeyup = function(){
+					
+					var scriptNode = document.createElement("script");
+					scriptNode.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ this.value +"&cb=fn";
+					document.body.appendChild(scriptNode);
+					document.body.removeChild(scriptNode);
+					
+				}
+				
+			}
+			
+			function fn(data){
+				//console.log(JSON.stringify(data));
+				var arr = data.s;
+				
+				$("list").innerHTML = "";
+				//显示搜索提示数据
+				for (var i=0; i<arr.length; i++) {
+					var li = document.createElement("li");
+					$("list").appendChild(li);
+					li.innerHTML = arr[i];
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input id="txt" type="text" />
+		<ul id="list"></ul>
+	</body>
+</html>

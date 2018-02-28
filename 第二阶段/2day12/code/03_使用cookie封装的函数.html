@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="cookie.js"></script>
+		<script>
+			
+			//添加cookie
+			var d = new Date("2019-1-1");
+			setCookie("name10", "张三", d);
+			console.log( getCookie("name10") ); //"张三"
+			
+			//修改cookie
+			setCookie("name10", "lisi", d);
+			//console.log(document.cookie);
+			
+			//获取cookie
+			console.log( getCookie("name10") ); //"lisi"
+			
+			
+			//删除cookie
+			removeCookie("name10");
+			console.log( getCookie("name10") ); //""
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/ajax.js"></script>
+		<script>
+			
+			
+			//promise: 实现Ajax异步的依赖调用
+			
+			// "http://60.205.181.47/myPHPCode3/register.php"
+            //username="+username + "&password="+pwd + "&age="+age;
+			
+			/*
+			//注册
+			ajax({
+				type: "post",
+				url: "http://60.205.181.47/myPHPCode3/register.php",
+				data: {username:"张三3e", password:"123456", age:22},
+				
+				success: function(data){
+					console.log("注册 1");
+					
+					fn();
+				}
+			})
+			
+			function fn(){
+				//登录
+				ajax({
+					type: "post",
+					url: "http://60.205.181.47/myPHPCode3/login.php",
+					data: {username:"张三3e", password:"123456"},
+					
+					success: function(data){
+						console.log("登录 2");
+					}
+				})
+			}
+			
+			*/
+			
+			/*
+			var p = new Promise(function(resolve, reject){
+				
+				ajax({
+					type: "post",
+					url: "http://60.205.181.47/myPHPCode3/register.php",
+					data: {username:"张三3e", password:"123456", age:22},
+					
+					success: function(data){
+						console.log("注册 1");
+						
+						//异步请求完成
+						resolve(100);
+					}
+				})
+				
+			});
+			p.then(function(data){
+				//console.log(data); //100
+				
+				return new Promise(function(res, rej){
+					//登录
+					ajax({
+						type: "post",
+						url: "http://60.205.181.47/myPHPCode3/login.php",
+						data: {username:"张三3e", password:"123456"},
+						
+						success: function(data){
+							console.log("登录 2");
+							
+							res();
+						}
+					})
+				})
+				
+			}).then(function(){
+				console.log(22);
+			})
+			*/
+			
+				
+			//reject
+			/*
+			new Promise(function(resolve, reject){
+				ajax({
+					type: "post",
+					url: "http://60.205.181.47/myPHPCode3/register1.php",
+					data: {username:"张三3e", password:"123456", age:22},
+					
+					success: function(data){							
+						//异步请求完成
+						resolve(data); 
+					},
+					fail: function(){
+						reject("请求失败");
+					}
+				})
+				
+			})
+			.then(function(data){
+				console.log("success:" + data);
+			}, 
+			function(msg){
+				console.log("fail:" + msg);
+			})
+			*/
+			
+			//catch()
+			/*
+			new Promise(function(resolve, reject){
+				ajax({
+					type: "post",
+					url: "http://60.205.181.4/myPHPCode3/register.php",
+					data: {username:"张三3e", password:"123456", age:22},
+					
+					success: function(data){							
+						//异步请求完成
+						resolve(data); 
+					},
+					fail: function(){
+						reject("请求失败");
+					}
+				})
+				
+			})
+			.then(function(data){
+				console.log("success:" + data);
+			})
+			.catch(function(msg){
+				console.log("fail:" + msg);   
+			})
+			*/
+			
+			
+			function fn1(){
+				return new Promise(function(resolve, reject){
+				
+					ajax({
+						type: "post",
+						url: "http://60.205.181.47/myPHPCode3/register.php",
+						data: {username:"张三3e", password:"123456", age:22},
+						
+						success: function(data){							
+							console.log(1);
+							//异步请求完成
+							resolve(100);
+						}
+					})
+					
+				});
+			}
+			
+			function fn2(){
+				return new Promise(function(resolve, reject){
+				
+					ajax({
+						type: "post",
+						url: "http://60.205.181.47/myPHPCode3/register.php",
+						data: {username:"张三3e", password:"123456", age:22},
+						
+						success: function(data){	
+							console.log(2);
+							//异步请求完成
+							resolve(100);
+						}
+					})
+					
+				});
+			}
+			
+			function fn3(){
+				return new Promise(function(resolve, reject){
+				
+					ajax({
+						type: "post",
+						url: "http://60.205.181.47/myPHPCode3/login.php",
+						data: {username:"张三3e", password:"123456",},
+						
+						success: function(data){							
+							console.log(3);
+							//异步请求完成
+							resolve(100);
+						}
+					})
+					
+				});
+			}
+			
+			//异步按顺序调用
+			/*
+			fn1()
+			.then(function(){
+				console.log("注册 1");
+				return fn2();
+			})
+			.then(function(){
+				console.log("注册 2");	
+				return fn3();
+			})
+			.then(function(){
+				console.log("注册 3");
+			})
+			*/
+						
+			
+			//all
+			//多个异步请求都完成后执行
+			/*
+			Promise
+			.all([fn1(), fn2(), fn3()])
+			.then(function(){ 
+				console.log("三个请求都完成了！");
+			})
+			*/
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

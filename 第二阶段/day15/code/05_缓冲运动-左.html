@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementById("btn");
+				var box = document.getElementById("box");
+				
+				//按钮
+				btn.onclick = function(){
+					move(box, "left", 30);
+				}
+				
+				function move(obj, attr, itarget){
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						
+						//1, 获取当前值
+						var current = parseInt(getStyleAttr(obj, attr));
+						
+						//2, 速度
+						var speed = (itarget-current)/8;
+						speed = Math.floor(speed); //向下取整
+						
+						// -0.875   -1
+						
+						//3, 临界值
+						if (current == itarget) {
+							clearInterval(obj.timer); //停止移动
+							return;
+						}
+						
+						//4, 运动
+						obj.style[attr] = current + speed + "px";
+						
+					}, 30);
+					
+				}
+				
+				
+				//获取某节点的css属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle) {
+						return getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn">开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 300px; top: 100px;"></div>
+		<div style="width: 1px; height: 200px; background: black; position: absolute; left: 30px; top: 50px;"></div>
+
+	</body>
+</html>

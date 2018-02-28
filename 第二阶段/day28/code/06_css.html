@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//css() : 设置css样式
+				//获取css样式
+				//console.log( $("div").css("width") ); //100px
+				
+				//设置css样式
+				//$("div").css("width", "200px");
+				//$("div").css({"width": "200px", height:200});
+				
+				
+				//offset() : 相对于页面内容部分的左边和上边的距离 （掌握）
+				//position() : 相对于父级定位参照物
+				
+				//offset()
+				//console.log( $("#box").offset().left ); //100
+				//console.log( $("#box").offset().top ); //100
+				//console.log( $("#box1").offset().left ); //150
+				//console.log( $("#box1").offset().top ); //150
+				
+				//$("#box1").offset({left:10, top:10})
+				$("#box1").css({left:10, top:10}) //推荐
+				
+				//position() :
+				//console.log( $("#box").position().left ); //100
+				//console.log( $("#box").position().top ); //100
+				//console.log( $("#box1").position().left ); //150
+				//console.log( $("#box1").position().top ); //150
+				
+				
+				//scrollTop()
+				//console.log( $(window).scrollTop() );
+				//console.log( $(document).scrollTop() );
+				
+				$("button").click(function(){
+					//$(window).scrollTop(100);
+					//$(document).scrollTop(100);
+					$("html,body").scrollTop(100);
+				})
+				
+				
+				//width()
+				//height()
+				//width() : 宽度
+				//innerWidth() : 宽度+padding
+				//outterWidth() : 宽度+padding+border
+				//outterWidth(true) : 宽度+padding+border+margin
+				
+				console.log( $("#box2").width() ); //100
+				console.log( $("#box2").innerWidth() ); //120
+				console.log( $("#box2").outerWidth() ); //140
+				console.log( $("#box2").outerWidth(true) ); //160
+				
+				//设置宽度
+				//$("#box2").width(200)
+				$("#box2").css({width:200})
+				
+				
+			})
+		</script>
+	</head>
+	<body style="width: 1000px; height: 1000px;">
+		<!--<div style="width: 100px; height: 100px; background: red;"></div>-->
+		<div id="box" style="width: 200px; height: 200px; background: red; position: absolute; left: 100px; top: 100px;">
+			<div id="box1" style="width: 50px; height: 50px; background: blue; position: absolute; left: 50px; top: 50px;"></div>
+			
+		</div>
+		
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<button>按钮</button>
+		<div id="box2" style="width: 100px; height: 100px; background: green; padding: 10px; border: 10px solid blue; margin: 10px;"></div>
+	</body>
+</html>

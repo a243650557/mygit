@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 ES6-Generator
+			     Generator Function: 生成器函数, 最大特点就是可以交出函数的执行权（即暂停执行）
+			Generator函数的写法： *号是为了区分于普通函数， 
+			    function* gen(x){
+			      var y = yield x + 2;
+			      return y;
+			    }
+			   var g = gen(1);
+			   console.log(g.next()) // { value: 3, done: false }
+			   console.log(g.next()) // { value: undefined, done: true }
+			整个Generator函数就是一个封装的异步任务，异步操作需要暂停的地方，都用 yield 语句注明，
+			next 方法的作用是分阶段执行 Generator 函数。每次调用 next 方法，会返回一个对象，
+			表示当前阶段的信息（ value 属性和 done 属性）。value 属性是 yield 语句
+			后面表达式的值，表示当前阶段的值；done 属性是一个布尔值，表示 Generator 函数
+			是否执行完毕，即是否还有下一个阶段
+			*/
+			
+			// * ： 表示生成器函数， 区别于普通函数
+			// yield : 表示暂停
+			// next() : 往后执行一次，执行到下一个yield，并返回一个对象：包含value和done
+			//           value表示yield后的值， done表示是否结束
+			
+//			
+//			function *gen(x){
+//			    var y = yield x+2;
+//			    return 33;
+//			}
+//			var g = gen(1);
+//			console.log(g.next()); //{ value: 3, done: false }
+//			console.log(g.next()); //{ value: undefined, done: true }
+			
+		    function* gen(x){
+			      var y = yield x + 2;
+			      return y;
+			    }
+			   var g = gen(1);
+			   console.log(g.next()) // { value: 3, done: false }
+			   console.log(g.next()) // { value: undefined, done: true }
+			
+			
+			//可以去表示一个无限循环
+			function *fn(){
+				var i=1;
+				while(true) {
+					yield i++; 
+				}
+				
+			}
+			var g = fn()
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			console.log( g.next() );
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button onclick="fn();">i++</button>
+	</body>
+</html>

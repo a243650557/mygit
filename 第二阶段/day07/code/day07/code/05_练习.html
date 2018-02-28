@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//练习: 
+			//1, 创建一个人的对象, 添加属性: 姓名 年龄 爱好 薪资期望, 
+			//   并有一个打印自身信息的方法, 可以输出自身信息;
+			var person = {
+				name: "老王",
+				age: 30,
+				like: "斗地主",
+				salary: "10K",
+				print1: function(){
+					//console.log(person.name + person.age + person.like + person.salary);
+					console.log(this.name + this.age + this.like + this.salary);
+					//this == person 
+					//this关键字 ： 在函数内部的，是一个对象， 指的是哪个对象调用了当前函数，则this就是这个对象
+				}
+			}
+			person.print1();
+			
+						
+			//2, 有一辆50km/h车,跑在一条1000km路上，问多少小时跑完？
+			//   对象: 
+			//		车Car  属性: 速度speed 50km/h
+			// 	                               功能: 跑在路上runOnRoad(Road)
+			//		路Road 
+			//			       属性: 长度length 1000km
+			var Car = {
+				speed: 50,
+				runOnRoad: function(road){
+					console.log( road.length/this.speed );//this==Car
+				}
+			}
+			var Road = {
+				length: 1000
+			}
+			
+			Car.runOnRoad(Road);
+			
+			
+			
+			//基本类型和对象类型的区别
+			//基本类型： 简单的赋值
+			var a = 10;
+			var b = a;
+			b = 12;
+			console.log(a + "," + b); //10, 12
+			
+			//对象类型 ： 关联
+			var obj1 = {age:10};
+			var obj2 = obj1;
+			obj2.age = 12;
+			console.log( obj1.age + "," + obj2.age ); //12， 12
+			
+			//
+			var n = 100;
+			var o = {age:11};
+			function fn(n, o){
+				n++;
+				console.log("fn- n:" + n); //101 
+				
+				o.age++;
+				console.log("fn- o.age:" + o.age); //12
+			}
+			fn(n, o);
+			console.log(n); //100 因为函数中有参数n，优先使用局部变量，所以局部变量n=101，而全局的不变。
+			console.log(o.age); //12
+			
+			var n = 100;
+			var o = {age:11};
+			function fn(){
+				n++;
+				console.log("fn- n:" + n); //101 
+				
+				o.age++;
+				console.log("fn- o.age:" + o.age); //12
+			}
+			fn(n, o);
+			console.log(n); //101 因为函数中没有参数n，使用全局变量的n，所以全局的n变为101。而函数里面n就是全局的n
+			console.log(o.age);//12
+			
+			var n = 100;
+			var o = {age:11};
+			function fn(){
+				n =5;
+				console.log("fn- n:" + n); //5 
+				
+				o.age++;
+				console.log("fn- o.age:" + o.age); //12
+			}
+			fn(n, o);
+			console.log(n); //5 因为函数中没有参数n，使用全局变量的n，所以全局的n变为101。而函数里面n就是全局的n
+			console.log(o.age);//12
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="cookie.js"></script>
+		<script>
+			onload = function(){
+				
+				var ul = document.getElementById("list");
+				
+				//获取cookie中所有购物车数据， 并显示
+				var arr = getCookie("cart");
+				
+				if (arr) {
+					arr = JSON.parse(arr);
+					
+					//遍历数组
+					for (var i=0; i<arr.length; i++) {
+						var obj = arr[i];
+						
+						//创建li节点，显示数据obj
+						var li = document.createElement("li");
+						ul.appendChild(li);
+						li.innerHTML = obj.id + ", " + obj.name + ", " + obj.price + ", " + obj.num;
+					}
+				}
+				else {
+					console.log("不存在商品");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>我的购物车</h2>
+		<ul id="list">
+			<!--<li></li>
+			<li></li>
+			<li></li>-->
+		</ul>
+	</body>
+</html>

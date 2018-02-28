@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			#box {
+				opacity:0.5;
+				filter: alpha(opacity=50);
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementById("btn");
+				var box = document.getElementById("box");
+				
+				//淡入： 通过不透明度的变化（由透明变成不透明）来显示元素
+				//淡出： 通过不透明度的变化（由不透明变成透明）来隐藏元素
+				
+				//按钮
+				btn.onclick = function(){
+					move(box, "opacity", 10);
+				}
+				
+				/*
+				 #box {
+						opacity:0.5;
+						filter: alpha(opacity=50);
+					}
+					*/
+				
+				function move(obj, attr, itarget){
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						
+						//1, 获取当前值
+						var current = Math.round(getStyleAttr(obj, attr)*100);
+						
+						//2， 速度
+						var speed = (itarget-current)/8;
+						speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+						
+						//3, 判断临界值
+						if (current == itarget) {
+							clearInterval(obj.timer);
+							return;
+						}
+						
+						//4，运动
+						obj.style[attr] = (current + speed)/100;
+						obj.style.filter = "alpha(opacity="+ (current+speed) +");";
+						
+					}, 30);
+					
+				}
+				
+				//获取某节点的css属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle) {
+						return getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn">开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 20px; top: 50px;"></div>
+
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="cookie1.js"></script>
+	<script>
+//		, 记录图片位置:
+//   页面上有一个红色div, 可以对该div实现拖拽, 每次拖拽后需要保存位置
+//   下次重新进入该页面时, 该红色div还是在最后一次拖拽松开时的位置
+		window.onload = function(){
+			var div = document.getElementsByTagName("div")[0];
+				div.style.left = getCookie("left");
+				div.style.top = getCookie("top");
+			div.onmousedown = function(e){
+				var x = e.offsetX;
+				var y = e.offsetY;
+				document.onmousemove = function(e){
+					div.style.left = e.pageX - x +"px";
+					div.style.top = e.pageY - y + "px";
+				}
+				document.onmouseup = function(){
+					var d = new Date();
+					d.setDate(d.getDate() + 10);
+					setCookie("top",div.style.top,d);
+					setCookie("left",div.style.left,d);
+					document.onmousemove =null;
+				}
+			}
+			
+			
+			
+			
+			
+		}
+	</script>
+	<style>
+		div{
+			width:100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

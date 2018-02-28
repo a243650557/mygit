@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+		   padding:0;
+		   margin:0;
+		}
+		span{
+		   display:block;
+		   border:1px solid black;
+		   box-sizing:border-box;
+		}
+		span.food{
+			width:20px;height:20px;
+		}
+		span.snake{
+			background:red ;width:20px;height:20px;
+		}
+	</style>
+	<script type="text/javascript">
+		onload = function(){
+			var snake = [];
+			var Key={
+			 	right:1,
+			 	left:2,
+			 	top:3,
+			 	bottom:4
+			};
+			var dir=Key.bottom;
+			document.onkeyup=function(e){
+				e = e || event;
+				switch(e.keyCode){
+					case 37:dir=Key.left;break;
+					case 38:dir=Key.top;break;
+					case 39:dir=Key.right;break;
+					case 40:dir=Key.bottom;break; 
+				}
+//					console.log(e.keyCode);
+			}
+			var timer = null;
+			var oFood = null;
+			btn.onclick = function(){
+//				var oFood = document.getElementsByClassName("food")[0];
+				
+				showFood();
+				createSnake();
+				timer = setInterval(function(){
+					moveSnake();
+				},240);
+			}
+			
+			function showFood(){
+				var box = document.getElementById("box");
+				oFood = document.createElement("span");
+				box.appendChild(oFood);
+				oFood.className = "food";
+				oFood.style.position = "absolute";
+//				oFood.style.width = 20 + "px";
+//				oFood.style.height = 20 + "px";
+				oFood.style.left = parseInt(Math.random()*21)*20  + box.offsetLeft + "px";
+				oFood.style.top = parseInt(Math.random()*21)*20  + box.offsetTop + "px";
+				oFood.style.background = color();
+				function color(){
+					var arr = ["red","yellowgreen","yellow","pink","grey","blue","orange"]
+					return arr[parseInt(Math.random()*6)];
+				}
+			}
+			
+			function createSnake(){
+				var newBody=null;
+				for(var i=0;i<5;i++){
+					newBody=document.createElement("span");
+					newBody.style.position="absolute";
+//					newBody.style.width=20+"px";
+//					newBody.style.height=20+"px";
+					newBody.style.left=i*20+box.offsetLeft+"px";
+		//							 console.log(box.offsetLeft);
+		//							 console.log(newBody.style.left);
+					newBody.style.top= box.offsetTop + "px";
+//					newBody.style.background="red";
+					newBody.className="snake";
+					box.appendChild(newBody);
+					snake.push(newBody);
+				}
+			}
+			
+			//注释
+			function moveSnake(){
+				//蛇头移动
+				var head=snake[snake.length-1];
+				var newTop=head.offsetTop,newLeft=head.offsetLeft;
+				switch(dir){
+					case Key.left:newLeft-=20; break;
+					case Key.right:newLeft+=20; break;
+					case Key.top:newTop-=20; break;
+					case Key.bottom:newTop+=20; break;
+					default:break;
+				}
+				//判断新蛇头的位置是不是在蛇身体里面或者蛇是不是撞到边界
+				for(var i=0;i<snake.length-1;i++){
+					 if(snake[i].offsetLeft==newLeft&&snake[i].offsetTop==newTop){
+					 	console.log("Game over！！");
+					 	clearInterval(timer);
+					 	return;
+					 } 
+				}
+				if((newTop-20<0)||(newTop-20>box.offsetHeight)||(newLeft+20>box.offsetWidth)||(newLeft<0)){
+					console.log("Game over！！");
+					clearInterval(timer);
+					return;
+		
+				}
+				//如果吃到食物
+				if(newLeft==oFood.offsetLeft&&newTop==oFood.offsetTop){
+					oFood.className="snake";
+					oFood.style.background = "red";
+					snake.push(oFood);
+					showFood();
+					return;
+				}
+				//如果没吃到
+				//除蛇头外身体移动
+				for(var i=0;i<snake.length-1;i++){
+					snake[i].style.top=snake[i+1].offsetTop+"px";
+					snake[i].style.left=snake[i+1].offsetLeft+"px";
+				}
+				head.style.left=newLeft+"px";
+				head.style.top=newTop+"px";
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">start</button>
+	<div id="box" style="width:500px;height:500px;background:#0080C1;">
+		<!--<span class="food"></span>-->
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="parabola.js"></script>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementsByTagName("button")[0];
+				var box = document.getElementById("box");
+				var box2 = document.getElementById("box2");
+				
+				//点击按钮
+				btn.onclick = function(){
+					//抛物线运动
+					parabola(box, {left:box2.offsetLeft, top:box2.offsetTop});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		
+		<div id="box1" style="width: 10px; height: 10px; background: pink; position: absolute;left: 30px; top: 200px; border-radius: 50%;"></div>
+		<div id="box2" style="width: 10px; height: 10px; background: pink; position: absolute;left: 300px; top: 300px; border-radius: 50%;"></div>
+		
+		<div id="box" style="width: 10px; height: 10px; background:black; position: absolute;left: 30px; top: 200px; border-radius: 50%;"></div>
+		
+	</body>
+</html>

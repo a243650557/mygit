@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			function btnClick(){
+				
+				var oInput = document.getElementById("txt");
+				alert(oInput.value);
+				
+				//清空输入框内容
+				oInput.value = "";
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+		<input id="txt" type="text" placeholder="请输入电影名称" />
+		<button id="btn" onclick='btnClick();'>搜索</button>
+		
+	</body>
+</html>

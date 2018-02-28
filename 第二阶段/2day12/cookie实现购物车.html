@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="cookie1.js"></script>
+	<script>
+	
+//1, 使用cookie实现购物车功能:
+//  有以下商品, 点击加入购物车即可加入到购物车中(cookie中保存),
+//  点击查看购物车, 进入另一个页面, 并显示之前加入购物车的商品.
+	onload = function(){
+		var ul = document.getElementsByTagName("ul")[0];
+		var ahref = ul.getElementsByTagName("a");
+	for(i=0; i<ahref.length; i++){
+		ahref[i].index = i;
+		ahref[i].onclick = function(){
+		 var info = this.parentNode.childNodes[0].nodeValue;
+		 var arr = info.split(" ");
+		 
+		 var name = arr[1];
+		 var price = arr[2];
+		 var num;
+		 var obj = {"商品名称":name,"价格" :price,"数量":num};
+		 
+		 var d = new Date();
+		 d.setDate(d.getDate() + 10);
+		 setCookie("product"+ this.index,JSON.stringify(obj),d);
+			
+			
+			
+		}
+	}
+	
+	
+	}
+	</script>
+	<body>
+		<h2>商品列表</h2>
+		
+			<ul>
+				<li>id1 单车 $100<a href="javascript:;">加入购物车</a></li>
+				<li>id2 摩托 ￥1000<a href="javascript:;">加入购物车</a></li>
+				<li>id3 汽车 ￥10000<a href="javascript:;">加入购物车</a></li>
+				<li>id4 轮船 ￥100000<a href="javascript:;">加入购物车</a></li>
+				<li>id5 飞机 ￥10000000<a href="javascript:;">加入购物车</a></li>
+				<li>id6 坦克 ￥1000000000<a href="javascript:;">加入购物车</a></li>
+			</ul>
+			
+		<a href="cart.html">查看购物车</a>
+	</body>
+</html>

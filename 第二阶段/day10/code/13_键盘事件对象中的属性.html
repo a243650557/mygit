@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				
+				//鼠标+键盘： 组合键
+				/*
+				box.onclick = function(e){
+					console.log(e);
+					
+					//console.log(e.ctrlKey); //是否按下了ctrl键 True or false
+					if (e.ctrlKey){
+						console.log("ctrl+鼠标");
+					}
+					if (e.shiftKey){
+						console.log("shift+鼠标");
+					}
+					if (e.altKey){
+						console.log("alt+鼠标");
+					}
+				}
+				*/
+				
+				
+				//keyCode: 键码 , 不区分大小写（字母都会认为是大写）
+				onkeydown = function(e){  //onkeydown前面不加对象。
+					e = e || event;
+					console.log(e.keyCode); 
+					//console.log(e.charCode); //不在onkeydown中使用
+				}
+				
+				//
+				//a~z: 97~122
+				//A~Z: 65~90
+				//0~9: 48~57
+				//左上右下： 37,38,39,40
+				
+				//r: 82
+				
+				//charCode: 字符编码, 区分大小写，
+				onkeypress = function(e){
+					e = e || event;
+					//console.log(e.keyCode);  //一般不在onkeypress中使用
+					//console.log(e.charCode);
+					
+					console.log( String.fromCharCode(e.charCode) );
+					
+				}
+				
+				//字母数字字符一般使用onkeypress
+				//如果有方向键，辅助键等按键则需要使用onkeydown
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 200px; height: 200px; background: green;"></div>
+	</body>
+</html>

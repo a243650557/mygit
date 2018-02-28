@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//定时器： setInterval(): 定时器方法, 可按照指定的周期（以毫秒计）来调用函数或计算表达式
+			
+			//setInterval() : 开启定时器
+			//clearInterval() : 关闭定时器
+			
+			
+			//定时器是异步的
+			//进程： 软件从开始到结束
+			//线程： 主线程，分线程（子线程）
+			
+			
+			//setInterval()
+			//第一种写法：  (常用)
+			/*
+			setInterval(function(){
+				console.log("hello");
+			}, 2000);
+			*/
+			//定时器的第一次执行是在2秒后
+			
+			//这里的代码会在定时器前执行
+			console.log(1);
+			
+			//第二种写法： 
+			/*
+			setInterval(fn, 2000);
+			function fn(){ 
+				console.log("hello");
+			}
+			*/
+			console.log(2);
+			
+			
+			//第三种写法：(不推荐)
+			//setInterval("alert(1)", 2000)
+			
+			
+			
+			//clearInterval() : 关闭定时器
+			/*
+			var i = 1;
+			var timer = setInterval(function(){
+				console.log(i++);
+				if (i>5) {
+					clearInterval(timer); //打印5次后关闭定时器
+				}
+			}, 1000);
+			*/
+			
+			
+			
+			
+			
+			//延时器: 延时一定时间后调用一次
+			//异步
+			
+			// setTimeout() : 开启延时器
+			// clearTimeout() : 关闭延时器
+			
+			//setTimeout()
+			/*
+			setTimeout(function(){
+				console.log("hello");
+			}, 2000);
+			*/
+			
+			/*
+			setTimeout(fn2, 2000);
+			function fn2(){
+				console.log("hello2");
+			}
+			*/
+			//这里会在延时器之前先执行
+			console.log(3);
+			
+			//模拟定时器
+			/*
+			setTimeout(fn3, 2000);
+			function fn3(){
+				console.log("hello3");
+				setTimeout(fn3, 2000);
+			}
+			*/
+			
+			//clearTimeout(): 用的较少
+			/*
+			var timer2 = setTimeout(function(){
+				console.log("hello");
+			}, 2000);
+			clearTimeout(timer2);
+			*/
+			
+			//模拟定时器
+			var i = 1;
+			setTimeout(fn4, 1000);
+			function fn4(){
+				console.log("i=" + i++);
+				if (i <= 5) {
+					setTimeout(fn4, 1000);
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

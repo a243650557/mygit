@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//创建对象
+			/*
+			var person = new Object();
+			person.name = "张三";
+			person.age = 33;
+			person.run = function(){
+				console.log("跑步");
+			}
+			
+			var person = new Object();
+			person.name = "李四";
+			person.age = 44;
+			person.run = function(){
+				console.log("跑步");
+			}
+			
+			var person = new Object();
+			person.name = "王五";
+			person.age = 55;
+			person.run = function(){
+				console.log("跑步");
+			}
+			*/
+			
+			
+			
+			//工厂模式 ： 一种设计模式（总共23种）
+			// 像工厂生产产品一样， 我们这里是生产对象（类似的对象）
+			//工厂模式 的作用： 创建类似的对象
+			function createPerson(name, age){
+				var person = {};
+				person.name = name;
+				person.age = age;
+				person.run = function(){
+					console.log("跑步");
+				}
+				return person;
+			}
+			
+			var zhangsan = createPerson("张三", 33);
+			var lisi = createPerson("李四", 44);
+			
+			console.log(zhangsan.name + "," + zhangsan.age);
+			zhangsan.run();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

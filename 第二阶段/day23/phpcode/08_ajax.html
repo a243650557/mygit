@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="ajax.js"></script>
+    <script>
+        onload = function(){
+
+            //http://60.205.181.47/myPHPCode2/checkname.php?regname=zhangsan
+
+            var txt = document.getElementsByTagName("input")[0];
+            var btn = document.getElementsByTagName("button")[0];
+
+            btn.onclick = function(){
+                var username = txt.value;
+
+                var xhr = createXHR();
+                xhr.open("get", "http://localhost/sz1713/21-25/day23/phpcode/09_checkName.php?regname="+username, true);
+                xhr.send(null);
+                xhr.onreadystatechange = function(){
+                    if (xhr.readyState==4 && xhr.status==200) {
+                        console.log(xhr.responseText);
+
+//                        var obj = JSON.parse(xhr.responseText);
+//                        if (obj.status == 1) {
+//                            console.log("可以注册");
+//                        }
+//                        else {
+//                            console.log("不可以注册");
+//                        }
+                    }
+                }
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" placeholder="用户名" />
+<button>注册</button>
+</body>
+</html>

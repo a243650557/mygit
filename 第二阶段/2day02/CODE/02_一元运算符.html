@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//二元运算符： +， -， *， /, %, 有两个操作数的运算符
+			
+			//一元运算符：
+			// ++ , --
+			// ++ ： 自己加1
+			// -- ： 自己减1
+			
+			//   a++, ++a
+			var a = 10;
+			a++;
+			console.log(a); //11
+			
+			var a = 10;
+			++a;
+			console.log(a); //11
+			
+			//a++   : 后加1
+			var a = 10;
+			var b = a++;
+			console.log("a=" + a + ",b=" + b); //a=11,b=10
+			
+			//++a   : 先加1
+			var a = 10;
+			var b = ++a;
+			console.log("a=" + a + ",b=" + b); //a=11,b=11
+			
+			//
+			var a = 10;
+			var b = a++ + ++a + a-- + ++a*2;
+			//       10 +  12 + 12  +  12*2
+			console.log("a=" + a + ",b=" + b); //a=12,b=58
+			
+			
+			// --a, a--
+			//a--   : 后减1
+			var a = 10;
+			var b = a--;
+			console.log("a=" + a + ",b=" + b); //a=9,b=10
+			
+			//--a   : 先减1
+			var a = 10;
+			var b = --a;
+			console.log("a=" + a + ",b=" + b); //a=9,b=9
+
+			
+			//默认自动转换成数字再加1
+			var str = "20";
+			str++;
+			console.log(str); //21
+			
+			var b = true;
+			b++;
+			console.log(b); //2
+			
+			var c = "20ox";
+			c++;
+			console.log(c);
+			
+			
+			//new, delete
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

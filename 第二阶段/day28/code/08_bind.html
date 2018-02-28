@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//click
+//				$("button").click(function(){
+//					console.log("click");
+//				})
+				
+				//bind()
+				//添加一个事件
+//				$("button").bind("click", function(){
+//					console.log("click-bind");
+//				});
+				
+				//同时绑定多个事件
+//				$("button").bind("mouseenter mouseleave", function(e){
+//					//console.log(e.type);
+//					if (e.type == "mouseenter"){
+//						console.log("移入");
+//					}
+//					else if (e.type == "mouseleave") {
+//						console.log("移出");
+//					}
+//				})
+				
+				$("button").bind({
+					"mouseenter": function(){
+						console.log("移入")
+					}, 
+					"mouseleave": function(){
+						console.log("移出")
+					}
+				})
+				
+				//unbind() : 解除事件
+				//$("button").unbind();  //解除所有事件
+				//$("button").unbind("mouseenter"); //解除一个事件 
+				//$("button").unbind("mouseenter mouseleave"); //解除多个事件 
+				
+				
+				//绑定自定义事件
+				$("button").bind("myclick", function(){
+					console.log("myclick");
+				})
+				
+				//trigger(): 主动触发事件
+				//triggerHandler(): 主动触发事件,不会触发浏览器的默认行为和冒泡
+				//$("button").trigger("myclick");
+				$("button").trigger("click");
+				//$("button").triggerHandler("click");
+				
+				
+				//one() : 绑定一个一次性事件
+				$("button").one("click", function(){
+					console.log("我只会被触发一次");
+				})
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+	</body>
+</html>

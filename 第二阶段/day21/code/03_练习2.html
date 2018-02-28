@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementsByTagName("button")[0]; 
+				var tab = document.getElementsByTagName("table")[0];
+				
+				//点击按钮
+				btn.onclick = function(){
+					
+					//1, 先获取数据
+					var xhr = createXHR();
+					//xhr.open("GET", "json/news.json", true);
+					xhr.open("GET", "http://60.205.181.47/myPHPCode2/news.php", true);
+					xhr.send(null);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							
+							//JSON解析
+							var arr = JSON.parse(xhr.responseText); 
+							
+							//2, 通过获取到的数据，使用节点显示
+							tab.children[0].innerHTML = "<tr><th>title</th><th>time</td></tr>";
+							
+							//遍历arr
+							for (var i=0; i<arr.length; i++) {
+								var obj = arr[i];
+								
+								//创建tr节点
+								var tr = document.createElement("tr");
+								tab.children[0].appendChild(tr);
+								
+								//创建td
+								var td1 = document.createElement("td");
+								var td2 = document.createElement("td");
+								
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+								
+								td1.innerHTML = obj.title;
+								td2.innerHTML = obj.time;
+							}
+							
+						}
+					}
+				}
+				
+				//整个网页刷新
+				//局部刷新
+				
+				//滚动文字
+				var tip = document.getElementById("tip");
+				setInterval(function(){
+					if (tip.offsetLeft < 0) {
+						tip.style.left = 300 + "px";
+					}
+					tip.style.left = tip.offsetLeft - 5 + "px";
+				}, 30);
+				
+			}
+					
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>加载数据</button>
+		<table border="1">
+			<tr>
+				<th>title</th>
+				<th>time</td>
+			</tr>
+		</table>
+		
+		<div id="tip" style="width: 100px; height: 30px; position: absolute; left: 300px; top: 400px;">滚动文字</div>
+
+	</body>
+</html>

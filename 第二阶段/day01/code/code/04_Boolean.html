@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//Boolean
+			// true 和 false
+			//	1       和      0
+			
+			var b = true;
+			console.log(b); //true
+			console.log(typeof b); //boolean
+			
+			
+			/*
+			 Boolean 类型的转换规则: (牢记)
+				String: 非空字符串为true, 空字符串为false
+				Number: 非0数值为true, 0或者NaN为false
+				Object: 对象不为null则为true, null为false
+				Undefined : undefined为false
+			  */
+			
+			//Boolean()
+			
+			//String: 非空字符串为true, 空字符串为false
+			var str = "";
+			console.log( Boolean(str) ); //false
+			
+			var str = " ";
+			console.log( Boolean(str) ); //true
+			
+			
+			//Number: 非0数值为true, 0或者NaN为false
+			var n = 0;
+			console.log( Boolean(n) ); //false
+			
+			var n = NaN;  // NaN : Not a Number (非法的数字)
+			console.log( Boolean(n) ); //false
+			
+			var n = -3; 
+			console.log( Boolean(n) ); //true
+			
+			//Object : true
+			//Null : false
+			//Undefined: false
+			console.log( Boolean(null) ); //false
+			console.log( Boolean(undefined) ); //false
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

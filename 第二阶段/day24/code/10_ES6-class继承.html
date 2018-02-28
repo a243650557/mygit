@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//ES5 - 继承
+			/*
+			//Ipad
+			function Ipad(color){
+				this.color = color;
+				this.music = function(){
+					console.log("听音乐");
+				}
+			}
+			
+			//Iphone
+			function Iphone(color, type){
+				//对象冒充
+				Ipad.call(this, color);
+				this.type = type;
+				this.callNumber = function(){
+					console.log("打电话");
+				}
+			}
+			var iphone = new Iphone();
+			*/
+			
+			//ES6 - class继承
+			//Ipad: 父类
+			class Ipad {
+				constructor(color){
+					this.color = color;
+				}
+				music(){
+					console.log("听音乐");
+				}
+			}
+			//Iphone: 子类
+			class Iphone extends Ipad{
+				constructor(color, type){
+					super(color);  //调用父类的constructor方法
+							       //如果写了constructor，且继承了父类，则必须先写一个super()
+							       //super指父类的对象
+							       //this指向当前类的对象
+					this.type = type;
+				}
+				callNumber(){
+					console.log("打电话");
+				}
+			}
+			
+			var iphone = new Iphone("黑色", "iphone8");
+			console.log(iphone.type);
+			console.log(iphone.color);
+			iphone.music();
+			iphone.callNumber();
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

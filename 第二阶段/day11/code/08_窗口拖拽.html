@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				var nav = document.getElementById("nav");
+				var close = document.getElementById("close");
+				
+				//onmousedown
+				nav.onmousedown = function(e){
+					e = e||event;
+					if(e.preventDefault){
+						e.preventDefault();
+					}else {
+						e.returnValue = false;
+					}
+					
+					var disx = e.offsetX;
+					var disy = e.offsetY;
+					
+					//onmousemove
+					document.onmousemove = function(e){
+						e = e||event;
+						box.style.left = e.pageX - disx - nav.offsetLeft + "px";
+						//box.style.top = e.pageY - disy + "px";
+					}
+					 
+					//onmouseup
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+				}
+				
+				
+				//关闭
+				close.onmousedown = function(e){
+					e.stopPropagation();
+					e.preventDefault();
+					//return false;
+				}
+				close.onclick = function(e){
+					box.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 300px; height: 300px; background: red; position: absolute; left: 50px; top: 50px;">
+			<div id="nav" style="position: absolute; left: 50px;  width: 200px; height: 30px; background: purple; cursor: move;">
+				<div id="close" style="width: 50px; height: 30px; color: white; text-align: center; line-height: 30px; cursor: pointer;">关闭</div>
+			</div>
+		</div>
+	</body>
+</html>

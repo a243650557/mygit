@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//cookie: 一种浏览器本地存储的技术， 只存字符串， 一般的浏览器的每个域名可以存储50个cookie,  每个cookie一般不超过4K
+			//cookie的查看： 火狐浏览器可以查看file协议和http协议的cookie， 建议使用火狐查看
+			//			  谷歌浏览器可以查看http协议（需要有服务器的支持）
+			
+			//
+			//document.cookie = "name=value; expires=过期时间; path=访问路径; domain=访问域名; secure";
+			//
+			
+			//添加一个cookie
+			//document.cookie = "name1=lisi";
+			//document.cookie = "name2=wangwu"; //再添加一个cookie
+			
+			//获取cookie(所有cookie)
+			//console.log(document.cookie); //"name1=lisi; name2=wangwu"
+			//console.log(typeof document.cookie); //string
+			
+			//修改cookie(使用相同的cookie名即可替换原来的)
+			//document.cookie = "name1=zhaoliu";
+			
+			
+			//URI编码:
+			//encodeURIComponent() : 对中文和特殊字符进行编码
+			//decodeURIComponent() : 解码
+			
+			//document.cookie = "name3=张三"; //存中文会导致网页无法访问， 需要编码
+			//document.cookie = "name3=" + encodeURIComponent("张三,.");
+			//console.log( decodeURIComponent(document.cookie) );
+			
+			
+			//expires=过期时间 
+			// 默认是浏览器关闭时删除cookie
+			
+			//var d = new Date();
+			//d.setDate(d.getDate()+10);
+			//document.cookie = "name4=laowang; expires=" + d;
+			//console.log(document.cookie);
+			
+			//删除cookie: 保证过期时间expires在过去的时间即可
+			//var d = new Date();
+			//d.setDate(d.getDate()-1); //1天前的日期
+			//document.cookie = "name4=; expires=" + d;
+			//console.log(document.cookie);
+			
+			
+			//path=访问路径 
+			// 默认是当前文件所在路径
+			// / ：表示根目录
+			//var d = new Date();
+			//d.setDate(d.getDate()+10);
+			//document.cookie = "name5=laosong; expires=" + d + "; path=/";
+			console.log(document.cookie);
+			
+			
+			//domain=访问域名 (一般默认即可)
+			// 默认就是当前域名： 127.0.0.1 
+			//var d = new Date();
+			//d.setDate(d.getDate()+10);
+			//document.cookie = "name6=laosong; expires=" + d + "; domain=baidu.com";
+			//console.log(document.cookie);
+			
+			//secure  (一般不设置)
+			//var d = new Date();
+			//d.setDate(d.getDate()+10);
+			//document.cookie = "name7=laosong; expires=" + d + ";secure";
+			//console.log(document.cookie);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

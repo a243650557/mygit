@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//wrap()
+				$("#btn1").click(function(){
+					$("#box p").wrap("<b></b>");
+				})
+				//unwrap()
+				$("#btn2").click(function(){
+					$("#box p").unwrap();
+				})
+				//wrapAll() : 把元素看成整体包裹
+				$("#btn3").click(function(){
+					$("#box p").wrapAll("<b></b>");
+				})
+				//wrapInner() : 在元素内部包裹元素的内容
+				$("#btn4").click(function(){
+					$("#box p").wrapInner("<b></b>");
+				})
+				
+				
+				//replaceWith
+				$("#btn5").click(function(){
+					//用新节点
+					//$("#box1 .first").replaceWith("<b>hehe</b>");
+					//用已经存在的节点替换,其实是移动了旧节点去替换指定节点
+					//$("#box1 .first").replaceWith( $(".dota") );
+					
+					//replaceAll()
+					$("<b>hehe</b>").replaceAll("#box1 .first");
+				})
+				
+				//empty() : 清空所有子元素
+				$("#btn6").click(function(){
+					$("#box1 .first").empty();
+				})
+				
+				//remove() : 删除指定元素
+				$("#btn7").click(function(){
+					$("#box1 .first").remove();  //推荐
+					//$("#box1 .first").detach(); //保留绑定的数据和事件
+				})
+				
+				//clone() : 复制节点
+				//clone(true) : 复制节点,会把事件，内容都会复制
+				$("#btn8").click(function(){
+					//复制btn5加到btn8的后面
+					//$("#btn5").clone(true).insertAfter("#btn8");
+					$("#btn8").after($("#btn5").clone(true));
+				})
+				
+				
+				
+				//常用
+				//创建节点： $("<div></div>")
+				//添加节点： append(), appendTo()
+				//移除节点： remove()
+				//克隆节点： clone(true)
+				//清空节点： empty()
+				//
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button id="btn1">wrap</button>
+		<button id="btn2">unwrap</button>
+		<button id="btn3">wrapAll</button>
+		<button id="btn4">wrapInner</button>
+		<div id="box">
+			<p>hello</p>
+			<p>LOL</p>
+		</div>
+		
+		<button id="btn5">replace</button>
+		<button id="btn6">empty</button>
+		<button id="btn7">remove</button>
+		<button id="btn8">clone</button>
+		<div id="box1">
+			<p class="first">hello<span> zhangsan</span></p>
+			<p>LOL</p>
+			<p class="dota">Dota</p>
+		</div>
+		
+	</body>
+</html>

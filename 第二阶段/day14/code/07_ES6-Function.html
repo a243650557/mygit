@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//ES6-Function
+			
+			//参数默认值
+			//ES5
+			function fn1(name){
+				name = name==undefined ? "老宋" : name;
+				console.log(name);
+			}
+			//fn1();
+			
+			//ES6
+			function fn2(name="老宋"){
+				console.log(name);
+			}
+			//fn2();
+			
+			
+			
+			//扩展运算符(spread)是三个点（...）,将一个数组转为用逗号分隔的参数序列
+			var arr = [10,20,30];
+			function fn3(n1,n2,n3){
+				//console.log(n1 + "," + n2 + "," + n3);
+			}
+			fn3(...arr); 
+			// [10,20,30] 
+			// 10,20,30
+			
+			var arr1 = [1,2,3]; 
+			var arr2 = [4,5,6]; 
+			//console.log( [...arr1, ...arr2] ); //[ 1, 2, 3, 4, 5, 6 ]
+			
+			//console.log(...arr1);
+			
+			
+			
+			
+			//箭头函数 (重要)
+			/*
+			function f(n){
+				return n;
+			};
+			*/
+			
+			//匿名函数
+			/*
+			var f = function(n){
+				return n;
+			};
+			*/
+			
+			//箭头函数
+			//作用
+			//1, 省略了function
+			//2, 某些情况下可以省略return
+			//3, 会继承上下文的this
+			
+			//使用
+			// 如果存在匿名函数，则可以简化成箭头函数
+			
+			//情况1： 最简单情况： 只有一个参数， 函数体中只有一行代码且为return值
+			var f1 = n=>n;
+			//console.log( f1(10) );
+			
+			//情况2： 有两个或以上的参数或没有参数
+			var f2 = ()=>2; //等价于： function(){return 2;}
+			//console.log(f2());
+			
+			var f3 = (m,n)=>m+n; //等价于： function(m,n){return m+n;}
+			//console.log(f3(2,3));
+			
+			//情况3 ： 如果函数体多余两行代码，或一行代码不是return值, 则需要写{}
+			var f4 = (m,n)=>{var sum=m+n; return sum;}
+					//等价于function(m,n){var sum=m+n; return sum;}
+			//console.log(f4(2,3));
+			
+			//情况4： 如果函数体只有一行代码且return的是一个对象
+			var f5 = (m,n)=>({m:m, n:n});
+			//var f5 = (m,n)=>{return {m:m, n:n}};
+			//console.log(f5(2,3)); // { m: 2, n: 3 }
+			
+			
+			//map
+			var arr = [10,20,30];
+//			var arr2 = arr.map(function(v){
+//				return v*v;
+//			});
+			var arr2 = arr.map(v=>v*v);
+			//console.log(arr2);
+			
+			//find()
+			var arr = [10,20,30];
+//			var res = arr.find(function(v){
+//				return v>=20;
+//			});
+			var res = arr.find(v=>v>=20);
+			//console.log(res);
+			
+			
+			//sort()
+			var arr = [2,3,1,4,23,6,5,11];
+//			arr.sort(function(a,b){
+//				return a>b;
+//			});
+			arr.sort((a,b)=>a>b);
+			//console.log(arr);
+			
+			//延时器
+//			setTimeout(function(){
+//				console.log(1);
+//			}, 2000);
+			setTimeout(()=>{
+				console.log(1);
+			}, 2000);
+			
+			
+			
+			var obj2 = {name: "老王"};
+			
+			//
+			var obj = {
+				name: "张三",
+				fn: function(){
+					console.log(this.name); //张三
+					
+					//匿名函数 function
+					/*
+					var fn2 = function(){
+						console.log(this.name); //老王
+					}
+					*/
+					
+					//箭头函数: =>
+					var fn2 = ()=>{
+						console.log(this.name); //张三
+					}
+					
+					return fn2;
+				}
+			}
+			
+			obj2.fun2 = obj.fn(); //fun2=fn2
+			obj2.fun2();
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

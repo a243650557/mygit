@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				
+				//拖拽： 就是按住元素后移动位置, 最后松开的过程
+				//onmousedown
+				//onmousemove
+				//onmouseup
+				
+				//鼠标按下: onmousedown
+				box.onmousedown = function(e){
+					e = e||event;
+					
+					var disx = e.offsetX;
+					var disy = e.offsetY;
+					//var disx = e.pageX - box.offsetLeft;
+					//var disy = e.pageY - box.offsetTop;
+					
+					//鼠标移动： onmousemove, 让鼠标按下之后才允许移动
+					document.onmousemove = function(e){
+						e = e||event;						
+						box.style.left = e.pageX - disx + "px";
+						box.style.top = e.pageY - disy + "px";
+					}
+					
+					//鼠标松开： onmouseup
+					document.onmouseup = function(){
+						document.onmousemove = null; //移除onmousemove事件
+						document.onmouseup = null; //移除onmouseup事件
+					}
+				}
+				
+				//e.pageX = e.clientX + scrollLeft
+				//e.pageY = e.clientY + scrollTop
+				
+				
+			}
+		</script>
+	</head>
+	<body style="width: 2000px; height: 2000px;">
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 100px; top: 100px;"></div>
+	</body>
+</html>

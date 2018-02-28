@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 100px;
+				height: 30px;
+				background: green;
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				cursor: pointer;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				var box = document.getElementById("box");
+				
+				box.onclick = function(){
+					
+					//非动画方式回到顶部
+					//document.documentElement.scrollTop = 0
+					//document.body.scrollTop = 0
+					
+					//动画方式回到顶部
+				 	var timer = setInterval(function(){
+						
+						//1, 获取当前值
+						var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+						
+						//2, 速度
+						var speed = (0-scrollTop)/5;
+						speed = Math.floor(speed);
+						
+						//3, 临界值
+						if (scrollTop == 0) {
+							clearInterval(timer);
+							return; 
+						}
+						
+						//4， 运动
+						document.documentElement.scrollTop = scrollTop + speed;
+						document.body.scrollTop = scrollTop + speed;
+						
+					}, 30);
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		
+		<div id="box">回到顶部</div>
+	</body>
+</html>

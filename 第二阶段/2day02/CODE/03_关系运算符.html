@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//关系运算符的比较规则: 
+			//   1,  数字和数字比较, 直接比较大小
+			//   2,  数字和字符串比较, 字符串转换为数字后再比较
+			//   3,  字符串和字符串比较, 进行字符的ASCII码值比较
+			//
+			//比较注意事项:
+			//   1, 布尔值 ture=1, false=0
+			//   2, 只要不等于NaN, 就是true,其他有NaN的运算都为false
+			//   3, 如果要恒等, 则必须值和类型都要相等;
+
+			
+			//关系运算符： >, < , >=, <=, ==, != , ===, !==
+			
+			//   1,  数字和数字比较, 直接比较大小
+			console.log( 3 > 4 );
+			console.log( 3 >= 4 );
+			console.log( 3 < 4 );  //true
+			console.log( 3 <= 4 ); //true
+			console.log( 3 == 4 );
+			console.log( 3 != 4 ); //true
+			console.log( 3 === 4 );
+			console.log( 3 !== 4 ); //true
+			
+			// 2,  数字和字符串比较, 字符串转换为数字后再比较
+			console.log( 3 < "4"  ); //true
+			console.log( 3 < "px"  ); //false
+			console.log( 3 < "20px"  ); //false
+			
+			//  3,  字符串和字符串比较, 进行字符的ASCII码值比较
+			//常见ASCII码：
+			//a~z: 97~122
+			//A~Z: 65~90
+			//0~9: 48~57
+			
+			//在字符串比较时， 按字符从左往右逐个比较，碰到不相等则返回结果
+			console.log( "a" > "b" ); //false
+			console.log( "abcab" > "abcba" ); //false
+			console.log( "a" > "200b" ); //true
+			
+			//判断一个字符是否为小写字母
+			var n = 'c';
+			var b = n>='a' && n<='z';
+			//var b = 'a' <= n <= 'z'; //不要这么写
+			console.log(b);
+			
+			
+			
+			//比较注意事项:
+			//   1, 布尔值 ture=1, false=0
+			//   2, 只要不等于NaN, 就是true,其他有NaN的运算都为false
+			//   3, 如果要恒等, 则必须值和类型都要相等;
+			
+			console.log( true == 1 ); //true
+			console.log( true === 1 ); //false, 类型不相等
+			console.log( false == 0 ); //true
+			console.log( false === 0 ); //false, 类型不相等
+			
+			
+			//NaN
+			console.log(3 != NaN); //true
+			console.log(NaN != NaN); //true
+			console.log(NaN == NaN); //false
+			console.log(3 >= NaN); //false
+			
+			console.log( 3 == "3");  //true
+			console.log( 3 === "3"); //false
+			
+			console.log( undefined == null ); //true
+			console.log( undefined === null ); //false
+			
+			
+			console.log(null == 0);
+			
+			
+			
+			
+			
+			
+		</script>
+			
+	</head>
+	<body>
+	</body>
+</html>

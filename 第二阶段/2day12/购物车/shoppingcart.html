@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车2</title>
+	</head>
+	<script src="cookie1.js">
+		
+	</script>
+	<script>
+		onload = function(){
+			var ul = document.getElementsByTagName("ul")[0];
+			var a = ul.getElementsByTagName("a");
+			for(i=0; i<a.length; i++){
+				a[i].onclick = function(){
+
+					var _id =this.parentNode.children[0].innerHTML;
+					
+					var _name = this.parentNode.children[1].innerHTML;
+					var _price = this.parentNode.children[2].innerHTML;
+					
+					var obj = {"id":_id, "name":_name, "price":_price,"num":1};
+					var arr = (getCookie("cart")) ? JSON.parse(getCookie("cart")) : [] ;
+					
+					console.log(arr);
+					var isSame = true;
+					for(i=0; i<arr.length; i++){
+						if(arr[i].id == _id){
+							arr[i].num ++;
+							isSame = false;
+							
+						}
+					}
+					if(isSame){
+						arr.push(obj);
+
+					}
+					
+					
+					
+					var d = new Date();
+					d.setDate(d.getDate() + 10);
+					setCookie("cart",JSON.stringify(arr),d);
+					
+					console.log(arr);
+					
+				}
+			}
+			
+			
+			console.log(document.cookie);
+			
+		}
+	</script>
+	<body>
+		<h2>商品列表2</h2>
+		<ul>
+			<li><span>id1</span> <span>单车</span> <span>￥100</span> <a href="javascript:;">点击添加到购物车</a></li>
+			<li><span>id2</span> <span>汽车</span> <span>￥1006</span> <a href="javascript:;">点击添加到购物车</a></li>
+			<li><span>id3</span> <span>摩托</span> <span>￥10000</span> <a href="javascript:;">点击添加到购物车</a></li>
+			<li><span>id4</span> <span>坦克</span> <span>￥100000</span> <a href="javascript:;">点击添加到购物车</a></li>
+			<li><span>id5</span> <span>飞机</span> <span>￥1000000</span> <a href="javascript:;">点击添加到购物车</a></li>
+			<li><span>id6</span> <span>轮船</span> <span>￥10000000</span> <a href="javascript:;">点击添加到购物车</a></li>
+		</ul>
+		<a href="shoppingCart2.html">查看购物车</a>
+	</body>
+</html>

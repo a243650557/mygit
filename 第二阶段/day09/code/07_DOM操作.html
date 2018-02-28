@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				//DOM操作
+				// document.createElement() : 创建元素节点
+				// appendChild() : 添加子节点
+				// removeChild() : 移除子节点
+				// cloneNode() : 复制节点
+				
+				// document.createTextNode() : 创建文本节点
+				// replaceChild(,) :  替换节点
+				// insertBefore(,) : 插入到某节点之前
+				
+				
+				//document.createElement()
+				//appendChild()
+				var div1 = document.createElement("div"); // <div></div>
+				document.body.appendChild(div1);
+				div1.innerHTML = "<b>LOL</b>";
+				
+				//JS内部提供的对象
+				//window: 窗口对象
+				//document: 页面对象
+				//document.documentElement: html
+				//document.body : body
+				
+				
+				//removeChild()
+				var oBox = document.getElementById("box");
+				//document.body.removeChild(oBox);
+				
+				
+				//cloneNode() : 不会复制内容
+				//cloneNode(true) : 会复制内容
+				//var oBox = document.getElementById("box");
+				//var oBox2 = oBox.cloneNode(true);
+				//console.log(oBox2 == oBox); //false
+				//document.body.appendChild(oBox2); 
+				
+				
+				
+				
+				
+				//document.createTextNode() 
+				var txt = document.createTextNode("我是文本节点内容");
+				document.body.appendChild(txt);
+				
+				
+				//replaceChild()
+				//var oBox = document.getElementById("box");
+				//var newNode = document.createElement("div"); 
+				//newNode.innerHTML = "Dota2";//<div>Dota2</div>
+				//document.body.replaceChild(newNode, oBox); 
+				//第一个参数是：新节点， 
+				//第二个参数是：旧节点
+				
+				
+				//insertBefore(): 使用父节点调用
+				var oBox = document.getElementById("box");
+				var newNode = document.createElement("div"); 
+				newNode.innerHTML = "Dota2";
+				document.body.insertBefore(newNode, oBox);
+				//第一个参数是：新节点， 
+				//第二个参数是：旧节点
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<p>hello</p>
+			<p>world</p>
+		</div>
+	</body>
+</html>

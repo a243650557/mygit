@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>俄罗斯方块</title>
+		<!--<script type="text/javascript" language="javascript" src="eluosi.js"></script>-->
+		<style>
+			#board tr td {
+				width: 18px;
+				height: 18px;
+			}
+			
+			#board1 tr td {
+				width: 10px;
+				height: 10px;
+			}
+			
+			.STYLE1 {
+				width: 40px;
+				height: 30px;
+				font-size: xx-large;
+				color: #FF0000;
+			}
+			
+			.STYLE2 {
+				color: #000000;
+				font-size: x-large;
+			}
+			
+			.STYLE7 {
+				color: #FF0000
+			}
+		</style>
+	</head>
+
+	<body>
+		<p align="center"> <input name="button" type="button" onClick="begin(this);" value="begin" /> </p>
+		<table width="222" align="center" border="1">
+			<tr>
+				<td width="214" align="center" bgcolor="#00FF33" class="STYLE1"><span class="STYLE2"></span>score:<span id="score">0</span> </td>
+			</tr>
+		</table><br>
+		<table id="board1" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tr>
+				<td colspan="4" bgcolor="#00FF00"><span class="STYLE7">next:</span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table><br>
+		<table id="board" align="center" cellpadding="0" cellspacing="0" border="1" style="border-collapse:collapse;">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+
+</html>
+<script>
+	<!--画表格->标记数组->随机方块->方向,加速->下落碰撞及消行->分数->预告-->
+</script>
+<script>
+	var m = 0;
+	var n = 0;
+	var tbl;
+	var tbl1;
+	var status = 0;
+	var time;
+	var activeBlock; //活动的方块
+	var activeBlock1; //预览下个方块
+	//得分
+	var score = 0;
+	var board = new Array(18);
+	for(var i = 0; i < 18; i++) {
+		board[i] = new Array(10);
+	}
+	for(var i = 0; i < 18; i++) {
+		for(var j = 0; j < 10; j++) {
+			board[i][j] = 0;
+		}
+	}
+
+	//预览方块
+	activeBlock1 = new Array(4);
+	//预览方块标记数组
+	var board1 = new Array(4);
+	for(var i = 0; i < 4; i++) {
+		board1[i] = new Array(4);
+	}
+	for(var i = 0; i < 4; i++) {
+		for(var j = 0; j < 4; j++) {
+			board1[i][j] = 0;
+		}
+	}
+	//生成预览方块
+	function next() {
+		m = Math.floor(Math.random() * 7);
+		clearBoard1();
+		switch(m) {
+			case 0:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 1
+					};
+					activeBlock1[1] = {
+						x: 1,
+						y: 2
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[3] = {
+						x: 2,
+						y: 2
+					};
+					break;
+				}
+			case 1:
+				{
+					activeBlock1[0] = {
+						x: 2,
+						y: 0
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 2
+					};
+					activeBlock1[3] = {
+						x: 2,
+						y: 3
+					};
+					break;
+				}
+			case 2:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 2
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 2
+					};
+					activeBlock1[3] = {
+						x: 3,
+						y: 1
+					};
+					break;
+				}
+			case 3:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 1
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 2
+					};
+					activeBlock1[3] = {
+						x: 3,
+						y: 2
+					};
+					break;
+				}
+			case 4:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 1
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 2
+					};
+					activeBlock1[3] = {
+						x: 2,
+						y: 3
+					};
+					break;
+				}
+			case 5:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 1
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[2] = {
+						x: 3,
+						y: 1
+					};
+					activeBlock1[3] = {
+						x: 3,
+						y: 2
+					};
+					break;
+				}
+			case 6:
+				{
+					activeBlock1[0] = {
+						x: 1,
+						y: 1
+					};
+					activeBlock1[1] = {
+						x: 2,
+						y: 0
+					};
+					activeBlock1[2] = {
+						x: 2,
+						y: 1
+					};
+					activeBlock1[3] = {
+						x: 2,
+						y: 2
+					};
+					break;
+				}
+		}
+		updateBoard1();
+		drawBoard1();
+	}
+
+	//更新预览的标记数组
+	function updateBoard1() {
+		for(var i = 0; i < 4; i++) {
+			board1[activeBlock1[i].x][activeBlock1[i].y] = 1;
+		}
+	}
+	//擦除预览的面板
+	function clearBoard1() {
+		for(var i = 1; i < 4; i++) {
+			for(var j = 0; j < 4; j++) {
+				board1[i][j] = 0;
+				tbl1.rows[i].cells[j].style.backgroundColor = "white";
+			}
+		}
+	}
+
+	//重绘面板 
+	function drawBoard1() {
+		for(var i = 1; i < 4; i++) {
+			for(var j = 0; j < 4; j++) {
+				if(board1[i][j] == 1) {
+					tbl1.rows[i].cells[j].style.backgroundColor = "red";
+				}
+			}
+		}
+	}
+
+	//生产七种方块 
+	function createBlock() {
+		activeBlock = null;
+		activeBlock = new Array(4);
+		switch(m) {
+			case 0:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 3
+					};
+					activeBlock[1] = {
+						x: 0,
+						y: 4
+					};
+					activeBlock[2] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[3] = {
+						x: 1,
+						y: 4
+					};
+					break;
+				}
+			case 1:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 3
+					};
+					activeBlock[1] = {
+						x: 0,
+						y: 4
+					};
+					activeBlock[2] = {
+						x: 0,
+						y: 5
+					};
+					activeBlock[3] = {
+						x: 0,
+						y: 6
+					};
+					break;
+				}
+			case 2:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 4
+					};
+					activeBlock[1] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[2] = {
+						x: 1,
+						y: 4
+					};
+					activeBlock[3] = {
+						x: 2,
+						y: 3
+					};
+					break;
+				}
+			case 3:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 3
+					};
+					activeBlock[1] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[2] = {
+						x: 1,
+						y: 4
+					};
+					activeBlock[3] = {
+						x: 2,
+						y: 4
+					};
+					break;
+				}
+			case 4:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 3
+					};
+					activeBlock[1] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[2] = {
+						x: 1,
+						y: 4
+					};
+					activeBlock[3] = {
+						x: 1,
+						y: 5
+					};
+					break;
+				}
+			case 5:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 3
+					};
+					activeBlock[1] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[2] = {
+						x: 2,
+						y: 3
+					};
+					activeBlock[3] = {
+						x: 2,
+						y: 4
+					};
+					break;
+				}
+			case 6:
+				{
+					activeBlock[0] = {
+						x: 0,
+						y: 4
+					};
+					activeBlock[1] = {
+						x: 1,
+						y: 3
+					};
+					activeBlock[2] = {
+						x: 1,
+						y: 4
+					};
+					activeBlock[3] = {
+						x: 1,
+						y: 5
+					};
+					break;
+				}
+		}
+		//提前生成预览方块
+		next();
+
+		//检查生成的方块是否可以放在初始的位置. 
+		for(var i = 0; i < 4; i++) {
+			if(!canFill(activeBlock[i].x, activeBlock[i].y)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	//考虑改变方向和加速下降等
+	//向下移动 
+	function moveDown() {
+		//检查能否下移
+		if(checkDown()) {
+			//没有触底, 则擦除当前图形,  
+			clear();
+			//更新当前图形坐标 
+			for(var i = 0; i < 4; i++) {
+				activeBlock[i].x = activeBlock[i].x + 1;
+			}
+			//重画当前图形 
+			draw();
+		}
+		//触底,  
+		else {
+			//停止下降
+			clearInterval(time);
+			//更新标记数组. 
+			updateBoard();
+			//消行 
+			var lines = deleteLine();
+			//有消行, 
+			if(lines != 0) {
+				//更新分数 
+				score = score + lines * 10;
+				//alert(score);
+				updateScore();
+				//擦除整个面板 
+				clearBoard();
+				//重绘面板 
+				drawBoard();
+			}
+
+			//产生一个新图形,判断是否可放在最初的位置. 
+			if(!createBlock()) {
+				alert("GAME OVER!");
+				status = 2;
+				return;
+			}
+			draw();
+
+			//定时器, 每隔一秒执行一次moveDown 
+			time = setInterval(moveDown, 1000)
+		}
+	}
+
+	//检查底边界 
+	function checkDown() {
+		for(var i = 0; i < activeBlock.length; i++) {
+			if(activeBlock[i].x == 17) {
+				return false;
+			}
+			if(!canFill(activeBlock[i].x + 1, activeBlock[i].y)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//左移 
+	function moveLeft() {
+		if(checkLeft()) {
+			clear();
+			for(var i = 0; i < 4; i++) {
+				activeBlock[i].y = activeBlock[i].y - 1;
+			}
+			draw();
+		}
+	}
+
+	//检查左边界 
+	function checkLeft() {
+		for(var i = 0; i < activeBlock.length; i++) {
+			if(activeBlock[i].y == 0) {
+				return false;
+			}
+			if(!canFill(activeBlock[i].x, activeBlock[i].y - 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//右移 
+	function moveRight() {
+		if(checkRight()) {
+			clear();
+			for(var i = 0; i < 4; i++) {
+				activeBlock[i].y = activeBlock[i].y + 1;
+			}
+			draw();
+		}
+	}
+
+	//检查右边界 
+	function checkRight() {
+		for(var i = 0; i < activeBlock.length; i++) {
+			if(activeBlock[i].y == 9) {
+				return false;
+			}
+			if(!canFill(activeBlock[i].x, activeBlock[i].y + 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//旋转 (根据中位数改变方格坐标来判断)
+	function spin() {
+		var tBlock = new Array(4);
+		for(var i = 0; i < 4; i++) {
+			tBlock[i] = {
+				x: 0,
+				y: 0
+			};
+		}
+		//中心坐标         
+		var cx = Math.round((activeBlock[0].x + activeBlock[1].x + activeBlock[2].x + activeBlock[3].x) / 4);
+		var cy = Math.round((activeBlock[0].y + activeBlock[1].y + activeBlock[2].y + activeBlock[3].y) / 4);
+		for(var i = 0; i < 4; i++) {
+			tBlock[i].x = cx + cy - activeBlock[i].y;
+			tBlock[i].y = cy - cx + activeBlock[i].x;
+		}
+		//旋转后是否合法. 
+		for(var i = 0; i < 4; i++) {
+			if(!canFill(tBlock[i].x, tBlock[i].y)) {
+				return;
+			}
+		}
+		//如果合法, 擦除 
+		clear();
+		//对activeBlock重新赋值. 
+		for(var i = 0; i < 4; i++) {
+			activeBlock[i].x = tBlock[i].x;
+			activeBlock[i].y = tBlock[i].y;
+		}
+		//重画. 
+		draw();
+	}
+
+	//检查方格是否合法 
+	function canFill(x, y) {
+		if(x > 17 || x < 0 || y > 9 || y < 0) {
+			return false;
+		}
+		if(board[x][y] == 1) {
+			return false;
+		}
+		return true;
+	}
+	//擦除 
+	function clear() {
+		for(var i = 0; i < 4; i++) {
+			tbl.rows[activeBlock[i].x].cells[activeBlock[i].y].style.backgroundColor = "white";
+		}
+	}
+
+	//绘活动方块 
+	function draw() {
+		for(var i = 0; i < 4; i++) {
+			tbl.rows[activeBlock[i].x].cells[activeBlock[i].y].style.backgroundColor = "red";
+		}
+	}
+
+	//更新board数组 
+	function updateBoard() {
+		for(var i = 0; i < 4; i++) {
+			board[activeBlock[i].x][activeBlock[i].y] = 1;
+		}
+	}
+
+	//消行 
+	function deleteLine() {
+		var lines = 0;
+		for(var i = 0; i < 18; i++) {
+
+			for(var j = 0; j < 10; j++) {
+				if(board[i][j] == 0) {
+					break;
+				}
+			}
+			if(j == 10) {
+				lines++;
+				if(i != 0) {
+					for(var k = i - 1; k >= 0; k--) {
+						board[k + 1] = board[k];
+					}
+				}
+				board[0] = createBlankLine(); //产生一个空白行
+			}
+		}
+		return lines;
+	}
+
+	//擦除整个面板 
+	function clearBoard() {
+		for(var i = 0; i < 18; i++) {
+			for(var j = 0; j < 10; j++) {
+				tbl.rows[i].cells[j].style.backgroundColor = "white";
+			}
+		}
+	}
+
+	//重绘整个面板 
+	function drawBoard() {
+		for(var i = 0; i < 18; i++) {
+			for(var j = 0; j < 10; j++) {
+				if(board[i][j] == 1) {
+					tbl.rows[i].cells[j].style.backgroundColor = "red";
+				}
+			}
+		}
+	}
+
+	//产生一个空白行. 
+	function createBlankLine() {
+		var line = new Array(10);
+		for(var i = 0; i < 10; i++) {
+			line[i] = 0;
+		}
+		return line;
+	}
+
+	//更新分数
+	function updateScore() {
+		if(document.all) {
+			document.getElementById("score").innerText = " " + score;
+		} else {
+			document.getElementById("score").textContent = " " + score;
+		}
+	}
+	//键盘控制 
+	function keyDown(e) {
+		if(status != 1) {
+			return;
+		}
+		var e = e || event;
+		var k = event.keyCode;
+		switch(k) {
+
+			case 37:
+				{
+					moveLeft();
+					break;
+				}
+			case 38:
+				{
+					spin();
+					break;
+				} //旋转
+			case 39:
+				{
+					moveRight();
+					break;
+				}
+			case 40:
+				{
+					moveDown();
+					break;
+				}
+		}
+	}
+
+	//开始 
+	function begin(e) {
+		e.disabled = true;
+		status = 1;
+		tbl = document.getElementById("board");
+		tbl1 = document.getElementById("board1");
+		if(!createBlock()) {
+			alert("Game over!");
+			status = 2;
+			return;
+		}
+		draw();
+		time = setInterval(moveDown, 1000);
+	}
+	document.onkeydown = keyDown;
+</script>

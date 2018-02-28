@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="cookie.js"></script>
+		<script>
+			
+			//JSON: 是一种数据格式，一种数据的表示方式
+			
+			//JSON对象
+			//JSON字符串
+			
+			//JSON对象： JS数组或JS对象
+			//[2,3,4]
+			//{name:"李四", age:44}
+			//[{name:"李四", age:44},{name:"李四", age:44}]
+			
+			//JSON字符串： 如果去掉字符串的引号能够表示正常的数组或对象即为JSON格式的字符串
+			//'[2,3,4]'
+			//'{name:"李四", age:44}'
+			//'[{name:"李四", age:44},{name:"李四", age:44}]'
+			
+			
+			//在JS中 我们一般使用的是JSON对象(数组或对象)
+			//在cookie存储或跟后台服务器进行数据交互时一般使用JSON字符串
+			
+			
+			//JSON解析 ： JSON字符串 -> JSON对象
+			//JSON序列化 ： JSON对象 -> JSON字符串
+			
+			
+			//JSON解析 ： JSON字符串 -> JSON对象
+			//eval()
+			var str = '[{"name":"张三", "age":33},{"name":"李四", "age":44}]';
+			var arr = eval(str);
+			//console.log(arr[0].name);
+			
+			//如果是对象，则需要添加括号
+			var str = '{"name":"张三", "age":33}';
+			var obj = eval("(" + str + ")");
+			//console.log(obj.name);
+			
+			
+			//JSON.parse() : 不兼容IE6,IE7
+			var str = '[{"name":"张三", "age":33},{"name":"李四", "age":44}]';
+			var arr = JSON.parse(str);
+			//console.log(arr[0].name); //张三
+			
+			var str = '{"name":"张三", "age":33}';
+			var obj = JSON.parse(str);
+			//console.log(obj.name);
+			
+			
+			//JSON序列化 ： JSON对象 -> JSON字符串
+			//JSON.stringify() 
+			var arr = [{name:"张三", age:33},{name:"李四", age:44}];
+			var str = JSON.stringify(arr); 
+			//console.log(str); //'[{"name":"张三","age":33},{"name":"李四","age":44}]'
+			//console.log(typeof str); //string
+			
+			
+			
+			//cookie, json
+			var d = new Date("2019-1-1");
+			
+			//使用cookie存储简单的字符串
+			//setCookie("name1", "老王", d);
+			//console.log( getCookie("name1") ); //老王
+			
+			//使用cookie存储对象
+			var obj = {name: "老宋"};
+			setCookie("name2", obj, d);
+			//console.log( getCookie("name2") ); //"[object Object]"
+			//console.log( typeof getCookie("name2") ); //string
+			
+			//使用cookie存储对象
+			var obj = {name: "老宋"};
+			setCookie("name3", JSON.stringify(obj), d);
+			//console.log( getCookie("name3") ); //"{"name":"老宋"}"
+			
+			var str = getCookie("name3");
+			var obj2 = JSON.parse(str);
+			console.log(obj2.name); //老宋
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				/*
+				1, 有一块空白区域,
+					    当鼠标移动到区域内,显示"亲爱的, 我爱你",
+					    当我鼠标移开的时候,显示"对不起, 开玩笑",
+					    当我鼠标不停的在区域内移动的时候, 变换颜色
+				*/
+				
+				//#FFFFFF
+				function randomColor(){
+					var arr = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+					var str = "#";
+					for (var i=0; i<6; i++) {
+						str += arr[ parseInt(Math.random()*arr.length) ];
+					}
+					return str;
+				}
+				
+				//box
+				var box = document.getElementById("box");
+				
+				//移入
+				box.onmouseenter = function(){
+					box.innerHTML = "亲爱的， 我爱你！";
+				}
+				//移出
+				box.onmouseleave = function(){
+					box.innerHTML = "对不起， 开玩笑！";
+				}
+				//移动
+				box.onmousemove = function(){
+					box.style.background = randomColor();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 200px; height: 100px; background: white;"></div>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 ES6-Array新增
+				Array.from()方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）
+					和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）
+				Array.from()还可以接受第二个参数，作用类似于数组的map方法，
+					用来对每个元素进行处理.
+			*/
+			var obj = {
+				0 : "张三",
+				1 : "李四",
+				2 : '王五',
+				length: 3
+			}
+			var arr = Array.from(obj);
+			//console.log(arr); //[ "张三", "李四", "王五" ]
+			
+			var arr = [10,20,30,40];
+			var arr2 = Array.from(arr, function(v, i){
+				return v*v;
+			});
+			//console.log(arr2); //[ 100, 400, 900, 1600 ]
+			
+			
+			//console.log( ["aa", "bb", "cc"]);
+						
+			
+			/*
+				Array.of(): 方法用于将一组值，转换为数组
+				
+			*/
+			//console.log( Array.of(3, 11, 8) ); // [3,11,8]
+			
+			
+			/*
+				find()和findIndex()
+				数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，
+				所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。
+				如果没有符合条件的成员，则返回undefined。
+			*/
+			
+			//找出第一个符合条件的数组成员
+			var arr = [2,1,5,-2,4,5,-5,-6,9];
+			var res = arr.find(function(v,i){
+				return v<0;
+			});
+			//console.log(res); //-2
+			
+			var res = arr.findIndex(function(v,i){
+				return v<0;
+			});
+			//console.log(res); //3
+			
+			
+			
+			
+			//普通for ： 使用最多  
+			//while ： 一般用于未知遍历次数的情况
+			//do-while ： 一般不用
+			//for-in ： 一般用于遍历对象
+			//forEach() ： 存在兼容问题,不兼容IE8-, 不支持break,continue
+			//map() : 存在兼容问题,不兼容IE8-, 不支持break,continue, 可以得到新数组
+			
+			//for-of : 遍历 ， 强大的遍历， 遍历数组， 对象，Set, Map
+			
+			//for-in
+			var arr = [1,2,3,4];
+			for (var i in arr){
+				//console.log(i + ":" + arr[i]);
+			}
+			
+			//for-of
+			var arr = [10,20,30,40];
+			for (var n of arr) {
+				//console.log(n); //值
+			}
+			
+			for (var n of arr.keys()) {
+				//console.log(n); //下标
+			}
+			
+			for (var [i,n] of arr.entries()) {
+				//console.log(i + ":" + n); //下标 ： 值
+			}
+			
+			
+			//解构赋值ES6: 可以快速取出数组或对象中的值
+			//var [a,b] = [2,3];
+			//console.log(a + "," + b);
+			
+			//let [a,b,d] = [1,[2,3],4];
+			//console.log(a + "," + b + "," + d); //1,[2,3],4
+			//console.log(b instanceof Array); //true
+			
+			var [a,[b,c],d] = [1,[2,3],4];
+			
+			//交换两个变量的值
+			var [a,b] = [10,20];
+			[b,a] = [a,b];
+			console.log("a=" + a + ",b=" + b); //a=20,b=10
+			
+			
+			//对象
+			var obj = {name:"老宋", age:33};
+			var {name, age} = obj;
+			console.log(name + "," + age);
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

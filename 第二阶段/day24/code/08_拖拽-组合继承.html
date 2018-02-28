@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="js/DragBox.js"></script>
+		<script src="js/DragBoxLimit.js"></script>
+		<script src="js/DragBoxLimitText.js"></script>
+		<script>
+			/*
+			 练习
+				1, 使用组合继承(构造函数+原型链继承+借用构造函数)实现拖拽
+				有三个div
+				->粉色的div可以随意拖拽DragBox;
+				->红色的div可以拖拽,但是不能超出左边界和上边界DragBoxLimit;
+				->黄色的div在红色div基础上可以显示当前坐标位置DragBoxLimitText;
+			*/
+			
+			onload = function(){
+				
+				//new DragBox("box1").startMove();
+				//new DragBoxLimit("box2").startMove();
+				new DragBoxLimitText("box3").startMove();
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box1" style="width: 100px; height: 100px; background: pink; position: absolute; left: 10px; top: 10px;"></div>
+		<div id="box2" style="width: 100px; height: 100px; background: red; position: absolute; left: 10px; top: 120px;"></div>
+		<div id="box3" style="width: 100px; height: 100px; background: yellow; position: absolute; left: 10px; top: 230px;">left:10, top:10</div>
+	</body>
+</html>

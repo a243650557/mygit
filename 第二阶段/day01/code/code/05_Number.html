@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//Number 
+			//整数  和 浮点数
+			
+			//整数
+			var a = 10;
+			console.log(a);
+			
+			//浮点数，小数
+			var b = 10.1;
+			console.log(b);
+			
+			var c = .1;
+			console.log(c); //0.1
+			
+			//JS会将能够转换成整数的尽量转换为整数
+			//目的： 优化内存
+			//整型： 4字节
+			//浮点数： 8字节
+			var d = 9.0;
+			console.log(d); //9
+			
+			// 1位 = 0或1
+			// 1字节 = 8位
+			// 1byte = 8bit
+			// 1kb = 1024byte
+			// 1mb = 1024kb
+			// 1GB = 1024MB
+			// 1TB = 1024GB
+			// 1PB = 1024TB
+			// 1EB = 1024PB
+			//...
+			//
+			
+			
+			//科学计数法
+			//var p = 3.14 * 100000
+			var p = 3.14e5;
+			console.log(p); //314000
+			
+			var p = 3.14e-5;
+			console.log(p); //0.0000314
+			
+			
+			//Infinity： 正无穷大
+			//-Infinity： 负无穷大
+			var n = 8/0; 
+			console.log(n); //Infinity 正无穷大
+			
+			var n = -8/0; 
+			console.log(n); //-Infinity 负无穷大
+			
+			//NaN: Number类型的一个特殊值
+			//NaN: (Not a Number: 不是合法的数字)， 如果做了不合法的数字运算则会产生该值
+			var n = 8/0 * 0;
+			console.log(n); //NaN
+			
+			var n = 0/0;
+			console.log(n); //NaN
+			
+			
+			//isNaN() : 检测是否为非法的数字
+			console.log(isNaN(NaN));       //true
+			console.log(isNaN(25));	       //false，25 是一个数值
+			console.log(isNaN('25'));      //false，'25'是一个数值字符串，可以转成数值
+			console.log(isNaN('zhangsan'));  //true，'zhangsan'不能转换为数值
+			console.log(isNaN(true));        //false       true 可以转成成 1
+
+			
+			
+			//parseInt(): 转换成整数
+			var n = 10.1;
+			var m = parseInt(n);
+			console.log(m); //10
+			
+			var n = "20.2";
+			console.log(parseInt(n));  //20
+			
+			var n = "20.2px";
+			console.log(parseInt(n));  //20
+			
+			var n = "20px30";
+			console.log(parseInt(n)); //20
+			
+			var n = "px2030";
+			console.log(parseInt(n)); //NaN
+			
+			
+			//parseFloat() ： 转换成浮点型(保留小数)
+			var n = "20.11111000";
+			console.log( parseFloat(n) ); //20.11111
+			
+			var n = "20.1px";
+			console.log( parseFloat(n) ); //20.1
+			
+			//浮点数精度问题
+			//console.log( 0.07/100 ); //0.0007000000000000001
+			
+			//Math.round() : 四舍五入
+			console.log( Math.round(3.56) ); //4
+			console.log( Math.round(3.45) ); //3
+			
+			//Math.random() : 随机数， 范围： 0~1， [0,1)
+			console.log( Math.random() );
+			
+			//取随机数： 65~90
+			//65 + [0,1) *25
+			// 0~25 : [0,25] : 
+			console.log( parseInt(Math.random()*25) ); //[0,24]
+			console.log( parseInt(Math.random()*26) ); //[0,25]
+			console.log( 65 + parseInt(Math.random()*26) ); //[65,90]
+			
+			//Math.abs() : 绝对值
+			console.log( Math.abs(-1) );
+			console.log( Math.abs(1) );
+			
+			//Math.pow() : 次幂
+			console.log( Math.pow(3,4) ); //3的4次方，  81
+			
+			//Math.ceil() : 向上取整
+			console.log( Math.ceil(3.1) ); //4
+			console.log( Math.ceil(3) ); //3
+			console.log( Math.ceil(-3.1) ); //-3
+			
+			//Math.floor() : 向下取整
+			console.log( Math.floor(3.9) ); //3
+			console.log( Math.floor(-3.9) ); //-4
+			console.log( Math.floor(3) ); //3
+			
+			//Math.sqrt() : 开根号
+			console.log( Math.sqrt(25) ); //5
+			
+			
+			
+			//Number()
+			var n = "10.1";
+			console.log(typeof n); //string
+			console.log(typeof Number(n) ); //number
+			
+			var n = "10.1px";
+			console.log( Number(n) ); //NaN
+			
+			//小数点精确到2位
+			//toFixed()
+			var n = 10.2;
+			console.log( n.toFixed(2) ); //10.20
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="cookie2.js"></script>
+	<script>
+//		var str ='[1,2,3,4,5,6,7]';
+//		var arr = eval(str);
+//		console.log(arr);
+// 		var obj = '{"name":30 ,"age":30}';
+// 		var obj1 = JSON.parse(obj);
+// 		console.log(obj);
+// 		
+// 		var str = '[{"name":"张三", "age":33},{"name":"李四", "age":44}]';
+// 		var arr = JSON.parse(str);
+// 		console.log(arr[0].name);
+		
+		var obj = {name: "老宋"};
+		var d = new Date();
+		setCookie("name4",JSON.stringify(obj),d)
+		console.log(JSON.parse(getCookie("name4")).name);
+ 		
+	</script>
+	<body>
+	</body>
+</html>

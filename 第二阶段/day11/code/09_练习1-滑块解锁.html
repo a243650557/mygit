@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#iphone {
+				background: url(images/images2/iphone.jpg);
+				width: 426px;
+				height: 640px;
+				position: absolute;
+				left: 50px;
+			}
+			#box {
+				width: 360px;
+				height: 62px;
+				background: red;
+				position: absolute;
+				left: 32px;
+				bottom: 33px;
+			}
+			#lock {
+				background: url(images/images2/unlock_btn.jpg);
+				width: 93px;
+				height: 60px;
+				position: absolute;
+				left: 0px;
+				top: 1px;
+				cursor: pointer;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				var iphone = document.getElementById("iphone");
+				var box = document.getElementById("box");
+				var lock = document.getElementById("lock");
+				
+				lock.onmousedown = function(e){
+					e = e || event;
+					var disx = e.offsetX;
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						
+						var x = e.pageX - disx - iphone.offsetLeft - box.offsetLeft;
+						//控制左边界
+						if (x < 0) {
+							x = 0;
+						}
+						//控制右边界
+						else if (x > box.offsetWidth-lock.offsetWidth) {
+							x = box.offsetWidth-lock.offsetWidth;
+						}
+						
+						lock.style.left = x + "px"; 
+					}
+					
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						
+						if (lock.offsetLeft < (box.offsetWidth-lock.offsetWidth)/2) {
+							lock.style.left = 0;
+						}
+						else {
+							lock.style.left = box.offsetWidth-lock.offsetWidth + "px";
+						}
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="iphone" class="pox">
+			<div id="box" class="pox">
+				<div id="lock"></div>
+			</div>
+		</div>
+	</body>
+</html>

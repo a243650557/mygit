@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//switch
+			
+			//判断固定值
+			var grade = 'C';
+			switch (grade){
+				case 'A': 
+					console.log("优秀");
+					break;
+					
+				case 'B': 
+					console.log("良好");
+					break;
+					
+				case 'C': 
+					console.log("及格");
+					console.log("nuli");
+					break;
+					
+				case 'D': 
+					console.log("不及格");
+					break;
+				
+				default: 
+					console.log("输入有误");
+			}
+			
+			//case穿透
+			//解决方法： 添加break
+			// break 可以跳出switch语句
+			
+			
+			//switch判断范围
+			var grade = 59;
+			switch (true) {
+				case grade>85: 
+					console.log("优秀");
+					break;
+					
+				case grade>=75&&grade<=85: 
+					console.log("良好");
+					break;
+				
+				case grade>=60&&grade<75: 
+					console.log("及格");
+					break;
+				
+				case grade<60: 
+					console.log("不及格");
+					break;
+				
+				default: 
+					console.log("error!");
+			}
+			
+			// 分支语句： 一般情况下都是使用if ， 比较少用switch
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

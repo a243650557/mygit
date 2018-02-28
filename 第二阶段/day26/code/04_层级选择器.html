@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//包含选择器，后代选择器
+				//$("#box input").css({border: "2px solid red"});
+				//$("#box").find("input").css({border: "2px solid pink"});
+				
+				//子选择器
+				//$("#box > input").css({border: "2px solid red"});
+				//$("#box").children("input").css({border: "2px solid green"});
+				
+				//相邻选择器
+				// + ： 紧跟着box后的input节点
+				//$("#box + input").css({border: "2px solid red"});
+				//$("#box").next("input").css({border: "2px solid red"});
+				
+				//同级的后面所有节点
+				//$("#box ~ input").css({border: "2px solid red"});
+				//$("#box").nextAll("input").css({border: "2px solid red"});
+				
+				//兄弟节点(重要)
+				//siblings()
+				//$("#box").siblings('input').css({border: "2px solid orange"});
+				
+				//同级的前面input节点(一个)
+				$("#box").prev("input").css({border: "2px solid red"});
+				
+				//同级的前面所有input节点（所有）
+				//$("#box").prevAll("input").css({border: "2px solid red"});
+
+
+				//jq 
+				//jq中的事件不需要写on，而且都是方法
+				$("#list li").click(function(){
+					//console.log(this); //JS中的DOM对象
+					//console.log($(this));  //JQ对象
+					
+					$(this).css("color","red").siblings().css("color","black");
+					//下标
+					//var index = $(this).index();
+					var index = $(this).index("#list li");
+					console.log(index);
+				})
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text" value="1" />
+		<div>
+			<input type="text" value="2" />
+		</div>
+		<input type="text" value="3" />
+		
+		<div id="box">
+			<input type="text" value="4" />
+			<div>
+				<input type="text" value="5" />
+			</div>
+		</div>
+		
+		<input type="text" value="6" />
+		<div>
+			<input type="text" value="7" />
+		</div>
+		<input type="text" value="8" />
+		
+		
+		<ul id="list">
+			<p>000</p>
+			<p>000</p>
+			<span>9999</span>
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+		</ul>
+		
+	</body>
+</html>

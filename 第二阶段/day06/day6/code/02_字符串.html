@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//字符串： 一串字符
+			//创建字符串
+			//方式一： 
+			var str = "hello";
+			//console.log(str); 
+			//console.log(typeof str); //string
+			
+			//方式二：
+			var str = new String("kitty"); 
+			//console.log(str);
+			//console.log(typeof str); //object
+			
+			//方式三:
+			var str = String("kitty"); 
+			//console.log(str);
+			//console.log(typeof str); //string
+			
+			
+			//JS: 一切皆对象
+			//只要使用了new来创建， 则创建出来的就是对象类型
+			
+			//使用字符串
+			//字符串长度: length
+			var str = "hello";
+			//console.log(str.length); //5
+			//str.length = 3; //长度不可以设置
+			//console.log(str); //hello
+			
+			
+			//字符串本身是不可以改变的
+			var str = "hello";
+//			console.log( str[0] );
+//			console.log( str[1] );
+//			console.log( str[2] );
+//			console.log( str[3] );
+//			console.log( str[4] );
+//			console.log( str[7] ); //undefined
+			
+			str[0] = "w";
+			console.log(str); //hello
+			
+			var str = "hello";
+			str = "world"; //将字符串变量str等于另外一个字符串，而原来的字符串"hello"是没有改变的
+			
+			//遍历字符串的每个字符
+			var str = "hello kitty 你好吗？"
+			for (var i=0; i<str.length; i++) {
+				console.log(str[i]);
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

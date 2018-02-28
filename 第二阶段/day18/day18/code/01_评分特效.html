@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 27px;
+				height: 28px;
+				background: url(images/star.gif);
+				float: left;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var divs = document.getElementsByTagName("div");
+				for (var i=0; i<divs.length; i++) {
+					
+					divs[i].index = i;
+					divs[i].onclick = function(){
+						
+						for (var j=0; j<divs.length; j++) {
+							if (j <= this.index) {
+								divs[j].style.background = "url(images/star.gif) 0 -28px";
+							}
+							else {
+								divs[j].style.background = "url(images/star.gif)";
+							}
+						}
+						
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

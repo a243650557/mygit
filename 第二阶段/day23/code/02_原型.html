@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//构造函数
+			//Array
+			//String
+			
+		//	console.log([]);
+			
+			//原型 ： prototype
+			// 原型的作用是: 可以让同一个构造函数创建的所有对象共享原型中的属性和方法.
+			// 每一个函数都有一个与之对应的原型对象
+			
+			/*
+			function fn(){
+				//console.log(this);
+				//console.log(arguments);
+			}
+			console.log(fn.prototype); //fn函数的一个原型对象
+			*/
+			
+			
+			/*
+			//构造函数
+			function Person(){
+				//this.name = "老王";
+			}
+			//原型
+			Person.prototype.name = "老宋";
+			Person.prototype.age = 33;
+			Person.prototype.run = function(){
+				console.log("跑步");
+			}
+			
+			//实例化
+			//实例对象可以访问原型对象中的属性和方法
+			//实例对象
+			var p = new Person();
+			console.log( p.name );
+			console.log( p.age );
+			p.run();
+			*/
+			
+			//属性和方法的访问顺序：
+			//1， 先查找构造函数中是否有该属性或方法， 如果有则直接使用并返回
+			//2， 如果构造函数中没有该属性和方法，则再去原型对象中查找是否存在该属性和方法，
+			//   如果有则使用，否则返回undefined 
+			
+			
+			//原型的作用： 
+			// 同一个构造函数创建的所有对象都可以共享同一个原型对象中的属性和方法
+			
+			
+			/*
+			//构造函数
+			function Person(){
+				this.name = "张三";
+				this.go = function(){};
+			}
+			Person.prototype.run = function(){}
+			
+			//实例化
+			var p1 = new Person();
+			var p2 = new Person();
+			console.log(p1.name == p2.name); //true
+			console.log(p1.run == p2.run); //true
+			console.log(p1.go == p2.go);//false
+			*/
+			
+			
+			
+			//原型中的属性
+			//constructor: 是原型的属性, 指向原型对象所属的构造函数;
+			//构造函数
+			function Person(){
+				this.name = "张三";
+			}
+			Person.prototype.age = 33;
+			Person.prototype.run = function(){}
+			//console.log(Person.prototype.constructor == Person); //true
+			
+			//__proto__: 是实例对象的属性，指向构造函数的原型。
+			var p = new Person();
+			console.log(p.__proto__ == Person.prototype); //true
+			console.log(p.__proto__ == p);
+			console.log(p.age); //推荐
+			console.log(p.__proto__.age);
+			console.log(Person.prototype.age); 
+			
+			//isPrototypeOf(): 判断一个对象是否指向了该构造函数的原型对象
+			console.log(Person.prototype.isPrototypeOf(p)); //true
+			
+			//hasOwnProperty(): 判断实例对象中是否存在该属性
+			console.log( p.__proto__.hasOwnProperty("name") ); //true
+			console.log( p.hasOwnProperty("age") ); //false
+			
+			//in操作符: 判断属性是否存在于该实例对象或者该对象的原型中
+			console.log("name" in p); //true
+			console.log("age" in p); //true
+			
+			//判断某属性只在原型中有
+			var n = "age";
+			console.log( (n in p) && !p.hasOwnProperty(n) );
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

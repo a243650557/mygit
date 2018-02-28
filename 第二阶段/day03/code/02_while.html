@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//while
+			
+			//while语法格式
+			/*
+			 
+			 	while (表达式或变量) {
+			 		代码
+			 	}
+			 
+			 */
+			
+			//死循环， 不要写死循环
+			/*
+			while (true) {
+				console.log("死循环");
+			}
+			console.log("死循环后的代码不会执行");
+			*/
+			
+			/*
+			while (false) {
+				console.log("不会执行");
+			}
+			*/
+			
+			
+			
+			
+			//从1循环到100， 循环了100次
+			/*
+			var i = 1; //循环初始值
+			while (i <= 100){ //循环条件
+				//console.log(i); 
+				i++; //循环增量（或减量）
+			}
+			*/
+			
+			//1+2+3+..+100
+			var i = 1;
+			var sum = 0; //和
+			while (i <= 100) {
+				
+				sum += i; //sum = sum + i;
+				
+				i++;
+			}
+			console.log("sum=" + sum); //sum=5050
+			
+			
+			//从100遍历到1
+			/*
+			var i = 100;
+			while (i >= 1) {
+				console.log(i);
+				i--;
+			}
+			*/
+			
+			
+			//. 练习
+			//打印100以内 7的倍数
+			var i = 1;
+			while (i <= 100) {
+				
+				if (i%7 == 0) {
+					console.log(i);
+				}
+				
+				i++;
+			}
+			
+			
+			//打印100以内的奇数
+			var i = 1;
+			while (i <= 100) {
+				
+				if (i%2) {
+					console.log("奇数： " + i);
+				}
+				
+				i++;
+			}
+			
+			
+			//打印100以内所有偶数的和
+			var i = 1; 
+			var sum = 0;
+			while (i <= 100) {
+				
+				if (i%2 == 0) {
+					sum += i;
+				}
+				
+				i++;
+			}
+			console.log("偶数和：" + sum);
+			
+			//打印图形
+			//* * * * * * * * * *
+			//* * * * * * * * * *
+			//* * * * * * * * * *
+			//* * * * * * * * * *
+			
+			//循环嵌套
+			var i = 1;
+			while (i <= 4) {  //遍历4行
+				
+				var j = 1;
+				while (j <= 10) { //遍历10次
+					document.write("* ");
+					j++;
+				}
+				
+				document.write("<br />");
+				
+				i++;
+			}
+			
+			
+			
+			
+			/*
+			var i = 1;
+			while (i <= 40) {
+				
+				document.write("* ");
+				
+				if (i%10 == 0) {
+					document.write("<br />");
+				}
+				
+				i++;
+			}
+			
+			*/
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

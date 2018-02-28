@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//练习:
+			//1,  显示当前时间 (显示格式: 2019年 11月 11日 11时 11分 11秒)
+//			var d = new Date();
+//			var year = d.getFullYear();
+//			var month = d.getMonth();
+//			var day = d.getDate();
+//			var hour = d.getHours();
+//			var min = d.getMinutes();
+//			var sec = d.getSeconds();
+//			console.log(year+"年" + month+"月" + day+"日" + hour+"时" + min+"分" + sec+"秒");
+			
+			
+			//2,  判断两个日期相差的天数(可先求毫秒数差,再转换成天)
+			var d1 = new Date();
+			var d2 = new Date(2017, 11, 28);
+			var days = parseInt( Math.abs(d2 - d1)/(1000*3600*24) );
+			console.log(days);
+			
+			
+			//3,  根据getDate()和setDate()， 封装一个函数afterDate(date,n)，得到日期date的n天后的日期
+			function afterDate(date,n){
+				date.setDate(date.getDate() + n);
+				return date;
+			}
+			var d = new Date(2017, 1, 20);
+			var d2 = afterDate(d, 9);
+			console.log(d2.toLocaleDateString());
+			
+			//4， 
+				var d = new Date(2017,10,31);
+			    //console.log(d.toLocaleDateString()); //2017年12月1日
+			    //console.log(d.getMonth() + ',' + d.getDate()); //11,1
+				var d = new Date(2017,12,11);
+			    //console.log(d.toLocaleDateString()); //2018年1月11日
+				//console.log(d.getFullYear() + ','+ d.getMonth()); //2018,0
+			
+			
+			//
+			//1234567 
+			//0 0101 0011 1001 0111 0111
+			//0   5    3   9    7   7
+			//	 
+			// 
+			
+			/*
+			
+			JS     var a = 10;   Person p = new Person();   Nodejs, 微信小程序, 微信公众号
+			PHP    $a = 10;      Person p = new Person()
+			C      int a = 10;   
+			C++    int a = 10;    Person *p = new Person()
+			Java   int a = 10;    Person p = new Person();
+			
+			//JS 
+			//Java PHP C#
+			//Python, Java , C++
+			
+			//iOS开发： Object-C, swift ，UI， 网络
+			//Android开发: Java，UI， 网络
+			//H5： JS, jQuery ,  Vue, React, Angular
+			//AR/VR: C# -> Unity3D(3D游戏) 
+			//大数据： Java
+			//人工智能： Python
+			//一般软件的后台： Java, PHP, C#
+			
+			// 前端    php + mysql
+			
+			*/
+			
+			// 
+			//1，行业经验  
+			//2， 自学能力  
+			//3， 解决问题的能力   console.log();
+			//
+			
+			//	  
+			//  视频监控
+			//    
+			
+			//
+			// Python 
+			//
+			
+			
+			
+			
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

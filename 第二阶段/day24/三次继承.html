@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+			function Father(name){
+				this.name = name;
+				this.age = 33;
+			}
+			Father.prototype.eat = function(){
+				console.log( this.name + " eat");
+			}
+			
+			//子类
+			function Son(){
+				this.weight = 50;
+			}	
+			Son.prototype = new Father();
+			Son.prototype.playGame = function(){
+				console.log('打游戏');
+			}
+			//孙子类
+			function Grandsun(){
+				
+			}
+			Grandsun.prototype = new Son();
+			Grandsun.prototype.doSport = function(){
+				console.log('做运动');
+			}
+			
+			var xiaoming = new Grandsun();
+			xiaoming.eat('xiaoming');
+			xiaoming.playGame();
+	</script>
+	<body>
+	</body>
+</html>

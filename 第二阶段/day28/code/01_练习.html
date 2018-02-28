@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//on事件委托
+				$("#tab").on("click", ".del", function(){
+					$(this).parents("tr").remove();
+				})
+				
+				//点击保存
+				$("input").eq(3).click(function(){
+					var id = $("input").eq(0).val();
+					var username = $("input").eq(1).val();
+					var phone = $("input").eq(2).val();
+					
+					//创建tr节点
+//					var tr = $("<tr><td>"+ id +"</td><td>"+ username +"</td><td>"+ phone +"</td><td><a href='#'>删除</a></td></tr>");
+//					tr.appendTo("#tab");
+
+					var tr = $("<tr></tr>").appendTo("#tab");
+					$("<td>"+ id +"</td>").appendTo(tr);
+					$("<td>"+ username +"</td>").appendTo(tr);
+					$("<td>"+ phone +"</td>").appendTo(tr);
+					$("<td><a class='del' href='#'>删除</a></td>").appendTo(tr);
+					
+					//点击删除
+//					tr.find("a").click(function(){
+//						//console.log(1);
+//						$(this).parents("tr").remove();
+//					})
+					
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		ID:<input type="text" /> <br />
+		姓名:<input type="text" /> <br />
+		Tel:<input type="text" /> <br />
+		<input type="button" value="保存" />
+		
+		<table border="1" id="tab">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td>张三</td>
+				<td>13454547889</td>
+				<td><a class='del' href="#">删除</a></td>
+			</tr>
+		</table>
+		
+		
+	</body>
+</html>

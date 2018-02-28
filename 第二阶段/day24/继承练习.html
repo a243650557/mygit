@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		//		实现以下类的原型链继承
+		//
+		//父类：Cat
+		//方法： eat; miaow
+		//属性： fur
+		//说明： eat吃各种东西
+		//
+		//子类1： GarfieldCat
+		//方法：eat; miaow; talk
+		//属性：fur; glasses
+		//说明：eat只吃肉
+		//
+		//子类2： TomCat
+		//方法：eat; miaow; catchMouse
+		//属性：fur; friend
+		//说明：eat只吃面包
+		
+		//父类
+		function Cat(name){
+			this.name = name;
+		}
+		Cat.prototype ={
+			constructor : Cat,
+			fur:"fur",
+			eat:function(){
+				console.log('吃各种东西');
+			},
+			miaow:function(){
+				console.log('叫');
+			}
+		}
+		
+		//子类1： GarfieldCat
+		function GarfieldCat(){
+			this.glasses = "glasses";
+		}
+		GarfieldCat.prototype = new Cat();
+		GarfieldCat.prototype.eat = function(){
+			console.log('只吃肉');
+		}
+		GarfieldCat.prototype.talk = function(){
+			console.log('会讲话');
+		}
+		
+		//子类2： TomCat
+		function TomCat(){
+			this.friend = "mouse";
+		}
+		TomCat.prototype = new Cat();
+		TomCat.prototype.catchMouse = function(){
+			console.log('捉老鼠');
+		}
+		TomCat.prototype.eat = function(){
+			console.log('只吃面包');
+		}
+		var TomCat1 = new TomCat();
+		TomCat1.catchMouse();
+		TomCat1.miaow();
+		TomCat1.eat();
+		
+		var GarfieldCat1 = new GarfieldCat();
+		GarfieldCat1.eat();
+	</script>
+	<body>
+	</body>
+</html>

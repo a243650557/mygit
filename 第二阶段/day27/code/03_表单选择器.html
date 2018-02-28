@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				console.log( $(":input").length ); //13
+				//console.log( $(":input").size() );
+				
+				console.log( $("input:text") ); //获取type=text的节点
+				console.log( $("input:radio") ); //获取type=radio的节点
+				
+				console.log( $("input:button").length ); //1,input的按钮
+				console.log( $(":button").length ); //2， 包括input按钮和button节点
+				//被禁用的节点
+				console.log( $("input:disabled").length );
+				
+				//被选中的节点
+				console.log( $("input:checked").length );
+				
+				//下拉框中被选中的
+				console.log( $("select option:selected").html() );
+				
+				
+				
+				//显示隐藏
+				$("div").click(function(){
+					
+					//show() : 显示
+					$("div").show();
+					//$("div").show("slow");
+					//$("div").show(2000);
+					
+					//hide() : 隐藏
+					//$("div").hide();
+					//$("div").hide("fast");
+					//$("div").hide(3000);
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<form>
+		    <input type="button" value="Input Button"/>
+		    <input type="checkbox" disabled="disabled" checked="checked"/>
+		
+		    <input type="file" />
+		    <input type="hidden" />
+		    <input type="image" />
+		
+		    <input type="password" />
+		    <input type="radio"  disabled="disabled"/>
+		    <input type="reset" />
+		
+		    <input type="submit" />
+		    <input type="text" />
+		    <select>
+		    	<option>Option1</option>
+		    	<option selected="selected">Option2</option>
+		    </select>
+		
+		    <textarea></textarea>
+		    <button>Button</button>
+		
+		</form>
+		
+		
+		
+		<div style="width: 100px; height: 100px; background: blue; display: none;"></div>
+		<div style="width: 100px; height: 100px; background: red;"></div>
+		
+	</body>
+</html>

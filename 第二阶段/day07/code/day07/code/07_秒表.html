@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//页面加载完成后调用
+			window.onload = function(){
+				
+				var aSpan = document.getElementsByTagName("span");
+				var oBtn = document.getElementById("btn");
+				
+				//点击按钮
+				var i = 0; //总秒数
+				var timer;
+				oBtn.onclick = function(){
+					
+					//先把原来的定时器关闭
+					clearInterval(timer);
+					//然后再开启一个新的定时器
+					timer = setInterval(function(){
+						i++;
+						
+						var hour = parseInt(i/(3600)); //时
+						var min = parseInt(i/60)%60; //分
+						var sec = i%60; //秒
+						
+						aSpan[0].innerHTML = hour<10 ? "0"+hour : hour;
+						aSpan[1].innerHTML = min<10 ? "0"+min : min;
+						aSpan[2].innerHTML = sec<10 ? "0"+sec : sec;
+						
+					}, 1000);
+					
+				}
+			}
+			
+			//2. Mountain: 从前有座山,山里有座庙;还有name,height(高度)
+			//  Temple: 庙里有个老和尚,有个小和尚,还有name,area(面积)
+			//  Monk: 和尚能挑水,讲故事,化缘;还有name,age,sex
+			var Mountain = {
+				name: "梧桐山",
+				height: 900,
+				temple: {
+					name: "弘法寺",
+					area: 1000,
+					oldMonk: {
+						name: "",
+						age: 99,
+						sex: "男",
+						ts: function(){},
+						jgs: function(){},
+						hy: function(){}
+					},
+					youngMonk: {
+						name: "",
+						age: 9,
+						sex: "男",
+						ts: function(){},
+						jgs: function(){},
+						hy: function(){}
+					}
+				}
+			}
+			
+			//3. 定义一圆Cirlcle对象,包含半径r和圆心,圆心为“点”Point对象,point对象有x和y属性，
+			//	  构造一圆，该圆可以计算周长和面积; 计算该原的周长和面积?
+			var Cirlcle = {
+				r: 10,
+				point: {
+					x: 0, 
+					y:0
+				},
+				c: function(){
+					console.log(2 * Math.PI * this.r);
+				},
+				s: function(){
+					console.log(Math.PI * this.r * this.r)
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<h2>秒表</h2>
+		<span>00</span>时 <span>00</span>分 <span>00</span>秒  
+		<button id="btn">点我开始计时</button>
+	</body>
+</html>

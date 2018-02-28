@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var arr = ["red", "blue", "yellow", "green", "black", "orange"];
+				
+				var oBox = document.getElementById("box");
+				var oBtn = document.getElementById("btn");
+				 
+				oBtn.onclick = function(){
+					var i = 0 ;
+					setInterval(function(){
+						
+						oBox.style.backgroundColor = arr[i++ % arr.length];
+						
+					},1000);
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: purple;"></div>
+		<button id="btn">开始变色</button>
+	</body>
+</html>

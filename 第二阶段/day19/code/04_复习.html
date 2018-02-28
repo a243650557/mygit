@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script>
+			
+			
+			//
+			//1, JS历史, 变量， 数据类型， 运算符
+			//    变量：  var, let
+			//    常量： const
+			//    数据类型： Boolean, Number, String, Object, Undefined, Null, Symbol
+			//    运算符： +, -, * / %
+			//    NaN: not a Number (Number类型) 
+			//    
+			//    NaN: 说明进行数字运算时出错
+			//    null : 说明对象获取不到
+			//    undefined: 变量声明了但是没有赋值，或者对象中没有属性
+			//    
+			//2， 运算符
+			//    一元运算符： ++，--，  a++; ++a;
+			//    关系运算符: >, >=, <,<=, ==, !=, ===, !==
+			//           字符串比较： ASCII码比较
+			//    逻辑运算符： &&， ||, !
+			//          &&: 短路操作， 从左往右进行判断， 如果出现了false则直接返回该false对应的值
+			//          ||: 短路操作， 从左往右进行判断， 如果出现了true则直接返回该true对应的值
+			//    三目运算符： ? : 
+			//    位运算符： ^, |, &, >
+			//    
+			//	  if语句
+			//    if-else语句
+			//    if - else if -else
+			//    switch语句 
+			//		break：跳出Switch语句， 防止case穿透
+			//   
+			//3, 循环
+			//     for, while, do-while, for-in
+			//
+			//4, 函数
+			//      普通函数
+			//		匿名函数
+			//		构造函数
+			//		自运行函数
+			//		回调函数
+			//		生成器函数
+			//		嵌套函数： 函数包含函数
+			//		箭头函数： 可以把匿名函数简写
+			//		递归函数 
+			//
+			//5, 数组
+			// 	 数组的属性： length
+			//  数组的方法： push, pop, shift, unshift, indexOf, splice, slice,
+			//			sort, reverse, concat, join, forEach, map, filter, reduce
+			// 			Array.from, Array.of, find, findIndex....
+			//  
+			//  数组的遍历： for循环
+			//  数组的排序： 冒泡排序， sort, 选择排序，快速排序
+			//  
+			//6,字符串  
+			//   字符串的属性： length
+			//   字符串的方法： charAt, charCodeAt, String.fromCharCode, concat, substring
+			// 			   substr, slice, split, replace, indexOf, lastIndexOf, search
+			// 			   match, includes, startsWith, endsWith, repeat
+			//   
+			//7,日期, 对象， 定时器
+			//   日期： 日期对象和时间戳
+			//		日期对象的创建
+			// 		日期对象： getDate, getMonth, getFullYear, getHours, getMinutes, getSecond
+			//				setTime, getTime
+			//      时间戳 <->日期对象
+			//      时间戳 -> 日期： 1, new Date(时间戳)； 2, d.setTime(时间戳)
+			//      日期 -> 时间戳： 1, d.getTime, 2,d.valueOf
+			// 	
+			//   对象 
+			//		属性和方法
+			//      obj.name,  obj["name"]
+			//      delete obj.name
+			//   
+			//   定时器 : setInterval, setTimeout
+			// 
+			//8, BOM
+			// 	   open(), location.href, location.search, location.reload, location.assign()
+			// 
+			//9, DOM
+			//    (1)， DOM的获取
+			// 			document.getElementById()
+			// 			document.getElementsByName()
+			// 			document.getElementsByTagName()
+			// 			document.getElementsByClassName() 不支持IE8-
+			// 			document.querySelector() 不支持IE8-
+			// 			document.querySelectorAll() 不支持IE8-
+			// 
+			//    (2), 元素节点的属性
+			// 			id, className, style, innerHTML,innerText, value, nodeName, nodeValue, nodeType
+			//          offsetLeft, offsetTop, offsetWidth, offsetHeight
+			//          clientWidth, clientHeight
+			//          
+			//    (3), 元素节点简单关系
+			// 			children, childNodes, parentNode, 
+			//			previousSibling, nextSibling, firstChild, lastChild
+			//			previousElementSibling, nextElementSibling, firstElementChild, lastElementChild 不支持IE8-
+			//    
+			//    (4), 节点的操作
+			//          document.createElement
+			//          appendChild
+			// 			removeChild
+			// 			cloneNode(true)
+			// 			replaceChild(,)
+			// 			insertBefore(,)
+			// 			remove():不兼容IE8- 
+			//      
+			//10, 事件
+			// 	(1),事件类型： 鼠标事件， 键盘事件， html事件
+			// 		鼠标事件： onclick, ondblclick, onmousedown, onmousemove, onmouseup
+			// 			   onmouseenter, onmouseleave, onmouseover, onmouseout
+			// 		键盘事件： onkeydown, onkeypress, onkeyup
+			// 		html事件： onload, onunload, onsubmit, onreset, onresize, onchange
+			//				onselect, onfocus, onblur, onscroll
+			//  
+			//	(2),事件对象
+			//      e = e || event
+			//      事件对象的属性： pageX/Y, clientX/Y, screenX/Y, offsetX/Y, button, which
+			//                 keyCode, charCode, ctrlKey, shiftKey, altKey
+			//      		   target, srcElement
+			//      
+			//  (3), 拖拽： onmousedown, onmousemove, onmouseup
+			//  (4), 事件冒泡 
+			// 		 阻止事件冒泡： e.stopPropagation(), e.cancelBubble=true
+			// 		 阻止默认行为： e.preventDefault(), e.returnValue=false
+			//      css样式的获取： window.getComputedStyle(box,null), box.currentStyle
+			// 
+			//11, Cookie 
+			//    增删改查
+			//    增改： setCookie
+			//    查： getCookie
+			//    删： removeCookie
+			// 
+			//	JSON: JSON解析， JSON序列化
+			//
+			//12, 正则表达式 
+			// 	  用户名， 手机号， 邮箱， 密码强度
+			//   . 任意单个字符
+			//   * 任意数量（0~n）
+			//   + 数量 （1~n）
+			//   {n} 数量为n
+			//   {n,m} 数量为n~m
+			//   {n,} 数量为n~∞
+			//   [] : 表示范围
+			//   \w : 数字字母下划线
+			//   () : 分组
+			//   \d : 数字
+			//  /^ $/ : 完全匹配
+			// 
+			//
+			//13， ES5, ES6
+			//     let, const
+			//     箭头函数
+			//     对象中属性和方法的简写
+			//     解构赋值
+			//     模板字符串  `${str} hello`
+			//     class 
+			//
+			//14, 运动
+			//    匀速运动
+			//    缓冲运动
+			//    抛物线运动
+			//    弹性运动
+			//	      圆周运动
+			//    轮播图
+			//	     放大镜
+			//	     瀑布流
+			//  ...
+			//
+			//
+			//15, 面向对象
+			//   面向对象的思想 
+			//	   面向过程的思想
+			//
+			//   工厂模式
+			//   构造函数   
+			//	 this
+			//   闭包
+			//
+			//
+			//
+			
+			
+			
+			
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+	</body>
+</html>

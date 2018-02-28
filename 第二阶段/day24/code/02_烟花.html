@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html, body {
+				overflow: hidden;
+			}
+			
+			.fire {
+				position: absolute;
+				width: 3px;
+				height: 30px;
+				background: white;
+			}
+			
+			.spark {
+				position: absolute;
+				width: 3px;
+				height: 3px;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				
+				//烟花
+				
+				//在页面上任意位置点击
+				document.onclick = function(e){
+					e = e||event;
+					var fire = new Fire(e.pageX, e.pageY);
+					fire.init().launch();
+				}
+				
+				//创建烟花，并发射 
+				function Fire(x, y){
+					//创建烟花节点
+					this.fireNode = document.createElement("div");		
+					this.x = x;
+					this.y = y;
+				}
+				
+				//方法
+				//init: 初始化属性
+				Fire.prototype.init = function(){
+					document.body.appendChild(this.fireNode);
+					this.fireNode.className = "fire";
+					this.fireNode.style.left = this.x + "px"
+					this.fireNode.style.top = document.documentElement.clientHeight-this.fireNode.offsetHeight + "px"
+					return this;
+				}
+				
+				//发射烟花
+				Fire.prototype.launch = function(){
+					
+					var that = this;
+					animate(this.fireNode, {top:this.y, height:3}, function(){
+						
+						// 1, 把烟花节点this.fireNode删除
+						document.body.removeChild(that.fireNode);
+							
+						// 2, 在鼠标位置创建很多的小div 
+						var count = 30 + parseInt(Math.random()*31); //30~60
+						for (var i=1; i<=count; i++) {
+							//创建小div
+							var p = new Spark(that.x, that.y)
+							p.init().paroapla();
+							
+						}
+							
+					});
+				}
+				
+				
+				//创建小div（星火）， 然后做抛物线运动
+				function Spark(x, y){
+					
+					//创建星火节点
+					this.sparkNode = document.createElement("div");
+					
+					this.x = x;
+					this.y = y;
+				}
+				
+				//方法
+				//init:初始化属性
+				Spark.prototype.init = function(){
+					document.body.appendChild(this.sparkNode);
+					this.sparkNode.className = "spark";
+					this.sparkNode.style.left = this.x + "px";
+					this.sparkNode.style.top = this.y + "px";
+					this.sparkNode.style.background = "rgb(" + parseInt(Math.random()*256) + ','  + parseInt(Math.random()*256) + ','  + parseInt(Math.random()*256) + ')'; 
+					return this;
+				}
+				
+				//抛物线运动
+				Spark.prototype.paroapla = function(){
+					
+					var xspeed = parseInt(Math.random()*21) * (Math.random()>0.5 ? 1 : -1)   //-20~20
+					var yspeed = parseInt(Math.random()*21) * (Math.random()>0.5 ? 1 : -1)   //-20~20
+					
+					var that = this;
+					var timer = setInterval(function(){
+						yspeed++;
+						
+						that.sparkNode.style.left = that.sparkNode.offsetLeft + xspeed + "px";
+						that.sparkNode.style.top = that.sparkNode.offsetTop + yspeed + "px";
+						
+						if (that.sparkNode.offsetLeft < 0 
+							|| that.sparkNode.offsetLeft > document.documentElement.clientWidth 
+							|| that.sparkNode.offsetTop > document.documentElement.clientHeight
+						) {
+							document.body.removeChild(that.sparkNode);
+							clearInterval(timer);
+						}
+						
+					}, 30);
+				}				
+			}
+		</script>
+	</head>
+	<body style="background: black;">
+	</body>
+</html>

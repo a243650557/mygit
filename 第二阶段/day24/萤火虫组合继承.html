@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		html,body {
+				width: 100%; height: 100%;
+				background: url(images/bg.jpg);
+				overflow: hidden;
+				}
+			.fireworm {
+				width: 18px;
+				height: 18px;
+				position: absolute;
+				}
+				.snow {
+				width: 18px; 
+				height: 18px;
+				position: absolute;
+			}
+			
+	</style>
+	<script src="move.js"></script>
+	<script src="move1.js"></script>
+	<script>
+			onload = function(){
+					/*
+			 1, 使用组合继承(原型链继承+借用构造函数)实现萤火虫+雪花
+				这里涉及到两个构造函数: 萤火虫Fireworm和雪花Snow
+
+				//萤火虫fireworm
+				// 属性： ele
+				// 方法： init, randomPoint, fly
+				
+				//雪花Snow
+				// 属性： ele
+				// 方法：init, randomPoint, falldown
+				
+				
+				//分析
+				//基类: Base
+				//属性： ele
+				//方法： init, randomPoint
+				
+				//子类1
+				//萤火虫fireworm
+				//方法： fly
+				
+				//子类2
+				//雪花Snow
+				// 方法：falldown
+				
+				ES5组合继承
+				ES6class继承
+			 */
+			function Base(src,className){
+				if(src != undefined && className != undefined ){
+					
+				this.ele = document.createElement("img");
+				console.log(this.ele);
+				document.body.appendChild(this.ele);
+				this.ele.src = src;
+				this.ele.className = className;
+				}
+			}
+			Base.prototype.init = function(){
+				this.ele.style.left = this.randomPoint().left + "px";
+				this.ele.style.top = this.randomPoint().top + "px";
+				return this;
+			}
+			Base.prototype.randomPoint = function(){
+				var x = parseInt(Math.random()*(document.documentElement.clientWidth-18));
+				var y = parseInt(Math.random()*(document.documentElement.clientHeight-18));
+				return {left:x, top:y};
+			}
+			
+			function Fireworm(src,className){
+				
+				Base.call(this,src,className);
+
+			}
+				Fireworm.prototype = new Base();
+				Fireworm.prototype.fly = function(){
+				var that = this;
+				animate(this.ele, this.randomPoint(), function(){
+						//console.log(this); //window
+						that.fly();
+				});
+			}
+			
+//					for(var i=0; i<30; i++){
+//						var fireworm1 = new Fireworm("images/1.jpg","fireworm");
+//						fireworm1.init();
+//						fireworm1.fly();
+//					}
+//			
+			var count = 6;
+			
+			var firetimer = setInterval(function(){
+					
+			if (count-- > 0) {
+				var fireworm1 = new Fireworm("images/1.jpg","fireworm");
+				fireworm1.init();
+				fireworm1.fly();
+			}
+				else  {
+				clearInterval(firetimer);
+			}
+			
+			}, 1000);
+			
+			
+			
+			
+			function Snow(src,className){
+				Base.call(this,src,className);
+				this.ele.style.left = this.randomPoint().left + "px"; 
+				this.ele.style.top = -18 + "px";
+			}
+				Snow.prototype = new Base();
+				Snow.prototype.falldown = function(){
+				
+				move(this.ele, "top", document.documentElement.clientHeight);
+//				if(this.ele.offsetTop > document.documentElement.clientHeight -50){
+//					this.ele.style.top = -18 + "px";
+//				}
+			}
+			
+			
+			var n = 1;
+			
+			var timer = setInterval(function(){
+					
+			if (n-- > 0) {
+				console.log(1);
+				var snow = new Snow("images/snow.gif","snow");
+				snow.init();
+				snow.falldown();
+			}
+				else  {
+				clearInterval(timer);
+			}
+			
+			}, 30);
+			
+			
+			}
+	</script>
+	<body>
+	</body>
+</html>

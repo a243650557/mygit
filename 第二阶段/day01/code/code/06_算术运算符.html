@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	 	<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//四则运算： +， -， *， /,  %
+//			console.log( 1 + 1 );
+//			console.log( 10 - 3 );
+//			console.log( 10 * 3 );
+//			console.log( 10 / 3 );
+//			console.log( 10 % 3 ); //1
+			
+			// + ： 字符串连接, 如果有一个操作数为字符串则会使用字符串连接的方式
+			//				将非字符串先转换成字符串再连接
+			var n = 10 + "20";
+			console.log(n);  //1020
+			console.log(typeof n);  //string
+			
+			var n = "10" + 1 + 2;
+			console.log(n);  //1012
+			
+			var n = "10" + (1 + 2);
+			console.log(n);  //103
+			
+			var n = "10" + true;
+			console.log(n); //10true
+			
+			//数字转换成字符串类型
+			var n = 10 + "";
+			console.log(n); //"10"
+			
+			// -  : 把非数字转换成数字， 再相减
+			var n = "10" - 1;
+			console.log(n); //9
+			console.log(typeof n); //number
+			
+			//数值字符串转换成number
+			var n = "10" - 0;
+			console.log(n); //10
+			
+			// /
+			console.log( 12/0 ); //Infinity
+			console.log( 0/0 ); //NaN
+			console.log( 12/0 * 0 ); //NaN
+			
+			//  5% , 0.05
+			
+			
+			//  计算闰年 (1，可以整除4但是不能整除100， 2，可以整除400)
+			// && : 并且
+			// || ： 或者
+			//  ！ ： 非
+			var year = 2016;
+			var b =  (year%4==0 && year%100!=0) || year%400==0;
+			console.log(b);
+			
+			//var n = 4*3 - 4 + 5*5/6 + 3*6;
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

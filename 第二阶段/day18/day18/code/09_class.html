@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//class   
+			// ES6 
+			
+			//ES5 构造函数
+			/*
+			function Iphone(color, size){
+				this.color = color;
+				this.size = size;
+				this.playGame = function(){
+					console.log("王者荣耀");
+				}
+			}
+			*/
+			
+			//ES6 class
+			class Iphone {
+				//构造器，在创建对象时会自动调用
+				constructor(color, size){
+					//属性
+					this.color = color;
+					this.size = size;
+				}
+				//方法
+				playGame(){
+					console.log("王者荣耀");
+				}
+			}
+						
+			var iphoneX = new Iphone("黑色", "5.8");
+			console.log(iphoneX.color);
+			console.log(iphoneX.size);
+			iphoneX.playGame();
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

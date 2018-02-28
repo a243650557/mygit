@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="cookie1.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			if(getCookie("cart")){
+				var arr = JSON.parse(getCookie("cart"));
+					var ul = document.getElementsByTagName("ul")[0];
+			for(i=0; i<arr.length; i++){
+				var li = document.createElement("li");
+				ul.appendChild(li);
+				li.innerHTML = "商品名称:" + arr[i].id +"," +"商品价格" + arr[i].price +"商品数量" + arr[i].number;
+			}
+			}
+			else{
+				console.log("不存在该商品");
+			}
+			
+			
+		
+			
+			
+		}
+	</script>
+	<body>
+		<h2>我的购物车</h2>
+		<ul>
+			
+		</ul>
+	</body>
+</html>

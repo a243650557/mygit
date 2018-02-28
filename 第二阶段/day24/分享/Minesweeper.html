@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.box {
+			position: relative;
+		}
+		
+		.father {
+			position: relative;
+		}
+		
+		.box div {
+			width: 20px;
+			height: 20px;
+			background-color: #ccc;
+			border: 2px solid #666;
+			border-top-color: #fff;
+			border-left-color: #fff;
+			/*position:absolute;*/
+			text-align: center;
+			float: left;
+		}
+		
+		.shadow {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, .5);
+			display: none;
+			text-align: center;
+		}
+		
+		.btn {
+			margin-top: 100px;
+			width: 80px;
+			height: 30px;
+		}
+		
+		.win {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, .5);
+			display: none;
+			text-align: center;
+			color: #fff;
+		}
+	</style>
+	<script>
+		onload = function() {
+
+			//index用来记录点击了多少个没有雷的方块，如果等于90游戏胜利
+			var index = 0;
+
+			page(10, 10);
+			interface();
+			mineClick();
+			mineNum();
+			openBlock();
+			rightClick();
+			more();
+
+			//创建所有的方块
+			function page(x, y) {
+				var box = document.querySelector('.box');
+				var html = '';
+				for(var i = 0; i < x; i++) {
+					for(var j = 0; j < y; j++) {
+
+						html += '<div></div>'
+					}
+
+					html += "<br>";
+				}
+				box.innerHTML = html;
+
+			}
+
+			//创建扫雷界面的宽高
+			function interface() {
+				var divs = document.querySelectorAll('.box div');
+				var box = document.querySelector('.box');
+				var shadow = document.querySelector('.shadow');
+				var winDiv = document.querySelector('.win');
+
+				box.style.height = divs.length / 10 * 24 + 'px';
+				box.style.width = divs.length / 10 * 24 + 'px';
+				shadow.style.height = divs.length / 10 * 24 + 'px';
+				shadow.style.width = divs.length / 10 * 24 + 'px';
+				winDiv.style.height = divs.length / 10 * 24 + 'px';
+				winDiv.style.width = divs.length / 10 * 24 + 'px';
+
+			}
+
+			//设置雷点及点击雷事件
+			function mineClick() {
+
+				var mineArr = [];
+
+				var divs = document.querySelectorAll('.box div');
+
+				var num = 20;
+
+				//生成10个不同的数
+				for(var i = 0; i < num; i++) {
+
+					var n = parseInt(Math.random() * divs.length);
+
+					if(mineArr.indexOf(n) == -1) {
+
+						mineArr.push(n);
+					} else {
+						i--;
+					}
+
+				}
+
+				//把对应10个数字的div设置成雷
+				for(var j = 0; j < mineArr.length; j++) {
+
+					divs[mineArr[j]].className = 'mine';
+
+				}
+
+				for(var j = 0; j < mineArr.length; j++) {
+
+					//点击到雷，游戏结束
+					divs[mineArr[j]].onclick = function() {
+						var allMine = document.querySelectorAll('.mine');
+						var shadow = document.querySelector('.shadow');
+						shadow.style.display = 'block';
+						var num = 0;
+						
+						var timer = setInterval(function() {
+							allMine[num].style.backgroundColor = 'red';
+
+							allMine[num].innerHTML = '雷';
+
+							num++;
+
+							if(num > allMine.length - 1) {
+
+								clearInterval(timer);
+							}
+						}, 200)
+
+					}
+				}
+			}
+
+			//计算出各个方块附近的雷数目
+			function mineNum() {
+				var divs = document.querySelectorAll('.box div');
+
+				for(var i = 0; i < divs.length; i++) {
+
+					var num = 0;
+
+					//上
+					if(i >= 10 && divs[i - 10].className == 'mine') {
+						num++;
+					}
+
+					//下
+					if(i < 90 && divs[i + 10].className == 'mine') {
+						num++;
+					}
+
+					//左
+					if(i % 10 != 0 && divs[i - 1].className == 'mine') {
+						num++;
+					}
+					//右
+					if(i % 10 != 9 && divs[i + 1].className == 'mine') {
+						num++;
+					}
+					//左上
+					if(i % 10 != 0 && divs[i - 11] && divs[i - 11].className == 'mine') {
+						num++;
+					}
+					//左下
+					if(i % 10 != 0 && divs[i + 9] && divs[i + 9].className == 'mine') {
+						num++;
+					}
+					//右上
+					if(i % 10 != 9 && divs[i - 9] && divs[i - 9].className == 'mine') {
+						num++;
+					}
+					//右下
+					if(i % 10 != 9 && divs[i + 11] && divs[i + 11].className == 'mine') {
+
+						num++;
+					}
+					if(num > 0) {
+
+						divs[i].num = num;
+
+					}
+
+				}
+
+			}
+
+			//点击除了雷以外的方块
+			function openBlock() {
+				var divs = document.querySelectorAll('.box div');
+
+				for(var i = 0; i < divs.length; i++) {
+
+					if(divs[i].className != 'mine') {
+
+						divs[i].n = i;
+
+						divs[i].onclick = function() {
+
+
+							openSpace(divs, this.n);
+
+							if(index == 90) {
+								var winGame = document.querySelector('.win')
+								winGame.style.display = 'block';
+								win();
+							}
+						}
+
+					}
+
+				}
+
+			}
+
+			//如果点开的格子为空白格，即其周围有0颗雷，则其周围格子自动打开；
+			//如果其周围还有空白格，则会引发连锁反应；
+			function openSpace(divs, i) {
+
+				if(divs[i].bool) return;
+
+				divs[i].bool = true;
+
+				if(divs[i].bool) index++;
+
+				//console.log(index);
+
+				divs[i].style.border = '1px solid #ccc';
+				divs[i].innerHTML = divs[i].num || '';
+				divs[i].style.backgroundColor = '#f1f1f1';
+				divs[i].style.width = '22px';
+				divs[i].style.height = '22px';
+
+				//如果点击的是空白格
+				if(!divs[i].num) {
+
+					//上
+					if(i >= 10 && divs[i - 10].className != 'mine') {
+						openSpace(divs, i - 10)
+					}
+
+					//下
+					if(i < 90 && divs[i + 10].className != 'mine') {
+						openSpace(divs, i + 10)
+					}
+
+					//左
+					if(i % 10 != 0 && divs[i - 1].className != 'mine') {
+						openSpace(divs, i - 1)
+					}
+					//右
+					if(i % 10 != 9 && divs[i + 1].className != 'mine') {
+						openSpace(divs, i + 1)
+					}
+					//左上
+					if(i % 10 != 0 && divs[i - 11] && divs[i - 11].className != 'mine') {
+						openSpace(divs, i - 11)
+					}
+					//左下
+					if(i % 10 != 0 && divs[i + 9] && divs[i + 9].className != 'mine') {
+						openSpace(divs, i + 9)
+					}
+					//右上
+					if(i % 10 != 9 && divs[i - 9] && divs[i - 9].className != 'mine') {
+						openSpace(divs, i - 9)
+					}
+					//右下
+					if(i % 10 != 9 && divs[i + 11] && divs[i + 11].className != 'mine') {
+						openSpace(divs, i + 11)
+					}
+				}
+			}
+
+			//再玩一次
+			function more() {
+				var btn = document.querySelector('.btn');
+				btn.onclick = function() {
+
+					index = 0;
+					var shadow = document.querySelector('.shadow');
+					shadow.style.display = 'none';
+					page(10, 10);
+					interface();
+					mineClick();
+					mineNum();
+					openBlock();
+					rightClick();
+
+				}
+
+			}
+
+			//游戏胜利
+			function win() {
+				var btn = document.querySelector('.btn1');
+
+				btn.onclick = function() {
+					index = 0;
+					var win1 = document.querySelector('.win');
+					win1.style.display = 'none';
+					page(10, 10);
+					interface();
+					mineClick();
+					mineNum();
+					openBlock();
+					rightClick();
+				}
+			}
+
+			//右键插旗：在你认为有雷的格子上，点击右键即可标记雷
+			function rightClick() {
+
+				var divs = document.querySelectorAll('.box div');
+
+				for(var i = 0; i < divs.length; i++) {
+
+					divs[i].oncontextmenu = function(e) {
+
+						e = e || event;
+						e.preventDefault();
+						if(!this.b) {
+							this.style.background = "blue";
+							this.b = true;
+						} else {
+							this.style.background = '#ccc';
+							this.b = false;
+						}
+					}
+				}
+
+			}
+
+		}
+	</script>
+
+	<body>
+		<section class="father">
+			<div class="box"></div>
+			<div class="shadow">
+				<input type="button" class="btn" value="再来一次" />
+			</div>
+			<div class="win">
+				<p>恭喜过关</p>
+				<input type="button" class="btn1" value="再来一次" />
+			</div>
+		</section>
+	</body>
+
+</html>

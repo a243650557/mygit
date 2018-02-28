@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				/*
+				var oBox = document.getElementById("box");
+				console.log(oBox.offsetWidth); //104, 包括border,padding
+				console.log(oBox.clientWidth); //102, 包括padding, 不包括border
+				console.log(oBox.style.width); //100px
+				
+				//clientWidth, clientHeight
+				*/
+				
+				//节点的共有属性： nodeName, nodeType, nodeValue
+				//			nodeName    nodeType   nodeValue
+				//元素节点                    标签名称		    1      	  null
+				//属性节点                    属性名称		    2      	     属性值
+				//文本节点                    #text		    3      	    文本内容
+				
+				//元素节点
+				
+				var oBox1 = document.getElementById("box1");
+				//console.log(oBox1.nodeName); //DIV
+				//console.log(oBox1.nodeType); //1
+				//console.log(oBox1.nodeValue); //null
+				
+				//属性节点
+				
+				//oBox1.attributes: 获取obox1中的所有属性
+				var attrs = oBox1.attributes; 
+				console.log(attrs); //[object NamedNodeMap], id="box" 属性节点数组 是对象
+				//console.log(attrs.length); //1
+				//console.log(attrs[0]); //[object Attr], 属性节点
+				console.log(attrs[0].nodeName); //id
+				console.log(attrs[0].nodeType); //2
+				console.log(attrs[0].nodeValue); //box1
+				
+				console.log(attrs["id"]); //[object Attr] id="box"
+				
+				
+				//文本节点
+				
+				//childNodes: 所有子元素节点和子文本节点
+				var oBox1 = document.getElementById("box1");
+				
+				//console.log(oBox1.childNodes); //[object NodeList]， 节点列表，节点数组
+				//console.log(oBox1.childNodes.length); //5,换行页包括
+				
+				console.log( oBox1.childNodes[1].innerHTML ); //[object Text], 文本节点对象
+				console.log( oBox1.childNodes[1].className ); //#text
+				console.log( oBox1.childNodes[0].nodeType ); //3
+				console.log( oBox1.childNodes[0].nodeValue ); //"box1"
+				
+				
+				
+				//childNodes: 所有子元素节点和子文本节点
+				//children: 所有子元素节点
+				
+				var oBox1 = document.getElementById("box1");
+				console.log(oBox1.children); //[object HTMLCollection], 数组
+				console.log(oBox1.children.length); //2
+				console.log(oBox1.children[0].id); //box2
+				console.log(oBox1.children[1].id); //box3
+				console.log(oBox1.children[0].className)
+				console.log(oBox1.children[0].nodeType);
+				
+				
+				//nodeValue :一般是文本节点或属性节点调用 ， 不支持解析HTML标签
+				//innerHTML :要使用元素节点调用， 支持HTML标签
+				//document.write() : 支持HTML标签, 不建议使用
+				//value : 使用元素节点调用， 获取或设置输入框的内容
+				/*
+				//nodeValue
+				var oBox1 = document.getElementById("box1");
+				oBox1.childNodes[0].nodeValue = "<b>LOL</b>";
+				
+				//innerHTML
+				var oBox2 = document.getElementById("box2");
+				oBox2.innerHTML = "<b>LOL</b>";
+				*/
+				
+				
+				//忽略空白文本节点
+				var oBox1 = document.getElementById("box1");
+				
+				function fn(box){
+					var nodes = box.childNodes;
+					for (var i=0; i<nodes.length; i++) {
+						//如果是文本节点， 且该文本节点的内容是只有空格的
+						if (nodes[i].nodeType==3 && /^\s+$/.test(nodes[i].nodeValue)) {
+							//找到该空白文本节点后， 将该节点通过父节点删除自身
+							nodes[i].parentNode.removeChild(nodes[i]);
+						}
+					}
+				}
+				fn(oBox1);
+				console.log(oBox1.childNodes.length); //3
+				
+				// \s : 表示空格
+				// + ： 表示一个或多个
+				//   /^\s+$/ : 只有空格，空格是一个或多个
+				
+				//parentNode : 父节点
+				//removeChild() : 移除指定的子节点
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="border: 1px solid green; padding: 1px; width: 100px; height: 100px;  background: red;">box</div>
+	
+		<div id="box1" class="foo">box1
+			<div id="box2" class="abc">box2</div>        
+			<div id="box3">box3</div>
+		</div>
+	</body>
+</html>

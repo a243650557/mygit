@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//1, 今天课堂所有的代码，照敲至少一次, 理解并熟练掌握今日知识点.
+			//2, 入职薪水10K，每年涨幅入职薪水的5%，50年后工资多少？
+			var salary = 10;
+			var d = 0.05;
+			var years = 50;
+			var result = salary + salary*d*years;
+			console.log(result); //35k
+			
+			
+			//3, 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+			var hours = 89;
+			var day = parseInt(hours/24);
+			var hour = hours%24;
+			console.log(day + "天" + hour +"时"); //3天17时
+			
+			
+			//4, 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+			//它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+			//提示：摄氏度与华氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)
+			var d = 80;
+			var result = 5/9.0*(d-32);
+			console.log(result.toFixed(2)); //26.67
+			
+			//5, 给定一个5位数，分别把这个数字的万位， 千位，百位、十位、个位算出来并显示。如： 34567
+   			var n = 34567;
+			var a = parseInt(n/10000); //万位
+			var b = parseInt(n/1000) % 10; //千位
+			//var b = parseInt((n%10000)/1000); //千位
+			var c = parseInt(n/100) % 10; //百位
+			var d = parseInt(n/10) % 10; //十位
+			var e = n%10; //个位
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				
+				//1，BOM
+				//     location: href, search, assign(), reload()
+				//     open() 
+				
+				
+				//2, DOM
+				// 2.1， DOM元素节点的获取
+				//			document.getElementById()
+				//			document.getElementsByTagName()
+				//			document.getElementsByName()
+				//			document.getElementsByClassName()
+				
+				//2.2, DOM元素节点的属性
+				//	box.tagName, box.id, box.title,
+				//		  	box.style
+				//			box.className
+				//			box.innerHTML, box.innerText
+				//			box.value
+				//			box.children
+				//			box.offsetWidth, box.offsetHeight
+				//			box.offsetLeft, box.offsetTop
+				//			box.clientWidth, box.clientHeight
+				
+				
+				
+				
+				
+				//节点间的关系
+				var box = document.getElementById("box");
+				var box1 = document.getElementById("box1");
+				var box2 = document.getElementById("box2");
+				
+				//parentNode: 父节点
+				//console.log(box1.parentNode == box); //true
+				
+				//children: 所有子元素节点
+				//console.log(box.children.length); //2
+				//console.log(box.children[0] == box1); //true
+				//console.log(box.children[1] == box2); //true
+				
+				//firstChild: 第一个子节点（可以是文本节点或元素节点）
+				//console.log(box.firstChild.nodeValue);
+				//console.log(box.firstElementChild == box1); //true 不兼容IE8-
+				
+				//lastChild: 最后一个子节点（可以是文本节点或元素节点）
+				//console.log(box.lastChild.nodeValue);
+				//console.log(box.lastElementChild == box2); //true 不兼容IE8-
+				
+				//nextSibling : 后面的一个节点（可以是文本节点或元素节点）
+				//console.log(box1.nextSibling.nodeValue);
+				//console.log(box1.nextElementSibling == box2); //true, 不兼容IE8-
+				
+				//previousSibling : 前面的一个节点（可以是文本节点或元素节点）
+				//console.log(box2.previousSibling.nodeValue);
+				//console.log(box2.previousElementSibling == box1);//true, 不兼容IE8-   
+				
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div id="box">aa
+			<div id="box1">box1</div>bb
+			<div id="box2">box2</div>cc
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			   2, 有一个红色div块，有四个button, 上下左右, 
+				   当我点击对应的按钮,这个块就进行对应的行走。
+			 */
+			onload = function(){
+				
+				var abtn = document.getElementsByTagName("input");
+				var box = document.getElementById("box");
+				
+				//左
+				abtn[0].onclick = function(){
+					box.style.left = box.offsetLeft - 10 + "px";
+				}
+				//右
+				abtn[1].onclick = function(){
+					box.style.left = box.offsetLeft + 10 + "px";
+				}
+				//上
+				abtn[2].onclick = function(){
+					box.style.top = box.offsetTop - 10 + "px";
+				}
+				//下
+				abtn[3].onclick = function(){
+					box.style.top = box.offsetTop + 10 + "px";
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="向左" />
+		<input type="button" value="向右" />
+		<input type="button" value="向上" />
+		<input type="button" value="向下" />
+		
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 100px; top: 100px;"></div>
+	</body>
+</html>

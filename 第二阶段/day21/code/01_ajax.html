@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//Ajax : 一种可以请求后台数据的技术
+			
+			//进程： 一个程序从运行到结束的一个过程
+			//线程： 进程中的分支， 每个进程至少有一个主线程， 还可以有其他分线程
+			
+			//同步： 在同一个线程中按顺序执行
+			//异步： 在不同线程中执行
+			
+			
+			//定时器， 延时器是异步， 异步操作不会影响后面代码的执行
+			/*
+			setTimeout(function(){
+				console.log(10);
+			}, 1000)
+			
+			console.log(20);
+			*/
+			
+			
+			//Ajax
+			//Ajax核心： XMLHttpRequest(简称：xhr)
+			//var xhr = new XMLHttpRequest(); //不兼容IE6
+			//var xhr = new ActiveXObject("Microsoft.XMLHTTP"); //IE
+			
+			function createXHR(){
+				if (window.XMLHttpRequest){
+					return new XMLHttpRequest(); //不兼容IE6
+				}
+				return new ActiveXObject("Microsoft.XMLHTTP"); //IE
+			}
+			
+			
+			//同步
+			/*
+			//1, 创建xhr对象
+			var xhr = createXHR();
+			
+			//2, 调用xhr的open方法
+			//准备一些要提交给后台的内容
+			
+			 // 第一个参数： 请求方式（get, post）
+			 // 第二个参数：接口（url）
+			 //第三个参数：是否异步， true表示异步， false表示同步
+			 //
+			xhr.open("GET", "json/person.json", false);
+			
+			//3,调用send方法
+			//发送请求给后台
+			xhr.send(null);
+			
+			//4,接收数据
+			if (xhr.status == 200){
+				//说明请求成功
+				console.log(xhr.responseText);
+			}
+			else {
+				//请求失败
+				console.log(xhr.status);
+				alert("请求失败， 请重试！");
+			}
+			//console.log( xhr.responseText ); 
+			//console.log( xhr.status );    //200
+			//console.log( xhr.statusText );  //OK
+			
+			//request: 请求， 从客户端去请求后台
+			//response: 响应， 从后台发送数据给客户端， 响应数据
+			
+			//http协议
+			//status：http状态码
+			//       200: 表示成功
+			//       404: 表示url错了
+			//       4XX: 表示客户端错误
+			//       5XX: 表示服务器端错误
+			//responseText ： 获取后台响应的数据
+			
+			
+			console.log("同步请求之后才调用");
+			
+			*/
+			
+			
+			//异步
+			//1，创建xhr对象
+			var xhr = createXHR();
+			
+			//2, open
+			//true:表示异步请求
+			//xhr.open("get", "json/person.json", true);
+			xhr.open("get", "http://60.205.181.47/myPHPCode2/person.php", true);
+			
+			//3,send
+			xhr.send(null);
+			
+			//取消异步请求
+			//xhr.abort();
+
+			//4,接收数据
+			//此时数据并未获取到， 因为请求是异步的
+			//console.log(xhr.status); //0
+			//console.log(xhr.responseText); //""
+			//监听请求后台的改变
+			xhr.onreadystatechange = function(){
+				//console.log(xhr.readyState);
+				
+				//xhr.readyState==4 表示服务器端已经处理完成了
+				//xhr.status==200表示服务器的处理结果是成功的
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						console.log("请求成功！");
+						
+						//json字符串
+						//console.log(xhr.responseText);
+						//console.log(typeof xhr.responseText); //string
+						
+						//JSON解析
+						var arr = JSON.parse(xhr.responseText);
+						console.log(arr);						
+					}
+					else {
+						console.log("请求失败！");
+					}
+				}
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

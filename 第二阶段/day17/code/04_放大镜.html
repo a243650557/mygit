@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#smallImg {
+				width: 200px; height: 200px; 
+				/*background: url(images/images2/1_2.jpeg); background-size:cover;*/ 
+				position: absolute;left: 20px; top: 100px;
+			}
+			#smallImg img {
+				width: 100%; height: 100%;
+			}
+			#smallArea {
+				width: 100px; height: 100px; 
+				background: rgba(122,200,200,0.3); 
+				position: absolute;left: 50px; top: 50px;
+				cursor: move;
+				display: none;
+			}
+			
+			#bigArea {
+				width: 300px; height: 300px; 
+				position: absolute; left: 240px; top: 100px;
+				overflow: hidden;
+				display: none;
+			}
+			#bigImg {
+				position: absolute; left: 0px; top: 0;
+				width: 600px; height: 600px;
+				
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				function $(id){
+					return document.getElementById(id);
+				}
+				
+				//在小图中移动
+				$("smallImg").onmousemove = function(e){
+					e = e||event;
+					
+					//显示小区域和大区域
+					$("smallArea").style.display = "block";
+					$("bigArea").style.display = "block";
+					
+					
+					var x = e.pageX - $("smallImg").offsetLeft - $("smallArea").offsetWidth/2;
+					var y = e.pageY - $("smallImg").offsetTop - $("smallArea").offsetHeight/2;
+					
+					//控制边界
+					if (x < 0){
+						x = 0;
+					} 
+					else if (x > $("smallImg").offsetWidth-$("smallArea").offsetWidth) {
+						x = $("smallImg").offsetWidth-$("smallArea").offsetWidth;
+					}
+					if (y < 0) {
+						y = 0;
+					}
+					else if (y > $("smallImg").offsetHeight-$("smallArea").offsetHeight){
+						y = $("smallImg").offsetHeight-$("smallArea").offsetHeight
+					}
+					
+					//移动小区域
+					$("smallArea").style.left = x + "px";
+					$("smallArea").style.top = y + "px";
+					
+					//放大系数
+					var scale = $("bigImg").offsetWidth / $("smallImg").offsetWidth;
+					$("bigImg").style.left = -scale * x + "px";
+					$("bigImg").style.top = -scale * y + "px";
+					
+				}
+				
+				//从小图移出
+				$("smallImg").onmouseleave = function(){
+					//隐藏小区域和大区域
+					$("smallArea").style.display = "none";
+					$("bigArea").style.display = "none";
+				}
+				
+			}
+		</script>
+	</head>
+	<body style="background: #ccc;">
+		<div id="smallImg">
+			<img src="images/images2/1_2.jpeg" />
+			<div id="smallArea"></div>
+		</div>
+		
+		<div id="bigArea">
+			<img id="bigImg" src="images/images2/1_2.jpeg"/>
+		</div>
+	</body>
+</html>

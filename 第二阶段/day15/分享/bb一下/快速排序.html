@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			var arr = [10, 5, 3, 1, 7, 2, 8];
+			console.log(arr);
+			function quickSort(arr, most_left, most_right){
+				var left = most_left;
+				var right = most_right;
+				var temp = 0;
+				if(left<=right){					//待排序的元素至少有两个的情况
+					temp = arr[left];				//待排序的元素至少有两个的情况
+					while(left!=right){				//从左右两边交替扫描，直到left = right
+						while(left<right && arr[right]>=temp){
+							right--;					//从右往左扫描，找到第一个比基准元素小的元素
+						}
+						arr[left] = arr[right];			//找到这个元素arr[right]后与arr[left]交换
+						while(left<right && arr[left]<=temp){
+							left++;						//从左往右扫描，找到第一个比基准元素大的元素
+						}
+						arr[right] = arr[left];			//找到这个元素arr[left]后，与arr[right]交换
+					}
+					arr[left] = temp;					//基准元素归位
+					quickSort(arr, most_left, left-1);	//对基准元素左边的元素进行递归排序
+					quickSort(arr, right+1, most_right);//对基准元素右边的进行递归排序
+				}
+			}
+			quickSort(arr, 0, arr.length-1);
+			console.log(arr);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

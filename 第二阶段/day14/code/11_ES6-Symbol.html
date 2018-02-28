@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 ES6-Symbol
+			      Symbol 是ES6引入的一种新的数据类型，来表示独一无二的值
+			
+			数据类型有6种：Undefined、Null、布尔值（Boolean）、字符串（String）、数值（Number）、
+			对象（Object） 现在有7种了， 加上Symbol
+			*/
+			
+			
+			var s1 = Symbol("33");
+			//console.log(s1); //Symbol()
+			//console.log(typeof s1); //symbol
+			
+			var s2 = Symbol("33");
+			//console.log(s1 == s2); //false
+			
+			
+			var name1 = "hello";
+			var name2 = "hello";
+			
+			var obj1 = {};
+			obj1[name1] = "你好";
+			obj1[name2] = "我不好";
+			//console.log( obj1[name1] ); //我不好
+			
+			
+			var s1 = Symbol("hello");
+			var s2 = Symbol("hello");
+			
+			var obj2 = {};
+			obj2[s1] = "你好";
+			obj2[s2] = "我不好";
+			//console.log( obj2[s1] ); //你好
+			console.log( obj2 ); //你好
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				//页面加载完成
+				
+				//JQ对象  和 DOM对象
+				
+				//JS
+				var box = document.getElementById("box"); //js中DOM对象
+				//box.innerHTML = "王者荣耀";
+				//box.html("王者荣耀"); DOM对象不可以调用jq对象中的方法
+				
+				//JQ
+				var box = $("#box"); //jq对象
+				//box.innerHTML = "LOL"; //jq对象不可以调用js中DOM对象的方法, 没有报错， 不会影响后面代码的执行，不好找错误
+				//box.html("LOL");
+				
+				
+				//DOM对象和JQ对象之间的相互转化
+				//DOM对象转换成JQ对象
+				var box = document.getElementById("box");
+				var jqbox = $(box); //
+				jqbox.html("LOL");
+				
+				//JQ对象转换成DOM对象 
+				var jqbox = $(".foo"); //节点列表（包含所有匹配选择器的元素）
+				//jqbox.html("今晚吃鸡");
+				//console.log(jqbox); //jq对象
+				var box = jqbox[0]; //表示获取匹配的第一个节点
+				//var box1 = jqbox[1]; //表示获取匹配的第二个节点
+				var box1 = jqbox.get(1); //表示获取匹配的第二个节点
+				//console.log(box); //[object HTMLDivElement], js对象
+				
+				box1.innerHTML = "绝地求生";
+				
+				
+				//
+				//html() 等价于 JS中的innerHTML		 
+				// html() : 如果传了参数则表示设置， 如果不传参数则表示获取
+				//
+				
+				//
+				var box = $("#box");
+				//console.log( box.html() ); //获取内容
+				//box.html("王者荣耀");
+				
+				//val() : 等价于JS中的value属性 
+				var txt = $("input");
+				console.log( txt.val() ); 
+				txt.val("你好");
+				
+				//text() : 等价于innerText
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div class="foo">box1</div>
+		<div class="foo">box2</div>
+		<input type="text" value="hello" />
+	</body>
+</html>

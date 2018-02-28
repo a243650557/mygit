@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0;padding: 0; border: none;}
+			ul,li {list-style: none;}
+			ul {
+				width: 410px;
+				margin: 50px auto;
+			}
+			li {
+				width: 400px;
+				border: 1px solid red;
+				padding: 5px;
+				margin-bottom: 5px;
+			}
+			.name {coloname r:  red;}
+			div {
+				width: 100px; height: 30px;
+				background: orange;
+				border-radius: 3px;
+				text-align: center;
+				line-height: 30px;
+				margin: 0 20px;
+				cursor: pointer;
+				float: left;
+				
+			}
+			
+		</style>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				//加载更多数据（翻页， 每页显示5条数据）
+  				//提供接口: http://60.205.181.47/myPHPCode2/football.php?page=1 
+  				
+  				var list = document.getElementById("list");
+  				var prev = document.getElementById("prev");
+  				var next = document.getElementById("next");
+  				
+  				//默认显示第一页数据
+  				var page = 1;
+  				
+  				//获取第page页的数据
+  				getData();
+  				function getData() {
+  					
+  					//判断是否在第1页之前
+  					if (page <= 0) {
+  						page = 1;
+  						return;
+  					}
+  					
+	  				var xhr = createXHR();
+	  				xhr.open("get", "http://60.205.181.47/myPHPCode2/football.php?page="+page, true);
+	  				xhr.send(null);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							
+							//JSON解析
+							var arr = JSON.parse(xhr.responseText);
+							
+							
+							//如果过了最后一页了
+							if (arr.length == 0) {
+								alert("已经到了最后一页了");
+								return;
+							}
+							
+							//先把旧节点清除
+							list.innerHTML = "";
+
+							//再添加新节点
+							for (var i=0; i<arr.length; i++){
+								var obj = arr[i]; 
+								
+								//创建li显示每一个obj数据
+								var li = document.createElement("li");
+								list.appendChild(li);
+								li.innerHTML = "<p class='name'>"+obj.name+"</p><p class='content'>"+obj.content+"</p>"
+							}
+						}
+					}
+				}
+				
+				//上一页
+				prev.onclick = function(){
+					page--;
+					getData();
+				}
+				
+				//下一页
+				next.onclick = function(){
+					page++;
+					getData();
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>  
+				<p class="name">张三</p>
+				<p class="content">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+			</li>
+			<li>
+				<p class="name">张三</p>
+				<p class="content">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+			</li>
+			<li>  
+				<p class="name">张三</p>
+				<p class="content">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+			</li>
+			<li>
+				<p class="name">张三</p>
+				<p class="content">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+			</li>
+			<li>  
+				<p class="name">张三</p>
+				<p class="content">张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三</p>
+			</li>-->
+
+		</ul>
+		<div id="prev">上一页</div>
+		<div id="next">下一页</div>
+	</body>
+</html>

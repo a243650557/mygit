@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var isIE9 = function(){
+			    	if(/msie [6|7|8|9]/i.test(navigator.userAgent))
+			    		return true;
+			    	return false
+                }
+				var tagName = function (obj,obj2){
+                	return obj.getElementsByTagName(obj2)
+                }
+				
+				//IE89没有placeholder的问题
+				var placeHolder = function(color){
+				    if(!isIE9())return false;
+				    var iptDefCol="#666";               //placeholder默认颜色    
+				    var ipt = tagName(document, 'input');
+				    var iptArr = [];                    //存放获取到有placeholder的input标签
+				    var plArr = [];                     //存放获取到placeholder的值
+				    
+				    for(var i=0;i<ipt.length;i++){
+				        var pl = ipt[i].getAttribute('placeholder');
+				        if(pl){
+				            iptArr.push(ipt[i]);
+				            plArr.push(pl);
+				            ipt[i].value = pl;
+				            ipt[i].style.color = iptDefCol
+				        }       
+				    }
+				    for(var i=0;i<iptArr.length;i++){
+				        iptArr[i].tags = i;
+				        iptArr[i].onfocus = function(){
+				            if(this.value == plArr[this.tags]){
+				                this.value = '';
+				                this.style.color = color
+				            }            
+				        }
+				        iptArr[i].onblur = function(){
+				            if(this.value=='' || this.value==plArr[this.tags]){
+				                this.value = plArr[this.tags];
+				                this.style.color = iptDefCol
+				            }                
+				        }            
+				    }
+				}
+				placeHolder("red");
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" placeholder="张三"/>
+	</body>
+</html>

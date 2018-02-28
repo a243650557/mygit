@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var oimg = document.getElementsByTagName("img")[0];
+				
+				document.onmousedown = function(e){
+					e = e || event;
+					var arr = [];
+					
+					document.onmousemove = function(e){
+						e = e || event;
+						arr.push({left:e.pageX, top:e.pageY});
+					}
+					document.onmouseup = function(){
+						document.onmousemove = document.onmouseup = null;
+						
+						//运动
+						oimg.src = "images/images2/2.gif";
+						var i = 0;
+						var timer = setInterval(function(){
+							if (i < arr.length) {
+								oimg.style.left = arr[i].left + "px";
+								oimg.style.top = arr[i++].top + "px";
+							}
+							else {
+								clearInterval(timer);
+								oimg.src = "images/images2/1.gif";
+							}
+						}, 50);
+					}
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="images/images2/1.gif" style="position: absolute; left: 10px; top: 10px;"/>
+	</body>
+</html>

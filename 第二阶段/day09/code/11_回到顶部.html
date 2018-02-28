@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				
+				onscroll = function(){
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					
+					if (scrollTop > 2000) {
+						box.style.display = "block"; //显示
+					}
+					else {
+						box.style.display = "none"; //隐藏
+					}
+				}
+				
+				//点击按钮回到顶部
+				box.onclick = function(){
+					document.documentElement.scrollTop = 0;
+					document.body.scrollTop = 0;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p><p>11111</p>
+		<div id="box" style="display: none; width: 100px; height: 30px; background: green; color: white; text-align: center; line-height: 30px; cursor: pointer; position: fixed;right: 0; bottom: 0;">回到顶部</div>
+	</body>
+</html>

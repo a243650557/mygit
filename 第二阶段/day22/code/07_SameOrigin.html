@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="ajax.js"></script>
+		<script>
+			
+			//同源策略： 浏览器的一种安全策略
+			//所谓同源是指：域名，协议，端口相同
+			//ajax请求不支持跨域;其他技术可以
+			//ajax请求
+			var xhr = createXHR();
+			xhr.open("get", "http://127.0.0.1/08_demo.php", true);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState==4 && xhr.status==200) {
+					console.log(xhr.responseText);
+				}
+			}
+			
+			
+			//跨域问题（跨源问题） : 不同源
+			//源是指：域名(ip)，协议，端口
+			
+			//不同源指的是： 当前html所在的服务器地址（源）和在该html中使用ajax调用的接口url的服务器地址（源）不一致
+			//
+			/*
+			 "XMLHttpRequest cannot load http://127.0.0.1/sz1713/21-25/day22/code/08_demo.php. 
+			 No 'Access-Control-Allow-Origin' header is present on the requested resource. 
+			 Origin 'http://127.0.0.1:8020' is therefore not allowed access."
+			 * */
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

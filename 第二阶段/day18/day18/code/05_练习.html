@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 练习：创建以下构造函数(类)
+				
+				GarfieldCat : 加菲猫
+				属性：fur; glasses
+				方法：eat; miaow; talk
+				
+				TomCat : 汤姆猫
+				属性：fur; friend
+				方法：eat; miaow; catchMouse
+				
+			*/
+			
+			
+			
+			//GarfieldCat : 加菲猫
+			function GarfieldCat(fur, glasses){
+				this.fur = fur;
+				this.glasses = glasses;
+				this.eat = function(){
+					console.log("eat");
+				}
+				this.miaow = function(){
+					console.log("喵喵~~");
+				}
+				this.talk = function(){
+					console.log("说话")
+				}
+			}
+			
+			//TomCat : 汤姆猫
+			function TomCat(fur, friend){
+				this.fur = fur;
+				this.friend = friend;
+				this.eat = function(){
+					console.log("eat");
+				}
+				this.miaow = function(){
+					console.log("喵喵~~");
+				}
+				this.catchMouse = function(){
+					console.log("抓老鼠");
+				}
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

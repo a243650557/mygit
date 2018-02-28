@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//字符串的函数
+			//str.substring() : 截取字符串
+			var str = "hello world";
+			//var str2 = str.substring(2); //从下标2到最后
+			var str2 = str.substring(2,7); //从下标2到7, [2,7)
+			//console.log(str2); //"llo w"
+			
+			
+			//str.split() : 拆分字符串， 分割字符串
+			//返回值： 数组
+			var str = "hello hello kitty";
+			var arr = str.split(" ");
+			//console.log(arr); //['hello','hello','kitty']
+			
+			var str = "hello hello kitty";
+			var arr = str.split("");
+			//console.log(arr); //[h,e,l,l,o, ,h,e,l,l,o, ,k,i,t,t,y]
+
+			var str = "hello hello kitty";
+			var arr = str.split("ell");
+			//console.log(arr); //['h','o h','o kitty']
+			
+			var str = "hello hello kitty";
+			var arr = str.split("he");
+			//console.log(arr); //['','llo ','llo kitty']
+			
+			var str = "hello hello kitty";
+			var arr = str.split("hello2");
+			//console.log(arr); //['hello hello kitty']
+			//console.log(typeof arr); //object
+			//console.log(arr instanceof Array); //true
+			
+			//instanceof： 判断arr是否由Array创建出来的，即 判断arr是否是数组。
+			
+			
+			//split()的第2个参数: 取拆分后数组的前几个
+			var str = "hello hello kitty";
+			var arr = str.split(" ", 2);
+			//console.log(arr); //[hello,hello]
+			
+			//支持正则表达式
+			var str = "hELLO hello kitty";
+			var arr = str.split(/hello/i);
+			//console.log(arr); //['',' ',' kitty']
+			
+			
+			
+			//
+			var n= "a";
+			if (n>='a'&&n<='z') {
+				//console.log("小写")
+			}
+			
+			/*
+			//https://www.baidu.com/s?name=avery&age=20&sex=male ,  取出name, age和sex的值
+			//网址： https://www.baidu.com/s?name=avery&age=20&sex=male
+			//第1部分： https://www.baidu.com/s
+			//     	协议： https /http
+			//		域名（或ip）： www.baidu.com  //外网WAN 内网LAN
+			//		服务器文件路径: /s
+			
+			//第2部分：name=avery&age=20&sex=male
+			//		参数： 键值对 name=value
+			//		每两个参数使用&符号分隔
+			
+			//  ? : 用来分隔参数部分的
+			
+			var str = "https://www.baidu.com/s?name=avery&age=20&sex=male";
+			console.log( getParamByName(str, "name") );
+			console.log( getParamByName(str, "age") );
+			console.log( getParamByName(str, "sex") );
+			
+			function getParamByName(str, name){
+				
+			}
+			*/
+			
+			//练习1
+			
+			//1, 已知有两个字符串str1 = ‘hello’ , str2 = ‘world’,将两个字符串组成一个;
+			var str1 = 'hello', str2 = 'world';
+			console.log( str1 + str2 );
+			
+			
+			//2, 已知字符串str = “I love BeiJing”,找出love的范围
+			var str = "I love BeiJing";
+			var str2 = "love";
+			var start = str.indexOf(str2);
+			var end = start + str2.length;
+			console.log("[" + start + "," + end + ")")
+			
+			//3, 已知字符串str = “I hate BeiJing!”,提取第3个字符到第5个字符
+			var str = "I hate BeiJing!";
+			console.log( str.substring(2,5) );  //hat
+			
+			
+			//4, 将字符串str = “When I was young, I love a girl in neighbor class.”中,
+			//	 从young提取到girl。但是不许数 young, I love a girl
+			var str = "When I was young, I love a girl in neighbor class."
+			var str2 = "young";
+			var str3 = "girl";
+			var start = str.indexOf(str2);
+			var end = str.indexOf(str3) + str3.length;
+			console.log( str.substring(start, end) );
+			
+			
+			
+			
+			
+			//练习2: 
+			//1, 去掉字符串123@zh@qq.com中的@;
+			var str = "123@zh@qq.com";
+			console.log( str.replace(/@/g, "") );
+			
+			//2, 任意给定的一串字符，统计字符串里面的大写字母和小写字母的个数
+			var str = "DfsdfewrDF234";
+			var count1 = 0; //大写个数
+			var count2 = 0; //小写个数
+			for (var i=0; i<str.length; i++) {
+				var ch = str[i];
+				if (ch>='A'&&ch<='Z') {
+					count1++;
+				}
+				else if (ch>='a'&&ch<='z') {
+					count2++;
+				}
+			}
+			console.log(count1);
+			console.log(count2);
+			
+			//3, https://www.baidu.com/s?name=avery&age=20&sex=male ,  取出name, age和sex的值
+			var str = "https://www.baidu.com/s?name=avery&age=20&sex=male";
+			console.log( getParamByName(str, "name") );
+			console.log( getParamByName(str, "age") );
+			console.log( getParamByName(str, "sex") );
+			
+			function getParamByName(str, name){
+				var str2 = str.substring( str.indexOf("?")+1 ); //"name=avery&age=20&sex=male"
+				var arr2 = str2.split("&");  //['name=avery','age=20','sex=male']
+				
+				for (var i=0; i<arr2.length; i++) {
+					var str3 = arr2[i]; //'name=avery' 或 'age=20' 或 'sex=male'
+					var arr3 = str3.split("=");  //['name', 'avery']
+					if (arr3[0] == name) {
+						return arr3[1];
+					}
+				}
+				return "";
+			}
+			
+			
+			
+			//转换成大写： toUpperCase()
+			//转换成小写: toLowerCase()
+			var str = "hello HELLO";
+			console.log( str.toUpperCase() ); //"HELLO HELLO"
+			console.log( str.toLowerCase() ); //"hello hello"
+			
+			
+			//比较字符串， 不区分大小写
+			var str1 = "zhangsan";
+			var str2 = "ZhanGSan";
+			
+			if (str1.toLowerCase() == str2.toLowerCase()) {
+				console.log("相等");  //相等
+			}
+			else {
+				console.log("不相等");
+			}
+			
+			console.log(str1 == str2); //false
+			console.log(str1.toLowerCase() == str2.toLowerCase()); //true
+			console.log('a' == 'A');// "false"
+			console.log(str1.toLowerCase() == str2.toUpperCase());
+			
+			
+			//str.trim() : 去除首尾空格
+			var str = "   hello world    ";
+			console.log( str.trim() ); //"hello world"
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

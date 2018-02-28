@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<!--导入jquery-->
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			
+			/*
+			
+			 项目要求： 
+			 	1， 必须电商项目
+			 	2， 不能重复
+			 	3， 必须完成5个页面： 首页，商品详情， 购物车， 注册，登录 ， 商品列表（可选）
+			 	4， 首页： Ajax轮播图， 带价格的商品要使用Json数据
+			 	        商品详情： 区分不同商品， 放大镜
+			 	        购物车 ： 使用cookie, 购物车中的操作
+			 	       注册/登录： 使用MySql数据库 PHP+MySql， 注册页面有正则验证
+			 	       商品列表： 使用json数据（可选）
+			 */
+			
+			//今天明天： 选好项目
+			//第一周： 首页html+css
+			//第二周第三周： js/jq
+			//第三周周五考试
+			
+			
+			
+			//jQuery
+			// jquery版本:
+			// 1.x.x : 兼容低版本IE
+			// 2.x,3.x : 不兼容低版本IE
+			
+			
+			//js: 事件会覆盖
+			window.onload = function(){
+				console.log("onload1");
+			}
+			window.onload = function(){
+				console.log("onload2");
+			}
+			
+			//jq: 事件不会覆盖
+			// $: jq对象 ==jQuery对象
+			$(window).load(function(){
+				console.log("load1");
+			})
+			$(window).load(function(){
+				console.log("load2");
+			})
+
+			//onload : 当页面(图片，文件)加载完成后调用
+			//ready : 当页面加载完成后调用
+			$(document).ready(function(){
+				console.log("ready1");
+			})
+			$(document).ready(function(){
+				console.log("ready2");
+			})
+			
+			//简化ready: 推荐
+			$(function(){
+				console.log("ready3");
+
+				//js
+				//var box = document.getElementById("box");
+				//box.innerHTML = "大吉大利， 晚上吃鸡-js";
+				//box.style.background = "red";
+				
+				//jq
+				//$("#box").html("大吉大利， 今晚吃鸡-jq").css({background:"red", color: "white"});
+				
+				//jq
+				$(".p").css("background","green");
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">今晚吃鸡</div>
+		<p class="p">hello</p>
+		<p class="p">nihao </p>
+		<p class="p">nihao2 </p>
+	</body>
+</html>

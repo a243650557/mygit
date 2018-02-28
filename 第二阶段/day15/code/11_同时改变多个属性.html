@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementById("btn");
+				var box = document.getElementById("box");
+				
+				//点击按钮
+				btn.onclick = function(){
+					animate(box, {left:300, top:300, width:200, height:200, opacity:20}, function(){
+						console.log("运动完成！");
+					});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn">开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 40px; top: 100px;"></div>
+	</body>
+</html>

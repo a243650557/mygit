@@ -1,0 +1,101 @@
+window + E		打开资源管理器（我的电脑）
+window + L		锁屏
+window + D		显示桌面
+window + tab		切换程序
+alt + tab		切换程序
+Ctrl + W 或者 alt + F4	关闭浏览器当前页面
+Ctrl + shift + T	恢复刚才被关掉的页面
+ctrl + tab		同一个窗口打开多个页面是，切换通窗口下的页面
+ctrl + 轮滚		调整桌面图标大小  或  调整编辑器字体大小
+
+
+ctrl + z		撤销
+ctrl + c		复制
+ctrl + v		粘贴
+ctrl + x		剪切
+ctrl + y		前进
+shift + 方向键/home，end	一个一个选中
+shift + ctrl + 方向键/home，end	一个单词一个单词选中	
+delete: 删除
+insert: 插入模式
+home, end
+pgup: 向上翻页
+pgdn: 向下翻页
+
+hbuilder
+ctrl + f		查找,  f3:下一个, shift+f3:上一个,  esc退出查找
+ctrl + d或者shift + 回车		 删除一行
+ctrl + alt + 回车    补上末尾分号
+shift + 回车 		添加换行符
+ctrl + ？		注释
+tab			4个空格
+shift + tab		往回缩4个空格
+ctrl + r		在浏览器运行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  C#, 3D-Max
+  Unity3D  神庙逃亡， 绝地求生（吃鸡游戏）
+  
+  Cocos2dx(C++) 
+     导演类
+	精灵
+	场景
+  
+  策划：产品经理 ：设计整个项目，做原型图
+  美工：做效果图，切片
+  后台：提供数据（数据大多是保存在后台）
+  软件工程师：iOS， Android， 前端， 后台工程师
+  
+  服务端： 后台
+  客户端：浏览器客户端， 手机客户端， 电脑客户端
+  
+
+
+https://www.cnblogs.com/MOBIN/p/4681369.html
+
+Unity
+https://baike.baidu.com/item/Unity3D/3064002?fr=aladdin&fromid=10793&fromtitle=Unity
+https://www.zhihu.com/question/19552783
+https://zhidao.baidu.com/question/338712999.html
+
+释放内存
+https://www.cnblogs.com/2han/p/6273054.html
+内存堆栈
+https://www.cnblogs.com/lxq1990/archive/2012/11/04/2754226.html
+
+
+
+
+
+
+typeof和instanceof
+http://blog.csdn.net/u014421556/article/details/52083215
+http://blog.sina.com.cn/s/blog_532751d90100iv1r.html

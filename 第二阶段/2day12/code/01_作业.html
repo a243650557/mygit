@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				
+				var oImg = document.getElementsByTagName("img")[0];
+				
+				//var index = 0;
+				var index1 = 0; //保存上一次拖拽松开时的图片下标
+				document.onmousedown = function(e){
+					e = e||event;
+					e.preventDefault();
+					
+					//var startX = e.pageX + index*10;
+					var startX = e.pageX;
+					
+					document.onmousemove = function(e){
+						e = e||event;
+						var moveX = e.pageX;
+						
+						var index = parseInt((startX - moveX)/100 + 77*10 + index1) % 77;   
+						//console.log(index);
+						// 0    0
+						// -1   76
+						// -2   75
+						// -77   0
+						// -78   76
+						// -79   75
+						
+						oImg.src = "images/images3/"+ index +".jpg";   
+						index1 = index;
+					}
+					document.onmouseup = function(){
+						document.onmousemove = null;
+						document.onmouseup = null;
+					}
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img src="images/images3/0.jpg" />
+	</body>
+</html>

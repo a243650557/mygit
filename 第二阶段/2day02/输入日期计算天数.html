@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		var sumdays = 0;
+		var year = 2000;
+		var month =4;
+		var day = 11;
+		if((year % 4 == 0 && year % 100 != 0) ||(year % 400 == 0)){
+			sumdays = sumdays +1;
+		}
+		for(i=1;i < month;i ++){
+		switch(i){
+			case 1: sumdays = sumdays + 31;break;
+			case 2: sumdays = sumdays + 28;break;
+			case 3: sumdays = sumdays + 31;break;
+			case 4: sumdays = sumdays + 30;break;
+			case 5: sumdays = sumdays + 31;break;
+			case 6: sumdays = sumdays + 30;break;
+			case 7: sumdays = sumdays + 31;break;
+			case 8: sumdays = sumdays + 30;break;
+			case 9: sumdays = sumdays + 31;break;
+			case 10: sumdays = sumdays + 30;break;
+			case 11: sumdays = sumdays + 31;break;
+			case 12: sumdays = sumdays + 30;break;
+			
+		}
+		}
+		sumdays = sumdays + day
+		console.log(sumdays);
+
+		//数组方法
+ 		var month = [0,31,28,31,30,31,30,31,30,31,30,31,30];
+ 		var num = 3;
+ 		var year = 1993;
+ 		var day = 11;
+ 		var sumdays = 0;
+ 		if((year % 4 == 0 && year % 100 != 0) ||(year % 400 == 0)){
+			sumdays = sumdays +1;
+		}
+ 		for(i=1;i<num;i++){
+ 			sumdays = sumdays + month[i];
+ 		}
+ 		sumdays = sumdays + day;
+ 		console.log(sumdays);
+	</script>
+	<body>
+	</body>
+</html>

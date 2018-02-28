@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			练习
+				 1, 使用reduce求数组中所有元素的乘积， var arr = [2,3,4,5,6,7]
+				 2, 使用reduce求数组中的最大数, var arr = [2,4,6,3,7,8,5]
+				 3, 使用for-of求数组的最大数和最小数
+				 4, 掌握数组去重的多种方法.
+				 5, 掌握各种循环的使用
+
+			*/
+			
+			//1, 使用reduce求数组中所有元素的乘积， var arr = [2,3,4,5,6,7]
+			var arr = [2,3,4,5,6,7];
+			//var res = arr.reduce(function(pre,cur){return pre*cur;})
+			var res = arr.reduce((pre,cur)=>pre*cur);
+			console.log(res);
+			
+			//2, 使用reduce求数组中的最大数, var arr = [2,4,6,3,7,8,5]
+			var arr = [2,14,6,3,7,8,5]
+			//var res = arr.reduce(function(pre,cur){return pre>cur?pre:cur});
+			var res = arr.reduce((pre,cur)=>pre>cur?pre:cur);
+			console.log(res);
+			
+			
+			//3, 使用for-of求数组的最大数和最小数
+			var arr = [2,14,6,3,7,8,5]
+			var max = arr[0];
+			var min = arr[0];
+			for (var n of arr) {
+				if (n > max) max = n;
+				if (n < min) min = n;
+			}
+			console.log("max=" + max);
+			console.log("min=" + min);
+			
+			
+			//4, 掌握数组去重的多种方法.
+			var arr = [2,1,6,1,2,6,5];
+			
+			//方法一： 
+			var arr2 = [];
+			for (var i=0; i<arr.length; i++) {
+				if (arr2.indexOf(arr[i]) == -1) {
+					arr2.push(arr[i]);
+				}
+			}
+			console.log(arr2);
+			
+			//方法二： 
+			var set = new Set(arr);
+			var arr2 = [...set];
+			console.log(arr2);
+			
+			//方法三： 
+			var arr = [2,1,6,1,1,2,6,5];
+			for (var i=0; i<arr.length; i++) {
+				for (var j=i+1; j<arr.length; j++) {
+					if (arr[i] == arr[j]) {
+						arr.splice(j,1); //删除第j个元素
+						j--;
+					}
+				}
+			}
+			console.log(arr);
+			
+			//方法四： 
+			var arr = [2,1,6,1,1,2,6,5];
+			var obj = {};
+			for (var i=0; i<arr.length; i++) {
+				obj[arr[i]] = "";
+			}
+			
+			var arr2 = [];
+			for (var key in obj) {
+				arr2.push(key-0);
+			}
+			console.log(arr2);
+			
+			
+			//5, 掌握各种循环的使用
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

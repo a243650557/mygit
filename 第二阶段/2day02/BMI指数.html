@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		var height = parseFloat(prompt("请输入你的身高(m)"));
+		var weight = parseFloat(prompt("请输入你的体重(kg)"));
+		var BMI = weight / (Math.pow(height,2));
+		if(BMI < 18.5){
+			console.log('您的体重过轻');
+		}
+		else if(BMI >= 18.5 && BMI < 24.99 ){
+			console.log('您的体重正常');
+		}
+		else if(BMI >= 25 && BMI < 28 ){
+			console.log('您的体重过重');
+		}
+		else if(BMI >= 28 && BMI < 32 ){
+			console.log('您的体重肥胖');
+		}
+		else if(BMI >= 32  ){
+			console.log('您的体重非常肥胖');
+		}
+	</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0; padding: 0;}
+		</style>
+		<script>
+			//局部变量  全局变量
+			/*
+			fn();
+			console.log(c);
+			console.log(b);
+			console.log(a);
+			function fn(){
+				var a=b=c=5; //a是局部， b,c都是全局变量
+				//var a=5, b=5, c=5; //都是局部变量
+				console.log(a);
+				console.log(b);
+				console.log(c);
+			}
+			*/
+			
+			
+			
+			
+			
+			
+			//等腰三角形
+			// l 三角形的总行数
+			// r  三角形的第r行
+			// str  用来保存每一行的所有字符
+			// (l+r-1)   第r行的总字符数
+			//  (l-r)    第r行前面的空格数
+			
+			
+			/*
+			 
+			     *        r=1  l=5   l-r=4
+			    ***       r=2  l=5   l-r=3
+			   *****      r=3  l=5   l-r=2
+			  *******     r=4  l=5   l-r=1
+			 *********    r=5  l=5   l-r=0
+			 
+			 */
+			
+// 			function dengyao(l){               
+//				for(var r=1; r<=l; r++){ //总行数
+//					for(var i=1,str=""; i<=l+r-1; i++){  //每行的总字符数
+//						str += (i<=l-r ? "&nbsp;&nbsp;": "*");
+//					}
+//                   document.write(str + "<br/>");
+//				}             
+//			}
+//			dengyao(5);
+			
+			
+			//倒等腰三角形
+			/*
+			function daodengyao(l){
+				
+				for(var r=1; r<=l; r++){ //总行数
+					for(var i=1,str=""; i<=(2*l-r); i++){  //每行的总字符数
+						str += (i<=r-1 ? "&nbsp;&nbsp;": "*");
+					}
+                     document.write(str + "<br/>");
+				}  
+			}
+			daodengyao(5);
+			*/
+			
+			
+			
+			
+			//从自由变量到作用域链
+			//什么是“自由变量”
+			//在A作用域中使用的变量x，却没有在A作用域中声明（即在其他作用域中声明的），
+			//对于A作用域来说，x就是一个自由变量
+			
+			//例1
+			
+//			var x=10;
+//			function fn1(){
+//				var b=20;
+//				console.log(x+b);
+//			}
+//			fn1();
+			
+			
+			//例2   函数作为参数被传递
+//			var x=10;
+//			function fn2(){
+//				console.log(x); //10
+//			}
+//			
+//			function fn3(f){
+//				var x=20;
+//				(function(){
+//					f()
+//				})();
+//			}
+//			fn3(fn2);
+			
+			//自由变量的取值，要到创建这个函数的那个作用域中取值（是创建，不是调用）
+			
+			
+			//函数作为返回值
+//			function fn4(){
+//				var max = 10;
+//				return function fn5(x){
+//					if(x>max){
+//						console.log(x);
+//					}
+//				}
+//				
+//			}
+//			var f1=fn4();
+//			max=100;
+//			f1(20);
+			
+			
+			var timer = setInterval(function(){
+				
+				setTimeout(function(){
+					clearInterval(timer);
+					console.log(3);
+				}, 1200);
+				
+				console.log(1);
+				
+			}, 1000);
+			
+			console.log(2);
+			
+			//时间    0  1  2  2.2  3.2
+			//    2, 1, 1, 3,   3
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

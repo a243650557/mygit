@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//对象冒充： 借用构造函数
+			//call(), apply()
+			
+			/*
+			//父类
+			function Father(name, age){
+				this.name = name;
+				this.age = age; 
+				this.run = function(){
+					console.log("run");
+				}
+			}
+			Father.prototype.sleep = function(){
+				console.log("sleep");
+			}
+			
+			//子类
+			function Son(name, age, sex){
+				
+				//对象冒充： call()可以调用Father函数且可以改变Father函数内部的this指向
+				//借用构造函数： 借用了Father这个构造函数
+				Father.call(this, name, age);
+				//Father.apply(this, [name, age]);
+				
+				//等价于：
+				//this.name = "张三";
+				//this.age = 33; 
+				//this.run = function(){
+				//	console.log("run");
+				//}
+				
+				
+				//var obj = {};
+				//Father.call(obj);
+				//obj.name = "张三";
+				//obj.age = 33; 
+				
+				//console.log(obj.name);
+				//console.log(obj.age);
+				
+				
+				this.sex = sex;
+			}
+			
+			//创建子类对象
+			var son = new Son("小王", 11, "男");
+			console.log(son.sex);
+			console.log(son.name);
+			console.log(son.age);
+			son.run(); 
+			//son.sleep(); //不能继承父类原型中的方法
+			*/
+			
+			
+			//Ipad
+			function Ipad(color){
+				
+				this.color = color;
+				this.music = function(){
+					console.log("听音乐");
+				}
+			}
+			
+			//Iphone
+			function Iphone(color, type){
+				
+				//对象冒充
+				Ipad.call(this, color);
+//				this.color = "red";
+				this.type = type;
+				this.callNumber = function(){
+					console.log("打电话");
+				}
+//				this.music = function(){
+//					console.log('不想听音乐');
+//				}
+				
+			}
+			
+			var iphone7 = new Iphone("骚红色", "iphone7");
+			console.log(iphone7.color + iphone7.type);
+			iphone7.music();  //如果原来的构造函数中有music，还是用原来的
+			iphone7.callNumber();
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

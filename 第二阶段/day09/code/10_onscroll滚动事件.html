@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//onscroll滚动事件: 页面滚动条拖动时会实时触发
+				//scrollTop : 页面滚动后顶部隐藏的高度
+				//scrollLeft : 页面滚动后坐标隐藏的宽度
+				
+				
+				//滚动事件
+				onscroll = function(){
+					//console.log(1);
+					
+					//获取scrollTop值
+					//不支持谷歌， 支持IE和火狐
+					//var scrollTop = document.documentElement.scrollTop;  
+					
+					//支持谷歌， 不支持IE和火狐
+					//var scrollTop = document.body.scrollTop;
+					//alert(scrollTop);
+					
+					
+					//浏览器兼容问题
+					//获取scrollTop
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					//console.log(scrollTop);
+					
+					
+					
+				}
+				
+				//点击页面任意位置
+				document.onclick = function(){
+					//设置scrollTop
+					document.documentElement.scrollTop = 0;
+					document.body.scrollTop = 0;
+				}
+				
+			}
+		</script>
+	</head>
+	<body style="width: 2000px; height: 2000px;">
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+		<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	</body>
+</html>

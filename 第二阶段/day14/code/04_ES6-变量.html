@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//var : 声明变量， 可以提前声明， 可以声明相同变量， 只在函数中会有作用域（函数作用域）
+			
+			//let : 声明变量， 不可以提前声明， 不可以声明相同变量， 可以形成块级作用域（函数作用域+块级作用域） 
+			
+			
+			//1， 不可以提前声明
+			//console.log(a); 报错
+			let a = 10;
+			//console.log(a);
+			
+			//2，不可以声明相同变量
+			let b = 10;
+			//let b = 12;  //报错
+			//console.log(b);
+			
+			//3， 可以形成块级作用域
+			// {}包含的代码： 代码块
+			// 代码块包含的作用域： 块级作用域
+			if (1){
+				var c = 10;
+				let d = 10;
+			}
+			//console.log("c=" + c);
+			//console.log("d=" + d); //报错：d is not defined
+			
+			//for (var i=0; i<3; i++) {}
+			//console.log("i=" + i); //3
+			
+			//for (let j=0; j<3; j++) {}
+			//console.log("j=" + j); //报错： j is not defined
+			
+			/*
+			for (var i=1; i<=2; i++) {
+				for (var i=1; i<=3; i++) {
+					console.log("var i=" + i);
+				}
+			}
+			
+			
+			for (let i=1; i<=2; i++) {
+				for (let i=1; i<=3; i++) {
+					console.log("let i=" + i);
+				}
+			}
+			*/
+			
+			onload = function(){
+				var ali = document.getElementsByTagName("li");
+				for (let i=0; i<ali.length; i++) {
+					ali[i].onclick = function(){
+						console.log("i=" + i);
+					}
+				}
+			}
+			
+			
+			//const: 什么常量（一旦赋值就不可以更改）， 不可以提前声明， 不可以重复声明， 可以形成块级作用域
+			const PI = 3.14;
+			console.log(PI);
+			
+			//PI = 3.1415926; //报错, 常量不可以更改
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		
+		<ul>
+			<li>10</li>
+			<li>20</li>
+			<li>30</li>
+			<li>40</li>
+		</ul>
+		
+	</body>
+</html>

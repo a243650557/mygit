@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				$('input').eq(3).click(function(){
+					var uid = $('input').eq(0).val();
+					var name = $('input').eq(1).val();
+					var tel = $('input').eq(2).val();
+					$('tr').eq(0).after('<tr><th>'+uid+'</th><th>'+name+'</th><th>'+tel+'</th></tr>');
+//					$(this).append('<th></th>').html('$('input').eq(0).val()');
+//					$(this).append('<th></th>').html('$('input').eq(1).val()');
+//					$(this).append('<th></th>').html('$('input').eq(2).val()');
+					
+				})
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		ID:<input type="text" /> <br />
+		姓名:<input type="text" /> <br />
+		Tel:<input type="text" /> <br />
+		<input type="button" value="保存" />
+		
+		<table border="1" id="tab">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+			<!--<tr>
+				<td>30</td>
+				<td>张三</td>
+				<td>13454547889</td>
+				<td><a href="#">删除</a></td>
+			</tr>-->
+		</table>
+		
+		
+	</body>
+</html>

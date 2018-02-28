@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				background: #eef;
+			}
+			#box {
+				background: #ddf;
+				width: 300px;
+				height: 300px;
+				padding: 10px;
+			}
+			#toast {
+				width: 300px;
+				height: 30px;
+				text-align: center;
+				background: orange;
+				line-height: 30px;
+				font-size: 14px;
+				margin-top: 20px;
+			}
+		</style>
+		<script>
+			
+			//1, 找出下面字符串中的bag,beg,big,bog, 忽略大小写, 并将其改为bug:
+			// ( I am a Big man, I have so mach bag, so veryone call me  beg man,  bog bog bog, I hate you! )
+			var str = "I am a Big man, I have so mach bag, so veryone call me  beg man,  bog bog bog, I hate you!";
+			var reg = /bag|beg|big|bog/gi;
+			//console.log( str.replace(reg, "bug") );
+			
+			//2, 假设有一个多字符的片断重复出现，把"really"、"really really "，
+			//   以及任意数量连续出现的"really"字符串换成一个简单的"very ”
+			/*( 
+				Billy tried really hard 
+				Sally tried really really hard 
+				Timmy tried really really really hard 
+				Johnny tried really really really really hard 
+			)
+			*/
+			var str = "Billy tried really hard Sally tried really really hard Timmy tried really really really hard Johnny tried really really really really hard "
+			var reg = /(really\s)+/g;
+			//console.log( str.replace(reg, "very ") );
+			
+			
+			//3, 有以下表单, 验证用户名, 密码, 手机号
+			/*	
+				->用户名只包含数字,字母,下划线, 且长度不小于6位
+				->密码长度在8到16位
+				->手机号要合法
+				->点击确定后验证是否所有输入都合法，   并提示哪个输入内容不合法
+			*/
+			
+			//表单验证： 第一次是在本地浏览器做正则表达式的验证， 第二次是在后台服务器做一次验证
+			
+			onload = function(){
+				var aIpt = document.getElementsByTagName("input");
+				var tip = document.getElementById("toast"); 
+				var level = document.getElementById("level"); 
+				
+				
+				var flag1 = false; //表示用户名输入是否合法
+				var flag2 = false; //表示密码输入是否合法
+				var flag3 = false; //表示手机号输入是否合法
+				
+				//用户名
+				aIpt[0].onkeyup = function(){
+					if (/^\w{6,}$/.test(this.value)) {
+						tip.innerHTML = "用户名输入合法！";
+						flag1 = true;
+					}else {
+						tip.innerHTML = "用户名输入不合法！";
+						flag1 = false;
+					}
+				}
+				
+				//密码
+				aIpt[1].onkeyup = function(){
+					if (/^.{8,16}$/.test(this.value)) {
+						tip.innerHTML = "密码输入合法！";
+						flag2 = true;
+						
+						
+						//密码强度
+						// 出现数字， 或大写字母， 或小写字母
+						//弱： 只出现一种
+						//中： 出现两种
+						//强： 出现三种
+						var reg1 = /\d+/;
+						var reg2 = /[A-Z]+/;
+						var reg3 = /[a-z]+/;
+						//var reg4 = /[^a-zA-Z0-9]/;
+						var s = 0;
+						if (reg1.test(this.value)){
+							s++;
+						}
+						if (reg2.test(this.value)){
+							s++;
+						}
+						if (reg3.test(this.value)){
+							s++;
+						}
+						
+						//通过s的值来判断
+						if (s <= 1) {
+							level.innerHTML = "弱";
+						}
+						else if (s == 2) {
+							level.innerHTML = "中";
+						}
+						else if (s == 3) {
+							level.innerHTML = "强";
+						}
+						
+					}else {
+						tip.innerHTML = "密码输入不合法！";
+						flag2 = false;
+						level.innerHTML = "-";
+					}
+				}
+				
+				//手机号
+				aIpt[2].onkeyup = function(){
+					var reg = /^((13[0-9])|(14(5|7))|(15([0-3]|[5-9]))|(17[0-9])|(18[0-9])|199)\d{8}$/;
+					if (reg.test(this.value)) {
+						tip.innerHTML = "手机号输入合法！";
+						flag3 = true;
+					}else {
+						tip.innerHTML = "手机号输入不合法！";
+						flag3 = false;
+					}
+				}
+				
+				//注册
+				aIpt[3].onclick = function(){
+					if (flag1 && flag2 && flag3) {
+						tip.innerHTML = "所有输入都合法！";
+					}
+					else {
+						//tip.innerHTML = "有输入不合法！";
+						
+						if (!flag1){
+							tip.innerHTML = "用户名不合法！";
+						}
+						else if (!flag2){
+							tip.innerHTML = "密码不合法！";
+						}
+						else if (!flag3){
+							tip.innerHTML = "手机号不合法！";
+						}
+					}
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" >
+			<h2>注册</h2>
+			用户名： <input type="text" placeholder="请输入用户名" /> <br>
+			密&nbsp;&nbsp;&nbsp;&nbsp;码： <input type="password" placeholder="请输入密码" /><span id="level">-</span> <br>
+			手机号： <input type="text" placeholder="请输入手机号" /> <br>
+			<input type="button" value="注册" />
+			
+			<div id="toast">提示信息</div>
+		</div>
+	</body>
+</html>

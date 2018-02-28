@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//事件流
+				// 事件冒泡： 从子元素向父元素触发
+				// 事件捕获： 从父元素向子元素触发
+				
+				document.onclick = function(){
+					console.log("document");
+				}
+				document.getElementById("box").onclick = function(){
+					console.log("div");
+				}
+				document.getElementsByTagName("input")[0].onclick = function(e){
+					console.log("input");
+					
+					e = e || event;
+					
+					//阻止事件冒泡
+					//e.cancelBubble = true; //IE
+					//e.stopPropagation(); //非IE
+					if (e.stopPropagation) {
+						e.stopPropagation();
+					}
+					else {
+						e.cancelBubble = true;
+					}
+					
+				}
+				
+				
+				//阻止浏览器默认行为： 点击表单的提交会自动刷新页面， 拖拽图片， 选择文字等
+				var submit = document.getElementById("sbm");
+				submit.onclick = function(e){
+					//console.log(111);
+					
+					//阻止浏览器默认行为
+					//e.preventDefault(); //非IE
+					//e.returnValue = false; //IE
+					if (e.preventDefault) {
+						e.preventDefault();
+					}
+					else {
+						e.returnValue = false;
+					}
+					
+				}
+				
+				
+				//阻止右键菜单
+				document.oncontextmenu = function(){
+					return false;
+				}
+				document.getElementById("box").onmousedown = function(e){
+					e = e || event;
+					if (e.button == 2) {
+						console.log("右键了");
+					}
+				}
+				
+				
+				//阻止超链接a
+				var a = document.getElementsByTagName("a")[0];
+				a.onclick = function(){
+					console.log("百度一下");
+					
+					var b = confirm("你确定吗？");
+					if (b) {
+						return true;
+					}
+					else {
+						return false; //阻止
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 300px; height: 200px; background: green;">
+			<input type="button" value="按钮" />
+		</div>
+		
+		<form>
+			<input type="text" value="hello" /> 
+			<input id="sbm" type="submit" />
+		</form>
+		
+		<a href="http://www.baidu.com">百度一下</a>
+		
+	</body>
+</html>

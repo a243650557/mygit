@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		//第七题
+//		var count = 0;
+//		for(i=20;i<=80;i++){
+//			
+//			if(i % 3==0){
+//				document.write(i + ' ');
+//				count = count +1;
+//				if(count % 5==0){
+//					document.write('<br/>');
+//			}
+//			
+//			
+//			}
+//		}
+		
+		//第八题
+		var count = 0;
+		for(i=1000;i<=2000;i++){
+			if((i % 4 == 0 && i % 100 != 0) ||(i % 400 == 0)){
+				document.write(i + ' ');
+				count = count + 1;
+				if(count % 4 ==0){
+					document.write('<br/>');
+				}
+			}
+		}
+		
+		//第九题
+		var sum = 0;
+		for(i=1;i<=100;i++){
+			if(i % 2 ==0){
+				sum = sum +(-1/i);
+			}
+			else{
+				sum = sum + (1/i);
+			}
+		}
+		console.log(sum);
+		
+		//第十题
+		
+		var a =3,sum=0 ,b = a;
+		for(n=1;n<=4;n++){
+			sum = sum + a;
+			a = a*10 + b;
+		}
+		console.log(sum);
+		
+		//第十一题
+		for(i=10000;i<=99999;i++){
+			var wan = parseInt(i / 10000);
+			var qian = parseInt(i % 10000 /1000);
+			var bai = parseInt(i %1000 /100);
+			var shi = parseInt(i % 100 /10);
+			var ge = (i % 10);
+			if((wan == ge) &&(qian == shi) ){
+				console.log(i);
+			}
+		}
+	</script>
+	<body>
+	</body>
+</html>

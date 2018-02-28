@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="cookie.js"></script>
+	<script type="text/javascript">
+//		1, 十天内免登录:
+//  如下图, 有账户,密码输入框, 当用户点击确定按钮, 如果选择了十天内免登录, 则将账户和密码保存在cookie中.
+//  当下一次再进入该页面时, 自动填写上次保存的账户和密码 
+	onload = function(){
+	var aBtn = document.getElementsByTagName("button");
+	var aInput = document.getElementsByTagName("input");
+		aInput[0].value = getCookie("account");
+		
+		aInput[1].value = getCookie("password") ;
+	aBtn[0].onclick = function(){
+		if(aInput[2].checked == true){
+			var accountText = aInput[0].value; 
+			var passwordText = aInput[1].value;
+			var d = new Date();
+			d.setDate(d.getDate() + 10);
+			setCookie("account",accountText,d);
+			setCookie("password",passwordText,d);
+		}
+	}
+	
+//		if(getCookie("account") && getCookie("password")){
+//	
+//	aInput[0].value = getCookie("account");
+//	aInput[1].value = getCookie("password") ;
+//
+//	}
+
+	
+	
+	
+	}
+	</script>
+	<body>
+		账号<input type="text" /> <br />
+		密码<input type="password" /><br />
+		<label><input type="checkbox"  /> 十天内免登陆</label> <br />
+		<button>确定</button>
+		<button>重置</button>
+	</body>
+</html>

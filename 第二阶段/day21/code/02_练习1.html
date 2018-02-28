@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				var btn = document.getElementsByTagName("button")[0]; 
+				var tab = document.getElementsByTagName("table")[0];
+				
+				//点击按钮
+				btn.onclick = function(){
+					
+					//1, 先获取数据
+					var xhr = createXHR();
+					//xhr.open("GET", "json/person.json", true);
+					xhr.open("GET", "http://60.205.181.47/myPHPCode2/person.php", true);
+					xhr.send(null);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							
+							//JSON解析
+							var arr = JSON.parse(xhr.responseText); 
+							
+							//2, 通过获取到的数据，使用节点显示
+							tab.children[0].innerHTML = "<tr><th>name</th><th>age</td><th>sex</th><th>phone</td><th>address</td><th>qq</td></tr>"
+							
+							//遍历arr
+							for (var i=0; i<arr.length; i++) {
+								var obj = arr[i];
+								
+								//创建tr节点
+								var tr = document.createElement("tr");
+								tab.children[0].appendChild(tr);
+								
+								//创建td
+								var td1 = document.createElement("td");
+								var td2 = document.createElement("td");
+								var td3 = document.createElement("td");
+								var td4 = document.createElement("td");
+								var td5 = document.createElement("td");
+								var td6 = document.createElement("td");
+								
+								tr.appendChild(td1);
+								tr.appendChild(td2);
+								tr.appendChild(td3);
+								tr.appendChild(td4);
+								tr.appendChild(td5);
+								tr.appendChild(td6);
+								
+								td1.innerHTML = obj.name;
+								td2.innerHTML = obj.age;
+								td3.innerHTML = obj.sex;
+								td4.innerHTML = obj.phone;
+								td5.innerHTML = obj.address;
+								td6.innerHTML = obj.qq;
+							}
+							
+						}
+					}
+				}
+				
+				//整个网页刷新
+				//局部刷新
+				
+				//滚动文字
+				var tip = document.getElementById("tip");
+				setInterval(function(){
+					if (tip.offsetLeft < 0) {
+						tip.style.left = 300 + "px";
+					}
+					tip.style.left = tip.offsetLeft - 5 + "px";
+				}, 30);
+				
+			}
+					
+			
+			//研发部/软件部
+			// 前端工程师：前端
+			// 后台工程师 ： 给你提供数据
+			// UI工程师： 给你提供效果图,切片等
+			// 测试工程师： 测试
+			// 产品经理
+			// 项目经理
+			 
+			//
+			// 研发部, 人事部， 财务部， 行政部，  销售部， 品牌部，公关部，市场部， 产品部， 项目部，
+			// 硬件部, 测试部， 
+			//
+			
+			
+			//立项: 直接确定每一天做的事情
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button>加载数据</button>
+		<table border="1">
+			<tr>
+				<th>name</th>
+				<th>age</td>
+				<th>sex</th>
+				<th>phone</td>
+				<th>address</td>
+				<th>qq</td>
+			</tr>
+		</table>
+		
+		<div id="tip" style="width: 100px; height: 30px; position: absolute; left: 300px; top: 400px;">滚动文字</div>
+
+	</body>
+</html>

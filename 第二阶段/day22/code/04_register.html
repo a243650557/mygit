@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				
+				//注册
+				
+				//登录： 
+				//    第三方登录：微信，qq  SDK   openid  tokenid   API
+				//    普通登录： 先注册再登录
+				//    游客登录： 游戏中会有
+				
+				
+				/*
+				 注册（POST）
+					注册接口:  http://60.205.181.47/myPHPCode3/register.php
+					参数:username=zhangsan, 用户名（必须）
+					参数:password=123456,密码（必须）
+					参数:age=33,年龄（必须）
+				*/
+				
+				//
+				var aInput = document.getElementsByTagName("input");
+				aInput[3].onclick = function(){
+					
+					//正则验证
+					
+					//然后再注册
+					register();
+				}
+				//注册
+				function register(){
+					
+					var username = aInput[0].value;
+					var pwd = aInput[1].value;
+					var age = aInput[2].value;
+					
+					//调用注册接口
+					var xhr = createXHR();
+					xhr.open("post", "http://60.205.181.47/myPHPCode3/register.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send("username="+username + "&password="+pwd + "&age="+age);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							var obj = JSON.parse(xhr.responseText);
+							//console.log(obj.status + obj.msg)
+							
+							if (obj.status == 1) {
+								//注册成功
+								console.log("注册成功！");
+								
+								//注册成功后，自动跳转到登录页面
+								location.href = "05_login.html";
+							}
+							else if (obj.status == 0) {
+								console.log(obj.msg);
+								alert(obj.msg);
+							}
+							else {
+								alert("注册失败");
+							}
+						}
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>注册</h2>
+		<form>
+			<input type="text" placeholder="用户名" /> <br />
+			<input type="password" placeholder="密码" /> <br />
+			<input type="text" placeholder="年龄" /> <br />
+			<input type="button" value="注册" />
+		</form>
+	</body>
+</html>

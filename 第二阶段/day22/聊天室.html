@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="JS/ajax.js"></script>
+		<script type="text/javascript">
+			
+//    1, 在输入框中输入内容后, 点击发送按钮可以发送出去;
+//    2, 可以定时从服务器获取数据;轮询
+//    发送数据的URL:   http://60.205.181.47/myPHPCode2/chat.php, 
+//      参数: type=send
+//      sender=发送者填入的用户名
+//      msg=发送者的发送消息
+//  获取数据的URL: 
+//	http://60.205.181.47/myPHPCode2/chat.php,
+//	参数: type=query
+			onload=function(){
+				
+				var btn=document.getElementById("btn");
+				var box=document.getElementById("box");
+				var content=document.getElementById("content");
+				
+				btn.onclick=function(){
+					
+					if(content.value==""){
+						return;
+					}
+					var msg=content.value;//文本框内容
+					var xhr=createXHR();
+					xhr.open("GET","http://60.205.181.47/myPHPCode2/chat.php?type=send&sender=社会吴彦祖&msg="+msg,true);
+				
+					xhr.send(null);
+					
+					//监听发送是否成功
+					xhr.onreadystatechange=function(){	
+						if (xhr.readyState==4 && xhr.status==200) {
+						
+						var obj=JSON.parse(xhr.responseText);
+							
+							if (obj.status == 1) {
+									console.log("发送成功！")					
+							}
+							else {
+								console.log("发送失败！");
+							}
+
+						}
+						content.value=""	
+					}	
+//					
+				}
+				setInterval(function(){
+					var getxhr=createXHR();
+					
+					getxhr.open("get","http://60.205.181.47/myPHPCode2/chat.php?type=query",true);
+					getxhr.send(null);
+					
+					getxhr.onreadystatechange=function(){
+						if (getxhr.readyState==4 && getxhr.status==200) {						
+							var obj=JSON.parse(getxhr.responseText);
+							
+							box.innerHTML=""
+							for(var i=0;i<obj.length;i++){
+								
+								var p=document.createElement("p");
+								box.appendChild(p);
+								
+								
+								
+								p.innerHTML="<span>["+obj[i].name+"]"+ obj[i].content+"</span>";
+							}
+						}						
+					}						
+				},3000)				
+			}
+			
+		</script>
+		<style type="text/css">
+			span{
+				background-color: skyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="width: 300px;height: 400px;border: 4px solid slateblue;">
+			<div id="box" style="width: 288px;overflow: auto;height: 310px;border: 1px dashed slateblue;margin: 5px;"></div>
+			<textarea id="content" style="width: 280px; height: 40px;border: 1px solid sandybrown;margin:0 10px;"></textarea>
+			<button id="btn" style="border: none;margin: 5px 0 0 254px;">发送</button>
+		</div>
+	</body>
+</html>

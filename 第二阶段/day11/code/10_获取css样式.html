@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				height: 100px;
+			}
+		</style>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				//console.log(box.style.width); //100px
+				//console.log(box.style.height); //""
+				
+				//IE9+,非IE
+				//var _style = window.getComputedStyle(box, null);
+				
+				//IE8-
+				//var _style = box.currentStyle;
+				//console.log(_style.height);
+				
+				
+				//兼容
+				/*
+				if (window.getComputedStyle){
+					var _style = getComputedStyle(box, null);
+				}
+				else {
+					var _style = box.currentStyle;
+				}
+				*/
+				
+				//三目运算符的写法
+				//var _style = window.getComputedStyle ? getComputedStyle(box, null) : box.currentStyle; 
+				//console.log(_style.height); //100px
+				
+				
+				//封装一个函数来获取某个节点对象的某个css样式属性
+				function getStyleAttr(obj, attr){
+					/*
+					if (window.getComputedStyle) { //IE9+,非IE
+						var _style = getComputedStyle(obj, null);
+						return _style[attr];
+					}
+					else { //IE8-
+						var _style = obj.currentStyle;
+						return _style[attr];
+					}
+					*/
+					
+					if (window.getComputedStyle) { //IE9+,非IE
+						return getComputedStyle(obj, null)[attr];
+					}
+					else { //IE8-
+						return obj.currentStyle[attr];
+					}
+				}
+				
+				var res = getStyleAttr(box, "width");
+				console.log(res);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 101px; background: green;">box</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//：first 匹配ul中所有li中第一个
+				//$("ul li:first").css("background", "pink");
+				
+				//:first-child 匹配每个ul的第一个li
+				//$("ul li:first-child").css("background", "blue");
+				
+				//:last-child 匹配每个ul的最后一个li
+				//$("ul li:last-child").css("background", "green");
+				
+				//:nth-child 匹配每个ul的第几个li， 下标从1开始
+				//$("ul li:nth-child(2)").css("background", "red");
+				//$("ul li:nth-child(2n)").css("background", "red");
+				//$("ul li:nth-child(2n+1)").css("background", "pink");
+				
+				//:only-child 匹配li是唯一的子元素
+				$("ul li:only-child").css("background", "red");
+				
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		<ul>
+			<li>9999</li>
+		</ul>
+	</body>
+</html>

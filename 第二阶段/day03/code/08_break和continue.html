@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//break
+			//作用： 跳出switch
+			//     跳出一层循环
+			
+			
+			//示例: 
+			//1, 判断一个数是不是合数。(指自然数中除了能被1和本身整除外，还能被其他的数整除（不包括0)的数。)
+			/*
+			var n = 20;
+			for (var i=2; i<n; i++) {
+				if (n%i == 0) {
+					console.log("是合数");
+					console.log("break前的语句");
+					break; //跳出循环，终止循环
+					console.log("break后的语句"); //break后的代码不执行
+				}
+			}
+			
+			console.log(1);
+			*/
+			
+			
+			//2, 判断一个数是不是素数（质数）。(除了1和它本身以外不再有其他的除数整除。)
+			//方法一：
+			var n = 37;
+			var b = true; //默认认为是素数
+			for (var i=2; i<n; i++) {
+				if (n%i == 0) {
+					console.log(n + "是合数");
+					b = false; //能够进入if则说明不是素数
+					break;
+				}
+			}
+			
+			if (b) {
+				console.log(n + "是素数"); 
+			}
+			
+			
+			
+			//方法二
+			var n = 35;
+			for (var i=2; i<n; i++) {
+				if (n%i == 0){
+					console.log("是合数");
+					break;
+				}
+			}
+			if (i == n) {
+				console.log(n + "是素数");
+			}
+			
+			
+			//
+			for (var i=1; i<10; i++) {
+			}
+			console.log(i); //10
+			
+			//
+			for (var i=1; i<10; i++) {
+				if (i==9){
+					break; //执行break后不会再执行i++
+				}
+			}
+			console.log(i); //9
+			
+			
+			
+			//break注意事项
+			//1， break 后面的代码不会再执行， 包括i++也不执行
+			//2， break 一次只能跳出一层循环
+			for (var i=1; i<=3; i++) {
+				
+				for (var j=1; j<=3; j++) {
+					if (j==2) {
+						break; //只会跳出当前的循环
+					}
+					console.log("i="+i + ", j=" + j);
+				}
+				
+			}
+			for (var i=1; i<=3; i++) {
+				
+				for (var j=1; j<=3; j++) {
+					if (j==2) {
+						continue; //只会跳出当前的循环
+					}
+					console.log("i="+i + ", j=" + j);
+				}
+				
+			}
+			
+			
+			//continue : 继续
+			
+			//1,求整数1～100的累加值，但要求跳过所有个位为3的数。
+			//不使用continue
+			var sum = 0;
+			for (var i=1; i<=100; i++) {
+				if (i%10 == 3){
+					
+				}
+				else {
+					sum += i;
+				}
+			}
+			console.log(sum); 
+			
+			//使用continue
+			var sum = 0;
+			for (var i=1; i<=100; i++) {
+				if (i%10 == 3){
+					console.log("continue 前的代码");
+					continue;  //终止当前这一次循环， 直接进入下一次循环
+					console.log("continue 后的代码");
+				}
+				sum += i;
+			}
+			console.log(sum); //4570
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//组合继承： 原型链继承+对象冒充
+			//原型链继承： 主要用于继承方法
+			//对象冒充： 主要继承属性
+			
+			//Ipad
+			function Ipad(color){
+				if (color != undefined) {
+					this.color = color;
+					console.log(this.color);
+				}
+			}
+			Ipad.prototype.music = function(){
+				console.log('听音乐');
+			}
+			
+			//Iphone
+			function Iphone(color, type){
+				//对象冒充继承父类的属性
+				Ipad.call(this, color);
+				this.type = type;
+			}
+			Iphone.prototype = new Ipad(); //原型链继承继承父类的方法
+			Iphone.prototype.callNumber = function(){
+				console.log("打电话");
+			}
+			
+			//实例化
+			var iphone8 = new Iphone("黑色", "iphone8");
+			console.log(iphone8.color + iphone8.type);
+			iphone8.music();
+			iphone8.callNumber();
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var btn = document.getElementsByTagName("input")[0];
+				btn.onclick = function(){
+					
+					//创建script标签， 并指定一个src路径， 则当加入到页面的时候就会访问src的指定路径
+					 var scriptNode = document.createElement("script");  
+					 scriptNode.src = "http://127.0.0.1/sz1713/21-25/day22/code/10_jsonp.php?msg=hello&cb=fn";  
+					 //get请求 会提交msg和cb这两个参数的值给服务器的10_jsonp.php文件
+					 // fn({ss:hello}) : 从后台返回的"fn({ss:hello})" 会被解析成 fn({ss:hello})的函数调用
+					 document.body.appendChild(scriptNode);
+					 document.body.removeChild(scriptNode);
+				}
+			}
+			//接收服务器后台的响应数据
+			function fn(data){
+				console.log("fn被调用了:" + data.ss);
+			}
+			
+			
+		</script>
+		<!--<script src="http://www.baidu.com/aa.php"></script>-->
+	</head>
+	<body>
+		<input type="button" value="jsonp" />
+	</body>
+</html>

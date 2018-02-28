@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul, li {list-style: none;}
+			body {
+				background: #ddd;
+			}
+			#box {
+				width: 150px;
+				height: 20px;
+				border: 1px solid white;
+				cursor: pointer;
+			}
+			ul {
+				width: 100px;
+				height: 150px;
+				border: 1px solid white;
+				display: none;
+			
+			}
+			ul li {
+				width: 100px;
+				height: 29px;
+				border-bottom: 1px dashed white;
+				text-align: center;
+				line-height: 29px;
+				background: black;
+				color: white;
+				cursor: pointer;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				var obox = document.getElementById("box");
+				var olist = document.getElementById("list");
+				
+				obox.onmouseenter = olist.onmouseenter = function(){
+					olist.style.display = "block"; //显示ul					
+				}
+				
+				obox.onmouseleave = olist.onmouseleave = function(){
+					olist.style.display = "none"; //隐藏ul
+				}
+				
+				//
+				var aLi = document.getElementsByTagName("li");
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].onmouseenter = function(){
+						this.style.background = "gray";
+					}
+					aLi[i].onmouseleave = function(){
+						this.style.background = "black";
+					}
+					aLi[i].onclick = function(){
+						obox.innerText = this.innerText;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">请选择游戏名称</div>
+		<ul id="list">
+			<li>英雄联盟</li>
+			<li>魔兽世界</li>
+			<li>大话西游</li>
+			<li>天龙八部</li>
+			<li>九阴真经</li>
+		</ul>
+	</body>
+</html>

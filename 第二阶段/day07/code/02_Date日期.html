@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//日期Date
+			//时间戳：  从1970年到指定时间的毫秒数
+			//UTC: 国际标准时间
+			
+			//日期的创建
+			//使用new创建日期， 默认是当前日期
+			var d = new Date();
+			//console.log(d);  //Tue Nov 28 2017 09:55:46 GMT+0800 (中国标准时间)
+			//console.log(typeof d); //object
+			
+			//
+			var d = new Date("2017-11-30 11:11:22");
+			//var d = new Date("2017/11/30 11:11:22");
+			//console.log(d);
+			
+			var d = new Date(2017, 10, 20, 11,11,23); //月份范围： 0~11
+			//console.log(d);
+			
+			//时间戳转换日期对象
+			var d = new Date(1502066666666);
+			//console.log(d);
+			
+			
+			//date.toDateString();  以特定的格式显示星期几、月、日和年
+			//date.toTimeString();  以特定的格式显示时、分、秒和时区
+			//date.toLocaleDateString();  以特定地区格式显示年、月、日
+			//date.toLocaleTimeString();  以特定地区格式显示时、分、秒
+			//date.toUTCString();  以特定的格式显示完整的 UTC 日期: 年,月,日,时,分,秒。
+			//
+			//Date.parse(“2019-08-24”);   转换格式默认支持2019-08-24或2019/08/24, 返回距离1970年1月1日0时的毫秒数
+			//date.toString();   把Date对象转换为字符串
+			//date.valueOf();   返回Date对象的原始值
+			
+			var d = new Date();
+			//console.log( d.toDateString() ); //"Tue Nov 28 2017"
+			//console.log( d.toTimeString() ); //"10:06:00 GMT+0800 (中国标准时间)"
+			//console.log( d.toLocaleDateString() ); //2017年11月28日
+			//console.log( d.toLocaleTimeString() ); //上午10:06:43
+			//console.log( d.toUTCString() ); //Tue, 28 Nov 2017 02:07:04 GMT
+			//console.log( d.toString() ); //Tue Nov 28 2017 10:07:32 GMT+0800 (中国标准时间)
+			
+			//valueOf() : 获取时间戳
+			//console.log( d.valueOf() ); //1511834881941
+			
+			//Date.parse() : 日期格式的字符串转换成时间戳
+			//console.log( Date.parse("2019-08-24") ); //1566604800000
+			
+			
+			//日期对象转换成时间戳
+			var d = new Date()
+			//方法一
+			//console.log( d.valueOf() ); //1511835026378
+			//方法二
+			//console.log( d.getTime() ); //1511835026378
+			
+			//时间戳转换成日期对象
+			//方法一
+			var d = new Date(1502066666666);
+			//console.log(d);
+			
+			//方法二
+			var d = new Date("2015-05-05");
+			d.setTime(1502066666666);
+			console.log(d);  //Mon Aug 07 2017 08:44:26 GMT+0800 (中国标准时间
+			
+			//两个日期对象的时间差
+			var d1 = new Date("2017-11-30 11:11:11");
+			var d2 = new Date("2017-12-01 11:11:11");
+			//var n = d2.getTime() - d1.getTime();
+			var n = d2 - d1; //单位： 毫秒
+			//console.log( parseInt(n/(3600*1000)) + "小时" );
+			
+			
+			
+			//setDate() / getDate();   从Date对象中返回一个月中的某一天(1~31)
+			//getDay();   从Date对象返回一周中的某一天(0~6)
+			//set / getMonth();  从Date对象中返回月份(0~11)
+			//set / getFullYear();   从Date对象以四位数返回年份
+			//set / getHours();	  返回Date对象的小时(0~23)
+			//set / getMinutes();   返回Date对象的分钟(0~59)
+			//set / getSeconds();   返回Date对象的秒数(0~59)
+			//set / getMilliseconds();   返回Date对象的毫秒
+			//set / getTime();   返回1970年1月1日至今的毫秒数
+			//getTimezoneOffset();  返回本地时间与格林尼治标准时间(GMT)的分钟差
+			
+			//天
+			var d = new Date();
+			//console.log( d.getDate() ); //28
+			d.setDate(3);
+			//console.log(d.toLocaleDateString());
+			
+			//星期几
+			var d = new Date();
+			//console.log( d.getDay() );	//2, 表示星期2， 0表示星期天
+			
+			//月份
+			var d = new Date();
+			//console.log( d.getMonth() ); //10, 范围是：0~11
+			d.setMonth(3);
+			//console.log(d.toLocaleDateString());
+			
+			//年
+			var d = new Date();
+			//console.log( d.getFullYear() ); //2017
+			d.setFullYear(2018);
+			//console.log(d.toLocaleDateString());
+			
+			//时
+			var d = new Date();
+			//console.log( d.getHours() ); //10
+			d.setHours(12);
+			//console.log(d.toLocaleTimeString());
+			
+			//分
+			var d = new Date();
+			console.log( d.getMinutes() ); //26
+			d.setMinutes(12);
+			console.log(d.toLocaleTimeString());
+			
+			//秒
+			var d = new Date();
+			console.log( d.getSeconds() ); //47
+			d.setSeconds(12);
+			console.log(d.toLocaleTimeString());
+			
+			//getTimezoneOffset(): 单位分钟
+			console.log( d.getTimezoneOffset() ); //相差8小时
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//  
+			/*
+			class Father{
+				双眼皮
+				黄皮肤
+				身高
+			}
+			
+			//
+			class Son extends Father{
+				玩游戏
+			}
+			*/
+			
+			
+			//继承： 子类继承父类的属性和方法
+			
+			//JS中的继承
+			//1,原型链继承
+			//2,对象冒充
+			
+			
+			//原型链继承
+			//IPod ： 父类
+			function Ipod(){
+				this.color = "黑色";
+				this.music = function(){
+					console.log("听音乐");
+				}
+			}
+			
+			//Ipad ： 子类
+			function Ipad() {
+				this.size = "9.7";				
+				this.playGame = function(){
+					console.log("玩游戏");
+				}
+			}
+			
+			//让子类Ipad的原型指向父类的实例对象
+			Ipad.prototype = new Ipod(); //Ipad继承Ipod
+			
+			/*
+			//var p = new Ipod();
+			//Ipad.prototype = p;  
+			//console.log(p.color);
+			//console.log(Ipad.prototype.color);
+			
+			//实例化
+			var ipad = new Ipad();
+			//console.log(ipad.size);
+			//ipad.playGame();			
+			//console.log(ipad.color);
+			//ipad.music();			
+			*/
+			
+			//孙子类
+			function Iphone(){
+				this.type = "iphoneX";
+				this.callNumber = function(){
+					console.log('打电话');
+				}
+			}
+			Iphone.prototype = new Ipad(); //子类Iphone继承父类Ipad
+			
+			//实例化
+			var iphoneX = new Iphone();
+			//console.log(iphoneX.type);
+			//iphoneX.callNumber();
+			//console.log(iphoneX.size);
+			//iphoneX.playGame();
+			//console.log(iphoneX.color);
+			//iphoneX.music();
+			
+			
+			//父类
+			function Father(){
+				this.name = "老王";
+				this.age = 33;
+			}
+			Father.prototype.eat = function(){
+				console.log( this.name + " eat");
+			}
+			
+			//子类
+			function Son(){
+				this.weight = 50;
+			}	
+			
+			
+			//Son 继承 Father
+			Son.prototype = new Father(); //既继承原型也继承本身的方法
+			
+			//先写原型链继承， 然后再在子类原型中添加方法，如果写在Son.prototype = new Father()前面
+			//调用run会出现 undefined is not a function，因为Son.prototype = new Father()
+			//相当于son.prototype={name： "老王"，age ： 33;}里面没有run方法
+			//相当于把之前的方法给覆盖了。
+			Son.prototype.run = function(){
+				console.log("跑步");
+			}
+		
+			
+			
+			//重写方法
+			Son.prototype.eat = function(){
+				console.log("小王 吃饭");
+			}
+			
+			//实例化
+			var son = new Son();
+			console.log(son.name);
+			console.log(son.age);
+			console.log(son.weight);
+			son.eat();
+			son.run();
+		
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

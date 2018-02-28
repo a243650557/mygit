@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//12,输入一个时间(分别给出时分秒)，输出该时间的下一秒：
+			//如：输入23:59:59
+			//输出 0: 0: 0
+			var h = 23; 
+			var m = 59; 
+			var s = 59; 
+			
+			s++;
+			
+			if (s >= 60) {
+				m++;
+				s = 0;
+				
+				if (m >= 60) {
+					h++;
+					m = 0;
+					
+					if (h >= 24) {
+						h = 0;
+					}
+					
+				}
+			}			
+			
+			console.log(h + ":" + m + ":" + s);
+			
+			
+			//15,输入一个3位数，判断该数是否是水仙花数 (即该数的值等于该数各位数字的立方和)：
+			var n = 154;
+			var a = parseInt(n/100); 
+			var b = parseInt(n/10) % 10; 
+			var c = n%10;
+			
+			if (n == a*a*a + Math.pow(b,3) + Math.pow(c,3)) {
+				console.log("水仙花数");
+			}
+			else {
+				console.log("不是水仙花数");
+			}
+			
+			
+			//根据一个日期，判断该日期是这一年的第几天
+			var year = 2017;
+			var month = 11;
+			var day = 21;
+			
+			var days = day;
+			if (month > 1) {
+				days += 31;
+			}
+			if (month > 2) {
+				days += 28;
+			}
+			if (month > 3) {
+				days += 31;
+			}
+			//...
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

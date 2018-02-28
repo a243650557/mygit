@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//字符串截取
+			
+			//substring()
+			var str = "hello";
+			var str2 = str.substring(2); //从2开始到末尾
+			console.log(str2); //llo
+			
+			var str = "hello";
+			var str2 = str.substring(2,4); //从2开始到4：[2,4)
+			console.log(str2); //ll
+			
+			var str = "hello";
+			var str2 = str.substring(4,2); //从2开始到4：[2,4)
+			console.log(str2); //ll
+			
+			var str = "hello";
+			var str2 = str.substring(2,-4); //从2开始到4：[2,4)
+			console.log(str2); //he
+			
+			//substring(): 
+			//1, 可以反过来写， 可以把大的数写到前面
+			//2, 负数表示0
+			
+			
+			//slice() : 截取字符串
+			var str = "hello";
+			var str2 = str.slice(2); //从2开始到末尾
+			console.log(str2); //"llo"
+			
+			var str = "hello";
+			var str2 = str.slice(-4,4); 
+			console.log(str2); //"ell"
+			
+			
+			//slice() 
+			//1， 如果把大的数写在前面，则得到""
+			//2， 负数表示倒数第几个
+			
+			
+			//substr() : 截取字符串
+			var str = "hello";
+			var str2 = str.substr(-4,3);  //第二个参数是长度
+			console.log(str2);
+			
+			//substr()
+			//1, 第二个参数表示长度
+			//2， 负数表示倒数第几个
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

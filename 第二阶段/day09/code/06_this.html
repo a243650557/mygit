@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+						
+			onload = function(){
+				
+				//this： 存在于函数中， 哪个对象调用了该函数，则this就等于这个对象
+				
+				//1, 对象方法中的this： 一般就是当前函数所在的对象
+				var person = {
+					age : 33,
+					eat: function(){
+						//console.log(this); //this=person
+						console.log(this.age); //33
+					}
+				}
+				//person.eat(); 
+				
+				var person1 = {age: 44};
+				person1.fn = person.eat; //person1.fn = person.eat = function(){console.log(this.age);}
+				//person.eat(); //33, this=person, this.age=person.age
+				//person1.fn(); //44,  this=person1, this.age=person1.age
+				
+				
+				//2， 普通函数: this=window
+				function fn(){
+					console.log(this); //[object Window], window对象 
+				}
+				//fn();
+				
+				
+				//3, 事件中的this : 就是事件类型前面的元素节点对象
+				var oUl = document.getElementById("list");
+				
+				//点击事件
+//				oUl.onclick = function(){
+//					console.log(this); //oUl
+//				}
+				//oUl.onclick();
+				
+//				var obj = {};
+//				obj.f = function(){
+//					console.log("f");
+//				}
+//				obj.f();
+				
+				
+				//4, 定时器或延时器中的this: 就是window对象
+//				setInterval(function(){
+//					console.log(this); //[object Window]
+//				}, 2000);
+				
+//				setTimeout(function(){
+//					console.log(this); //[object Window]
+//				}, 2000);
+//				setTimeout(function(){
+//					console.log(this); //[object Window]
+//				}, 2000);
+				
+				
+				
+				//给li添加点击事件
+				var aLi = oUl.getElementsByTagName("li");
+				for (var i=0; i<aLi.length; i++) {
+					
+					//点击事件
+					//将遍历过程中的每个i分别保存到每个li的index属性中
+					aLi[i].index = i;
+					//aLi[i].setAttribute("index", i);
+					aLi[i].onclick = function(){
+						//console.log(this.innerHTML);
+						
+						//下标
+						//console.log(i); //3, 不可以使用
+						console.log(this.index);
+						//console.log(this.getAttribute("index"));
+					}
+				}
+				console.log("i=" + i); //i=3
+				
+				//上面的for循环等价于：
+				/*
+				aLi[0].index = 0;
+				aLi[0].onclick = function(){
+					console.log(this.index);
+				}
+				aLi[1].index = 1;
+				aLi[1].onclick = function(){
+					console.log(this.index);
+				}
+				aLi[2].index = 2;
+				aLi[2].onclick = function(){
+					console.log(this.index);
+				}
+				*/
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>10</li>
+			<li>20</li>
+			<li>30</li>
+		</ul>
+	</body>
+</html>

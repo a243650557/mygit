@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="ajax.js"></script>
+		<script>
+			
+			
+			//promise: 实现Ajax异步的依赖调用
+			
+			// "http://60.205.181.47/myPHPCode3/register.php"
+            //username="+username + "&password="+pwd + "&age="+age;
+			
+			/*
+			//注册
+			ajax({
+				type: "post",
+				url: "http://60.205.181.47/myPHPCode3/register.php",
+				data: {username:"张三3e", password:"123456", age:22},
+				
+				success: function(data){
+					console.log("注册 1");
+					
+					fn();
+				}
+			})
+			
+			function fn(){
+				//登录
+				ajax({
+					type: "post",
+					url: "http://60.205.181.47/myPHPCode3/login.php",
+					data: {username:"张三3e", password:"123456"},
+					
+					success: function(data){
+						console.log("登录 2");
+					}
+				})
+			}
+			
+			*/
+			
+			var p = new Promise(function(resolve, reject){
+				
+				ajax({
+					type: "post",
+					url: "http://60.205.181.47/myPHPCode3/register.php",
+					data: {username:"张三3e", password:"123456", age:22},
+					
+					success: function(data){
+						console.log("注册 1");
+						
+						//异步请求完成
+						resolve(100);
+					}
+				})
+				
+			});
+			p.then(function(data){
+				//console.log(data); //100
+				
+				return new Promise(function(res, rej){
+					//登录
+					ajax({
+						type: "post",
+						url: "http://60.205.181.47/myPHPCode3/login.php",
+						data: {username:"张三3e", password:"123456"},
+						
+						success: function(data){
+							console.log("登录 2");
+							
+							res();
+						}
+					})
+				})
+				
+			}).then(function(){
+				console.log(22);
+			})
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

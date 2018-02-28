@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//getName(); //5
+			
+			//String.fromCharCode();  类方法, 静态方法
+			//str.substring()  成员方法
+
+			function Foo() {
+			    getName = function(){
+			    	console.log(1); 
+			    };
+			    return this;
+			}
+			//类方法
+			Foo.getName = function (){
+				console.log(2);
+			};
+			Foo.prototype.getName = function (){
+				console.log(3);
+			};
+			var getName = function (){
+				console.log(4);
+			};
+			//普通函数： 会提前声明
+			function getName() { 
+				console.log(5);
+			}
+			//下面会输出什么
+			Foo.getName(); // 2
+			getName(); //4
+			Foo().getName(); //1
+			getName(); //1
+			new Foo.getName(); //2
+			new Foo().getName(); //3
+			new new Foo().getName(); //3
+
+			/*
+			var arr = [1,2];
+			arr.aa = "hello";
+			arr.fn = function(){
+				
+			}
+			
+			var obj = {}
+			obj.name = "张三";
+			obj.fn = function(){
+				
+			}
+			*/
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

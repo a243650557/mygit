@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				$("button").click(function(){
+					
+					
+					//show(), hide()
+					//fadeIn(), fadeOut(), fadeTo()
+					
+					
+					//show() : 显示元素
+					//$("div").show(); 
+					//$("div").show("fast"); //fast, normal, slow
+					//$("div").show(4000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					
+					//hide() : 隐藏元素
+					//$("div").hide();
+					//$("div").hide(3000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					
+					//toggle()
+					//$("div").toggle();
+					//$("div").toggle(2000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					
+					//slideDown() : 通过高度变化（高度增加）来显示元素
+					//$("div").slideDown();
+					//$("div").slideDown(3000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					//slideUp() : 通过高度变化（高度变小）来隐藏元素
+					//$("div").slideUp();
+					//$("div").slideUp(3000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					//slideToggle()
+					//$("div").slideToggle(3000);
+					
+					
+					//fadeIn() : 淡入显示元素 
+					//$("div").fadeIn();
+					//$("div").fadeIn(2000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					//fadeOut() : 淡出隐藏元素
+					//$("div").fadeOut(4000, function(){
+					//	console.log("动画完成");
+					//});
+					
+					//fadeToggle()
+					//$("div").fadeToggle(3000);
+					
+					
+					//fadeTo() : 将元素变成指定的透明度
+					//$("div").fadeTo(2000, 0.3);
+					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<div style="width: 100px; height: 100px; background: red;"></div>
+		<div style="width: 100px; height: 100px; background: blue; display: none;"></div>
+	</body>
+</html>

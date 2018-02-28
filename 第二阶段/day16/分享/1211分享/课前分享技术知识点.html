@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//数组去重
+			//方法一
+	/*		var arr = [1,2,3,2,1,5,6,7,8];
+			var arr2 = [];
+			for(var i=0;i<arr.length;i++){
+				if(arr2.indexOf(arr[i])==-1){
+					arr2.push(arr[i]);
+				}
+			}console.log(arr2);
+			//方法二
+
+			var arr = [1,2,3,2,1,5,6,7,8];
+			var arr2 = [];
+			for(var i = 0;i<arr.length;i++){
+				if(arr.indexOf(arr[i])=== i){
+					//判断下标位置 是否等于第一次出现的位置
+					arr2.push(arr[i]);
+				}
+			}console.log(arr2);
+ 
+			//方法三 
+			var arr = [1,2,3,2,1,5,6,7,8];
+			var set = new Set(arr);
+			var arr2 = Array.from(set);//var arr2 = [...set];
+			
+			console.log(arr2);
+	*/		
+			
+			
+			//冒泡排序
+	/*		var arr= [1,2,3,4,1,231,32,43,45,32,12];
+			
+			for(var i=0;i<=arr.length-1;i++){
+				for(var j=0;j<arr.length-1-i;j++){
+					if(arr[j]>arr[j+1]){
+						var temp =arr[j+1];
+						arr[j+1] =arr[j];
+						arr[j] =temp;
+					}
+				}
+			}console.log(arr);
+			
+			
+			//3   区分浏览器类型
+			
+			
+			console.log(navigator.userAgent);//用户代理信息, 通过该属性可以获取浏览器及操作系统信息
+			if (navigator.userAgent.indexOf("Chrome") != -1) {
+				console.log("谷歌浏览器");
+			}
+			else if (navigator.userAgent.indexOf("Firefox") != -1) {
+				console.log("火狐浏览器");
+			}
+			else if (navigator.userAgent.indexOf("IE") != -1) {
+				console.log("IE浏览器");
+			}
+			else if (navigator.userAgent.indexOf("Safari") != -1) {
+				console.log("苹果浏览器");
+			}
+	*/		
+	
+			
+//			4，总结浏览器兼容问题
+
+
+
+	/*	一,javascript中的的浏览器兼容
+			1  获取onScrollTop的值
+			不支持谷歌， 支持IE和火狐
+					var scrollTop = document.documentElement.scrollTop;  
+		支持谷歌， 不支持IE和火狐
+					var scrollTop = document.body.scrollTop;	
+				兼容写法:  
+			var scrollTop = document.documentElement.scrollTop ||document.body.scrollTop	;
+			2   获取事件流
+			var e = e(谷歌、火狐，不兼容IE) || event;   顺序写反在火狐中会报错
+		
+			3 阻止事件冒泡
+			function fn(e){
+				e = e||event;
+				if(e.stopPropagation){
+				e.stopPropagation();
+				}
+				else{
+					e.cancelBubble = true;
+				}
+			}
+			
+			4 阻止浏览器行为
+			function fn1(e){
+				e = e||event;
+				if(e.preventDefault){
+					e.preventDefault();
+				}
+				else{
+					return e.returnValue = false;
+				}
+			}
+			5  获取css样式的兼容写法
+				//IE9+,非ie
+				var _style = window.getComputedStyle(box,null)[attr];
+				//IE8
+				var _style =box.currentStyle;
+			
+			6 json
+				JSON: 是一种数据格式，一种数据的表示方式
+				在js中我们用json一般是使用json对象，数组或字符串
+				在cookie存储或跟后台进行数据交互使用josn字符串
+				JOSN解析时的   字符串--》对象
+				eval();
+				不兼容  ie6\7   parse()
+				
+				
+			7   监听器
+				添加监听器事件
+				事件监听器, 是JS事件中的一种事件触发机制, 我们可以通过添加事件监听器的方式给元素添加事件及执行函数
+
+				(add/remove  ie8及其以下不支持,火狐和谷歌支持)
+				(ie8及其以下使用  attachEvent()和detachEvent())
+				   box.addEventListener(“click”, func, false)
+				   
+					function addEvent(obj,type,fn,useCapture){
+						if(obj.addEventListener){
+							obj.addEventListener(type,fn,useCapture)
+						}
+						else{
+							obj.attachEvent("on"+type,fn);
+						}
+					}
+					//移除事件监听器
+					function removeEvent(obj,type,fn,useCapture){
+						if(obj.removeEventListener){
+							obj.removeEventListener(type,fn,useCapture)
+						}
+						else{
+							obj.detachEvent("on"+type,fn);
+						}
+					}
+			五大浏览器内核
+			Trident   IE				-ms
+			Gecko	  火狐firefox			-moz
+			Presto    欧朋				-o
+			webkit	  谷歌、苹果			-webkit
+			Blink	  google			
+			
+		//	 	基本类型和引用类型的区别
+				基本类型	Number boolean String undefined  null
+				引用类型    Array  functions Object symbol 
+				基本类型的赋值是直接将值赋给对方，
+				
+				引用类型的赋值是将它指向自身所在内存的堆区的地址，
+				var arr = [1,2,3];
+				var arr2 = arr;
+				arr2.push(4);
+				console.log(arr)   //  1,2,3,4
+				
+				
+		*/		
+			//	ES5 全局作用域   函数作用域     ES6块级作用域
+				
+				for(var i=0;i<10;i++){
+					
+					}
+					console.log(a)
+				
+				
+		/*		(function(){
+					for(var i =0;i<10;i++){
+					}	
+				})()	
+				console.log(i)
+				
+				
+				a=10;
+				console.log(a)
+				
+				
+				*/
+				a=10;
+				(function(){
+					
+				console.log(a)
+				var a=1;
+				})();
+				
+				
+				//  9  检测数组类型方式
+				1，instanceof 
+				2, Array.isArray(arr);
+				
+			var arr = [1,3]; 
+		function isArray(value){  
+		    if (typeof Array.isArray === "function") {  
+		        return Array.isArray(value);      
+		    }else{  
+		        return Object.prototype.toString.call(value) === "[object Array]";      
+		    }  
+		}  
+		alert(isArrayFn(arr));
+				
+				//严格模式
+				Javascript 为什么要设立严格模式：
+
+				1.消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+				2.代码运行的一些不安全之处，保证代码运行的安全；
+				3.提高编译器效率，增加运行速度；
+				 
+				例如以下几点:
+				 1. 不可以省略var声明变量
+				 2. 禁止使用this关键字指向全局变量
+				 3. 禁止使用八进制方法
+				 4. 不允许在非函数的代码块内声明函数
+				
+				
+				get和post区别
+	1、Get是用来从服务器上获得数据，而Post是用来向服务器上传递数据。 
+	2、Get将表单中数据的按照variable=value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&”连接；Post是将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL。 
+	3、Get是不安全的，因为在传输过程，数据被放在请求的URL中，而如今现有的很多服务器、代理服务器或者用户代理都会将请求URL记录到日志文件中，然后放在某个地方，这样就可能会有一些隐私的信息被第三方看到。另外，用户也可以在浏览器上直接看到提交的数据，一些系统内部消息将会一同显示在用户面前。Post的所有操作对用户来说都是不可见的。 
+	4、Get传输的数据量小，这主要是因为受URL长度限制；而Post可以传输大量的数据，所以在上传文件只能使用Post（当然还有一个原因，将在后面的提到）。 
+			*/			
+		
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

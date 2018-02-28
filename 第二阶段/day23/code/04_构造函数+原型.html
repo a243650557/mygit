@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//如果只使用原型保存属性和方法的问题
+			//1, 不可以初始化属性
+			//2, 原型中的共有属性可能会被不同的对象修改
+			
+			/*
+			//构造函数
+			function Person(){
+			}
+			Person.prototype.name = "老王";
+			Person.prototype.family = ["爸爸","妈妈","哥哥"];
+			
+			//实例化
+			var xiaoming = new Person();
+			console.log(xiaoming.name);
+			console.log(xiaoming.family);
+			
+			var xiaohong = new Person();
+			console.log(xiaohong.name);
+			console.log(xiaohong.family);
+			
+			xiaoming.family.push("妹妹");
+			console.log(xiaoming.family);
+			console.log(xiaohong.family);
+			*/
+			
+			
+			
+			//混合模式
+			//构造函数+原型
+			//构造函数： 一般写属性
+			//原型： 一般写方法
+			
+			//构造函数
+			function Person(name, age, family){
+				this.name = name;
+				this.age = age;
+				this.family = family;
+			}
+			//原型
+			Person.prototype.run = function(){
+				console.log("run");
+			}
+			
+			//好处
+			//1， 可以初始化属性			
+			//2， 属性不会被其他对象修改
+			//3， 方法可以共享，优化内存
+			
+			//小明
+			var xiaoming = new Person("小明",10,["爸爸","妈妈","哥哥"]);
+			
+			//小红
+			var xiaohong = new Person("小红",12,["爸爸","妈妈","哥哥"]);
+			
+			xiaoming.family.push("妹妹");
+			console.log(xiaoming.family); //[爸爸,妈妈,哥哥,妹妹]
+			console.log(xiaohong.family); //[爸爸,妈妈,哥哥]
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

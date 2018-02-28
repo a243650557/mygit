@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//赋值运算符
+			//  =， +=, -=, *=, /=， %=
+			var a = 10;
+			a += 2;
+			//等价于： a = a + 2;
+			console.log(a); //12
+			
+			var a = 10;
+			a -= 2;
+			console.log(a); //8
+			
+			var a = 10;
+			a *= 2; //a = a*2
+			console.log(a); 
+			
+			//赋值运算符： 先计算=号右边的表达式
+			
+			
+			//三目运算符（三元运算符）  ? : 
+			var a = 15;
+			var b = 12;
+			var max = a>b ? a : b; //两个数的最大值
+			console.log(max); //15
+			
+			
+			//位运算符(扩展)
+			var a = 15;             // 1111
+			a = a >> 2; //向右位移          //   11 
+			console.log(a); //3     //    3
+			
+			
+			// ^ : 异或， 相同为0， 不同为1
+			var a = 10;           		//1010
+			var b = 6;			  		//0110
+			console.log( a ^ b ); //12    1100
+			
+			// & ： 位与, 两个都为1则会1
+			var a = 10;           		//1010
+			var b = 6;			  		//0110
+			console.log( a & b );  //2    0010
+			
+			// |  : 位或， 有一个为1则为1
+			var a = 10;           		//1010
+			var b = 6;			  		//0110
+			console.log( a | b );  //14   1110
+
+			
+			//优先级：  加括号()
+			//* / %  比 +，-优先级高
+			// && 比 || 优先级高
+			
+			
+			//交换两个变量的值
+			var a = 10;
+			var b = 12;
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

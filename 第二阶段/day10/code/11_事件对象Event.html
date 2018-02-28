@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//事件对象: event
+				
+				var box = document.getElementById("box");
+				box.onmousedown = function(e){
+					//console.log(1);
+					//console.log(arguments); //[object Arguments]
+					//console.log(arguments.length); //1 , 有一个参数
+					//console.log(arguments[0]); //[object MouseEvent]
+					//console.log(e); //[object MouseEvent]
+					
+					//alert(e); //兼容谷歌， 火狐， 不兼容IE
+					//alert(window.event); //兼容谷歌，IE， 不兼容火狐
+					
+					//var evt = e || window.event;
+					//var evt = e || event;
+					//var evt = event || e;  //在火狐中 报错： event is not defined //因为火狐中会默认他为event变量，而不是window对象里面的属性
+					//var evt = window.event || e;  
+					//alert(evt);
+					
+					//获取事件对象
+					e = e || event; 
+					
+					//事件对象的属性
+					//console.log(e.button); //0表示鼠标左键， 1表示轮滚， 2表示右键
+					//console.log(e.which); //1表示鼠标左键， 2表示轮滚， 3表示右键
+					
+//					e.pageX/e.pageY : 鼠标位置, 相对页面内容坐标 （常用）
+//					console.log(e.pageX + "," + e.pageY);
+					
+					//e.clientX/e.clientY : 鼠标位置, 相对于可视区 （一般用在固定定位的情况）
+//					console.log(e.clientX + "," + e.clientY);
+					
+					//e.screenX/e.screenY : 相对显示的位置 （使用较少）
+					//console.log(e.screenX + "," + e.screenY);
+					
+//					e.offsetX/e.offsetY : 相对于目标元素的位置（常用）(点击哪个元素就相对与哪个)
+					console.log(e.offsetX + "," + e.offsetY);
+					
+					
+					
+					
+				}
+				
+				//键盘事件对象
+				/*
+				onkeydown = function(){
+					//console.log(arguments.length); //1
+					//console.log(arguments[0]); //[object KeyboardEvent]
+				}
+				*/
+				
+				
+			}
+		</script>
+	</head>
+	<style>	
+		p{
+			background: red;
+			line-height: 30px;
+		}
+	</style>
+	<body style="width: 2000px;height: 2000px;">
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 100px; top: 100px;">
+			<p>hahaha</p>
+			box</div>
+	</body>
+</html>

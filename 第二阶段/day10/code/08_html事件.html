@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//onload:在页面加载完成后调用
+			onload = function(){
+				//console.log("onload"); 
+				
+				//onselect: 当选择了文字后触发
+				var txt = document.getElementById("txt");
+				txt.onselect = function(){
+					console.log("onselect");
+				}
+				
+				//onchange: 修改输入框内容且失去焦点后触发
+				txt.onchange = function(){
+					console.log("onchange");
+				}
+				
+				//onfocus: 获取焦点
+				txt.onfocus = function(){
+					console.log("onfocus");
+				}
+				
+				//onblur: 失去焦点
+				txt.onblur = function(){
+					console.log("onblur");
+				}
+				
+				//onsubmit: form表单中点击提交按钮触发
+				var form = document.getElementsByTagName("form")[0];
+				form.onsubmit = function(){
+					console.log("onsubmit");
+				}
+				
+				//onreset: form表单中点击重置按钮触发
+				form.onreset = function(){
+					console.log("onreset");
+				}
+				
+				//onscroll
+				
+				//当页面大小发生变化的时候触发
+				window.onresize = function(){
+					//console.log("onresize");
+					//浏览器页面的宽度
+					var winW = document.documentElement.clientWidth;
+					console.log("浏览器页面宽度： " + winW);
+					
+					//浏览器页面的高度
+					var winH = document.documentElement.clientHeight;
+					console.log("浏览器页面高度： " + winH);
+					
+				}
+				
+			}
+			
+			//onunload: 在页面卸载时调用
+			onunload = function(){
+				//console.log("onunload");
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<input id="txt" type="text" value="hello world" />
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//id选择器
+				//$("#box").css("background", "red"); //修改一个样式属性
+				//$("#box").css({"background":"red", color:"white", fontSize:30});//或者font-size加引号
+				
+				//标签选择器
+				//$("div").css({border: "1px solid red"});
+				//$($("div")[0]).css({border: "1px solid red"});
+				//$("div").first().css({border: "1px solid red"});
+				$("div").eq(2).css({border: "1px solid red"});
+				//$("div").eq(2) : 获取所有div中的第3个（下标为2）
+				
+				//类选择器
+				$(".foo").css({color: "red"});
+				
+				//通配符选择器
+				$("*").css({fontFamily: "微软雅黑"});
+				
+				
+				//群组选择器
+				$("#box,.foo2").css("background", "green");
+				
+				
+			}) 
+		</script>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div class="foo">box1</div>
+		<div class="foo">box2</div>
+		<div class="foo2">box3</div>
+	</body>
+</html>

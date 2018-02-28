@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//匹配input中存在name属性所有节点
+				//$("input[name]").css({background: "pink"});
+				
+				//匹配input中属性名称name值为pwd的节点
+				//$("input[name=pwd]").css({background: "pink"});
+				
+				//匹配input中name属性值不为pwd或不存在name的所有节点
+				//$("input[name!=pwd]").css({background: "pink"});
+				
+				//匹配input中name属性值以pw开头的所有节点
+				//$("input[name^=pw]").css({background: "pink"});
+				
+				//匹配input中name属性值以wd结尾的所有节点
+				//$("input[name$=wd]").css({background: "pink"});
+				
+				//匹配input中name属性值包含nam的所有节点
+				//$("input[name*=nam]").css({background: "pink"});
+				
+				//同时写多个属性选择器
+				//$("input[name][type=password]").css({background: "pink"});
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text" value="helloworld" name="username" /> <br >
+		<input type="password" value="hello" name="pwd" /> <br >
+		<input type="text" value="world" /> <br >
+	</body>
+</html>

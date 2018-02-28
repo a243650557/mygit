@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		new Promise(function (resolve, reject) {
+		    log('start new Promise...');
+		    var timeOut = Math.random() * 2;
+		    log('set timeout to: ' + timeOut + ' seconds.');
+		    setTimeout(function () {
+		        if (timeOut < 1) {
+		            log('call resolve()...');
+		            resolve('200 OK');
+		        }
+		        else {
+		            log('call reject()...');
+		            reject('timeout in ' + timeOut + ' seconds.');
+		        }
+		    }, timeOut * 1000);
+					}).then(function (r) {
+					    log('Done: ' + r); //如果成功，调用resolve函数
+					}).catch(function (reason) {
+					    log('Failed: ' + reason);  //如果是把调用rejec函数
+					});
+
+	</script>
+	<body>
+	</body>
+</html>

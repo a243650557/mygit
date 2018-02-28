@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js"></script>
+		<script>
+			onload = function(){
+				
+				/*
+				 登录（POST）
+					登录接口:  http://60.205.181.47/myPHPCode3/login.php
+					参数:username=zhangsan,用户名
+					参数:password=123456,密码
+				*/
+				
+				//登录
+				var aInput = document.getElementsByTagName("input");
+				
+				//点击登录
+				aInput[2].onclick = function(){
+					//正则验证
+					
+					//再登录
+					login();
+				}
+				
+				//登录
+				function login(){
+					var username = aInput[0].value;
+					var pwd = aInput[1].value;
+					
+					//调用登录接口
+					var xhr = createXHR();
+					xhr.open("post", "http://60.205.181.47/myPHPCode3/login.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send("username="+username +"&password="+pwd);
+					xhr.onreadystatechange = function(){
+						if (xhr.readyState==4 && xhr.status==200) {
+							//console.log(xhr.responseText);
+							
+							var obj = JSON.parse(xhr.responseText);
+							
+							if (obj.status == 1) {
+								console.log("登录成功！");
+								//登录成功后， 进入首页
+								open("06_index.html");
+							}
+							else {
+								alert("登录失败， 用户名或密码错误！");
+							}
+						} 
+					}
+				}
+				
+				//注销
+				function logout(){
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<h2>登录</h2>
+		<form>
+			<input type="text" placeholder="用户名" /> <br />
+			<input type="password" placeholder="密码" /> <br />
+			<input type="button" value="登录" />
+		</form>
+	</body>
+</html>

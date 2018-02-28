@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//链式运动
+            //当一个运动执行完成之后, 再继续执行另一个运动, 我们称为链式运动
+			
+			
+			onload = function(){
+				
+				var btn = document.getElementById("btn");
+				var box = document.getElementById("box");
+				
+				//点击按钮
+				btn.onclick = function(){
+					move(box, "left", 400, function(){
+						//console.log("运动完成！");
+						move(box, "left", 40, function(){
+							move(box, "top", 400); 
+						});
+					});
+										
+				} 
+				
+				
+				function move(obj, attr, itarget, fn){
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+
+						//1, 获取当前值
+						var current = parseInt(getStyleAttr(obj, attr));
+						
+						//2, 速度
+						var speed = (itarget-current)/8;
+						speed = speed>0 ? Math.ceil(speed) : Math.floor(speed); 
+						
+						//3, 临界值
+						if (current == itarget) {
+							clearInterval(obj.timer); //停止移动
+							
+							//此时运动刚好停止
+							if(fn){ 
+								fn();
+							}
+							return;
+						}
+						
+						//4, 运动
+						obj.style[attr] = current + speed + "px";
+						
+					}, 30);
+					
+				}
+				
+				
+				//获取某节点的css属性值
+				function getStyleAttr(obj, attr){
+					if (window.getComputedStyle) {
+						return getComputedStyle(obj, null)[attr];
+					}
+					return obj.currentStyle[attr];
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<button id="btn">开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 40px; top: 100px;"></div>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			
+			//正则表达式（RegExp）: 用于匹配字符串
+			
+			//创建正则表达式
+			//方式一
+			var reg = new RegExp("box");
+			//console.log(reg); //  /box/
+			//console.log(typeof reg); //object
+			
+			var reg = new RegExp("box", "gi");
+			//console.log(reg); //  /box/gi
+			
+			//g: 全局匹配
+			//i: 忽略大小写
+			//m: 换行模式
+			
+			//方法二 (推荐)
+			var reg = /box/;
+			//console.log(reg); //  /box/
+			
+			var reg = /box/gi;
+			//console.log(reg);  //  /box/gi 
+			
+			//如果字符串是一个变量, 则要使用方法一
+			//var a = "box";
+			//var reg = /a/;
+			//console.log(reg); //  /a/
+			
+			//var reg = new RegExp(a);
+			//console.log(reg);  //  /box/
+			
+			
+			
+			//正则的使用
+			//reg.test(str) : 如果返回true则表示匹配成功， 如果返回false则表示匹配不成功 
+			//reg.exec(str) : 如果返回数组则表示匹配成功， 如果返回null则表示匹配不成功
+			
+			//reg.test(str)
+			var str = "I like boX, bOx, Box";
+			var reg = /box/i;
+			//console.log(reg.test(str));
+			
+			//  /box/ :表示匹配的字符串是否存在box
+			//  /box/i :表示匹配的字符串是否存在box，且是忽略大小写的
+			
+			//reg.exec(str): 除了可以通过返回的是数组或null来区分是否匹配以外， 还可以通过返回的数组来得到匹配到的是什么字符串
+			var str = "I like boX, bOx, Box";
+			var reg = /box/gi;
+			//console.log( reg.exec(str) ); // ["boX"]
+			//console.log( reg.exec(str) ); // ["bOx"]
+			//console.log( reg.exec(str) ); // ["Box"]
+			
+			while (n = reg.exec(str)) {
+				console.log(n);
+			}
+			
+			//console.log( reg.exec(str) instanceof Array );
+			
+			
+			//字符串的方法
+			//str.match(): 如果返回数组则表示匹配成功， 如果返回null则表示匹配不成功
+			var str = "I like boX bOx Box";
+			var reg = /box/gi;
+			//console.log( str.match(reg) ); //[boX,bOx,Box]
+			//console.log( str.match(reg) instanceof Array);  //true
+			
+			
+			//str.search(): 查找第一次出现子串的位置， 如果不存在则返回-1
+			var str = "I like boX bOx Box";
+			var reg = /box/i;
+			//console.log( str.search(reg) ); // 7
+			
+			
+			//str.replace()
+			var str = "I like boX bOx Box";
+			var reg = /box/gi;
+			//console.log( str.replace(reg, "boy") );  //I like boy boy boy
+			
+			
+			//str.split()
+			var str = "I like boX#bOx#Box";
+			var reg = /\s|#/;  //表示空格或者#
+			//console.log(str.split(reg)); //[I,like,boX,bOx,Box]
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

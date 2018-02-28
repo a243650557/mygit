@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			onload = function(){
+				
+				var oBox = document.getElementById("box");
+				
+				//属性节点的操作
+				//getAttribute() : 获取指定属性的属性值
+				//setAttribute() : 设置属性（添加， 修改）
+				//removeAttribute() : 删除属性
+				
+				//获取属性值
+				//getAttribute()
+				//console.log(oBox.id); 
+				//console.log(oBox.getAttribute("id"));
+				
+				//console.log(oBox.className);
+				//console.log(oBox.getAttribute("class"));
+				
+				//自定义的属性要使用getAttribute()方式获取
+				//console.log(oBox.aa); //undefined
+				//console.log(oBox.getAttribute("aa")); //bb
+				
+				
+				//setAttribute() : 设置属性
+				//添加属性： 如果原来没有该属性
+				oBox.setAttribute("age", 33);
+				console.log(oBox.getAttribute("age")); //33
+				
+				//修改属性： 如果原来存在该属性
+				oBox.setAttribute("aa", "ff");
+				
+				//oBox.className = "pox";
+				//oBox.setAttribute("class", "cccc");
+				
+				
+				//removeAttribute() : 删除属性
+				oBox.removeAttribute("aa");
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="box" class="foo" aa="bb">box</div>
+	</body>
+</html>

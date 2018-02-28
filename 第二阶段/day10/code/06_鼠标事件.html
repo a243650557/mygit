@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//鼠标事件: 
+				// onclick, ondblclick, onmousedown, onmouseup, onmousemove
+				// onmouseenter, onmouseleave, onmouseover, onmouseout
+				
+				function $(id){
+					return document.getElementById(id);
+				}
+				
+				
+				//onclick : 左键单击事件， 按下并松开时触发
+				$("btn1").onclick = function(){
+					console.log("onclick");
+				}
+				
+				//ondblclick : 双击事件
+				$("btn2").ondblclick = function(){
+					console.log("ondblclick");
+				}
+				
+				//onmousedown: 鼠标按下时触发
+				$("btn3").onmousedown = function(){
+					console.log("onmousedown");
+				}
+				
+				//onmouseup: 鼠标松开时触发
+				$("btn3").onmouseup = function(){
+					console.log("onmouseup");
+				} 
+				
+				//onmousemove: 鼠标移动时触发，触发多次 
+				$("btn3").onmousemove = function(){
+					console.log("onmousemove");
+				} 
+				
+				
+				//
+				//onmouseenter: 移入 （推荐）
+				$("box1").onmouseenter = function(){
+					console.log("onmouseenter 移入");
+					this.children[0].value = this.children[0].value-0 + 1;
+				}
+				//onmouseleave: 移出
+				$("box1").onmouseleave = function(){
+					console.log("onmouseleave 移出");
+				}
+				
+				
+				//onmouseover: 移入
+				$("box2").onmouseover = function(){
+					console.log("onmouseover 移入");
+					this.children[0].value = this.children[0].value-0 + 1;
+				}
+				//onmouseout: 移出
+				$("box2").onmouseout = function(){
+					console.log("onmouseout 移出");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn1">onclick</button> <br />
+		<button id="btn2">ondblclick</button> <br />
+		<button id="btn3">onmousedown/onmouseup/onmousemove</button> <br />
+		
+		<div id="box1" style="width: 300px; height: 50px; background: pink;">
+		onmouseenter/onmouseleave
+		<input type="text" value="0" />
+		</div><br />
+		
+		<div id="box2" style="width: 300px; height: 50px; background: green;">
+		onmouseover/onmouseout
+		<input type="text" value="0" /></div><br />
+		
+	</body>
+</html>

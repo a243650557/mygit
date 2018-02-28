@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//工厂模式
+				function createDrag(id){
+				
+					var dragObj = {};
+					
+					//属性
+					//ele
+					dragObj.ele = document.getElementById(id);
+					
+					
+					//方法
+					//startMove
+					dragObj.startMove = function(){
+						
+						var that = this;
+						this.ele.onmousedown = function(e){
+							e = e||event;
+							var disx = e.offsetX;
+							var disy = e.offsetY;
+							
+							that.moving(disx, disy);
+							that.stopMove();
+						}
+						
+					}
+					
+					//moving
+					dragObj.moving = function(x, y) {
+						document.onmousemove = function(e) {
+							e = e||event;
+							dragObj.ele.style.left = e.pageX - x + "px";
+							dragObj.ele.style.top = e.pageY - y + "px";
+						}
+					}
+					
+					//stopMove
+					dragObj.stopMove = function(){
+						document.onmouseup = function() {
+							document.onmousemove = null;
+							document.onmouseup = null;
+						}
+					}
+						
+					//可以开始拖拽
+					dragObj.startMove();
+					
+					return dragObj;
+				}
+				
+				var dragBox = createDrag("box");
+				var dragBox1 = createDrag("box1");
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 10px; top: 100px;"></div>
+		<div id="box1" style="width: 100px; height: 100px; background: red; position: absolute; left: 10px; top: 210px;"></div>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin-bottom: 10px;
+			}
+		</style>
+		<script src="move.js"></script>
+		
+		<script>
+			
+//			 1, 如图, 有四个红色的div, 当鼠标移入时, 让红色div以缓冲速度变宽, 当鼠标移开时,
+//                                让红色div以缓冲速度恢复到原来的宽度;
+
+			onload = function(){
+				
+				var aDiv = document.getElementsByTagName("div");
+				
+				for (var i=0; i<aDiv.length; i++) {
+					aDiv[i].onmouseenter = function(){
+						move(this, "width", 400);
+					}
+					aDiv[i].onmouseleave = function(){
+						move(this, "width", 100);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

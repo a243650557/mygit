@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				var btn = document.getElementById("btn");
+				var box = document.getElementById("box");
+				
+				//按钮
+				btn.onclick = function(){
+										
+					var timer = setInterval(function(){
+						
+						//1，获取当前值
+						var current = box.offsetLeft;
+						
+						//2, 速度 v=s/t (单位时间的距离)
+						var speed = -7;
+						
+						//3，判断临界值
+						if (current+speed < 30){
+							clearInterval(timer); //停止运动
+							box.style.left = 30 + "px";
+							return;
+						}
+						
+						//4， 运动
+						box.style.left = current + speed + "px";
+						
+					}, 30);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn">开始运动</button>
+		<div id="box" style="width: 100px; height: 100px; background: green; position: absolute; left: 300px; top: 100px;"></div>
+		<div style="width: 1px; height: 200px; background: black; position: absolute; left: 30px; top: 50px;"></div>
+	</body>
+</html>

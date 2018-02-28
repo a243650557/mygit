@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				
+				//闭包
+				/*
+				function fn(){
+					var a = 10;
+				}
+				fn();
+				*/
+				
+				//JS中的垃圾回收机制GC
+				//引用计数
+				var obj1 = {name:"老王"}; //引用计数： 1
+				var obj2 = obj1;  //引用计数： 2
+				obj1 = 2;   //引用计数： 1
+				obj2 = 3;  //引用计数：0， 变为0则会将该对象所占内存释放
+				
+				
+				
+				//作用域
+				//全局变量 : 不会被垃圾回收机制收回， 可能在其他地方被修改
+				var a = 10;
+				function fn1(){
+					a++;
+					console.log(a);
+				}
+				//fn1();
+				//fn1();
+				
+				
+				//局部变量： 会被垃圾回收机制收回， 不会在其他地方被修改
+				function fn2(){
+					var b = 10;
+					b++;
+					console.log(b);
+				}
+				//fn2();
+				//fn2();
+				
+				
+				//闭包
+				//闭包是这样一种机制: 函数嵌套函数, 内部函数可以引用外部函数的参数和变量,
+				//              则该参数和变量不会被垃圾回收机制所收回.
+
+				function f1(m){ //var m;
+					var n = 10; 
+					
+					function f2(){
+						n++;
+						console.log(n);
+					}
+					return f2;
+				}
+				
+			 	//var f = f1();
+			 	//f();
+			 	//f();
+			 	//f();
+				
+				
+				
+				//获取li的下标
+				var ali = document.getElementsByTagName("li");
+				for (var i=0; i<ali.length; i++) {
+					
+					//使用闭包
+					/*
+					(function(index){
+						
+						
+						ali[i].onclick = function(){
+							console.log(index);
+						}
+						
+					})(i);
+					*/
+					
+					/*
+					ali[i].onclick = (function(index){
+										return function(){
+											console.log(index);
+										}
+									})(i)
+					*/
+					
+					var li = ali[i];
+					
+					(function(_li){
+						
+						setTimeout(function(){
+							console.log(_li.innerHTML);						
+						}, 1000);
+						
+					})(li);
+					
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+		</ul>
+	</body>
+</html>

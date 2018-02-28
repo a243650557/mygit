@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				// :first : 获取所有匹配元素中的第一个
+				//$("ul li:first").css("background", "green");
+				//$("ul li").first().css("background", "green");
+				
+				// :last  : 最后一个 
+				//$("ul li:last").css("background", "green");
+				//$("ul li").last().css("background", "green");
+				
+				//eq(index) : 重要
+ 				//$("ul li:eq(0)").css("background", "red");
+				//$("ul li").eq(1).css("background", "green");
+				//$("ul li").eq(-2).css("background", "blue");
+				
+				//匹配下标为偶数的
+ 				//$("ul li:even").css("background", "red");
+				
+				//匹配下标为奇数的
+ 				//$("ul li:odd").css("background", "green");
+				
+				// :gt(index) : 大于指定下标
+   				//$("ul li:gt(2)").css("background", "green");
+				
+				// :lt(index) : 小于指定下标
+   				//$("ul li:lt(2)").css("background", "red");
+				
+				//:not() 去除指定的选择器所匹配的元素
+   				//$("ul li:not(.foo,#box)").css("background", "red");
+   				$("ul li").not(".foo,#box").css("background", "red");
+				
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li class="foo">2</li>
+			<li>3</li>
+			<li id="box">4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</body>
+</html>

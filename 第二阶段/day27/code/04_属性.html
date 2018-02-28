@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.foo {
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.foo1 {
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//getAttribute()
+				//setAttribute()
+				//removeAttribute()
+				
+				//attr()
+				//removeAttr()
+				
+				//attr()
+				//获取属性 (获取第一个节点的值)
+				console.log( $("img").attr("src") ); //"images/1.jpg"
+				
+				//设置属性
+				//$("img").attr("title", "标题");
+				//$("img").attr({"title": "标题", "aa":"bb"});
+				
+				//修改属性
+				//$("img").eq(0).attr("src", "images/33.jpg");
+				
+				//删除属性
+				//$("img").eq(0).removeAttr("src");
+				
+				
+				
+				//prop() : 一般使用在selected, disabled, checked
+				//removeProp()
+				//console.log( $("input:checkbox").attr("checked") ); //checked
+				//console.log( $("input:checkbox").prop("checked") ); //true
+				
+				//prop() : 会获取到一个true或false
+				//true: 禁用了， false表示没禁用
+				console.log( $("input:checkbox").prop("disabled") ); //true
+				
+				//设置不禁用
+				$("input:checkbox").prop("disabled", false);
+				
+				//
+				$("input:checkbox").prop("aa", "zhangsan");
+				console.log( $("input:checkbox").prop("aa") ); //zhangsan
+				
+				//移除属性
+				$("input:checkbox").removeProp("aa");
+				console.log( $("input:checkbox").prop("aa") ); //undefined
+				
+				
+				$("#box").addClass("foo");
+				$("#box").addClass("foo1");
+				
+				//addClass
+				$("div").click(function(){
+					//$("#box").addClass("foo");
+					//$("#box").removeClass("foo1"); //移除指定的class
+					//$("#box").removeClass(); //将所有class移除
+					
+					//$("#box").toggleClass("foo1");
+				})
+				
+			}) 
+		</script>
+	</head>
+	<body>
+		<img src="images/111.jpg" />
+		<img src="images/111.jpg" />
+		
+		<input type="checkbox" disabled="disabled" />
+		
+		<div id="box">box</div>
+	</body>
+</html>

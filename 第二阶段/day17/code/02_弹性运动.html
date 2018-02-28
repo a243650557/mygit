@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul,li {list-style: none;}
+			ul {
+				width: 400px;
+				height: 30px;
+				position: relative;
+				margin: 100px auto;
+			}
+			ul li {
+				width: 98px;
+				height: 28px;
+				border: 1px solid #ccc;
+				float: left;
+				text-align: center;
+				line-height: 28px;
+				cursor: pointer;
+			}
+			
+			#bg {
+				width: 98px;
+				height: 3px;
+				background: red;
+				position: absolute;
+				top: 26px;
+				left:0px;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var ul = document.getElementById("list");
+				var ali = ul.getElementsByTagName("li");
+				var bg = document.getElementById("bg"); 
+				
+				for (var i=0; i<ali.length-1; i++) {
+					ali[i].onmouseenter = function(){
+						//缓冲运动
+						//animate(bg, {left:this.offsetLeft});
+						
+						//弹性运动
+						move(bg, "left", this.offsetLeft);
+					}
+				}
+				
+				function move(obj, attr, itarget){
+					
+					var speed = 0;
+					
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+						
+						//1,current
+						var current = parseInt(getStyleAttr(obj, attr)); 
+						
+						//2, speed
+						speed += (itarget-current)/8;
+						
+						//摩擦系数
+						speed *= 0.8;
+						
+						//从左->右 
+						//左->中：速度方向向右，速度为正数， 速度大小一直在增大，当到达中间时速度是最大的 
+						//中->右：速度方向向右， 速度为正数， 速度大小一直变小， 当到达右边时速度会变成最小(0)
+												
+						//从右->左
+						//右->中： 速度方向向左，速度为负数，速度大小一直增大， 当到达中间时速度是最大的
+						//中->左：速度方向向左， 速度为负数，速度大小一直变小，当到达左边时速度回变成最小(0)
+						
+						//3, 临界值
+						if (Math.abs(speed)<1 && Math.abs(itarget-current)<1){
+							obj.style[attr] = itarget + "px";
+							clearInterval(obj.timer);
+							return;
+						}
+						
+						//4, 运动
+						obj.style[attr] = current + speed + "px";
+						
+					}, 30);
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>首页</li>
+			<li>关于我们</li>
+			<li>联系我们</li>
+			<li>产品</li>
+			<li id="bg"></li>
+		</ul>
+	</body>
+</html>

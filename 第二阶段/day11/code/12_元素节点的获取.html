@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//document.getElementById() : 获取到对象
+				//document.getElementsByTagName() : 获取到数组
+				//document.getElementsByName() : 获取到数组
+				//document.getElementsByClassName() : 获取到数组, 不兼容IE8-
+				
+				//document.querySelector() : 获取到对象， 不兼容IE8-
+				//document.querySelectorAll() : 获取到数组， 不兼容IE8-
+				
+				//document.querySelector(".foo") 
+				// 参数为一个css选择器, 
+				// 返回值为匹配的第一个元素节点
+				var box = document.querySelector("div"); 
+				//console.log(box.id);
+				
+				
+				//document.querySelectorAll()
+				// 参数为一个css选择器, 
+				// 返回值为 所有匹配成功的元素所组成的数组
+				var arr = document.querySelectorAll(".foo");
+				//console.log(arr.length);
+				console.log(arr[0].id); //box1
+				console.log(arr[1].id); //box2
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">box</div>
+		<div id="box1" class="foo">box1</div>
+		<div id="box2" class="foo">box2</div>
+	</body>
+</html>

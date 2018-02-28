@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				$("img").mousedown(function(e){
+					e.preventDefault();
+					var disx = e.offsetX;
+					var disy = e.offsetY;
+					
+					$(document).mousemove(function(e){
+						$("img").css({left:e.pageX-disx, top:e.pageY-disy});
+					})
+					
+					$(document).mouseup(function(){
+						$(document).off("mousemove mouseup");
+					})
+				})
+				
+				
+			})
+		</script>
+	</head>
+	<body style="background: black;">
+		<img src="images/girl.gif" width="200" height="200" style="position: absolute; left: 10px; top: 10px;" />
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//对象Object
+			
+			//Boolean, Number , String, Object, Undefined, Null
+			
+			//Boolean : true和false
+			//Number : 数字
+			//String : 字符串
+			
+			//Object : 对象 （保存数据和功能） 现实生活中的一切事物我们都可以认为是对象
+			//		                             属性和方法
+			//		                             变量和函数
+			
+			//Array : 数组， 一般用来保存很多相同类型的数据
+			
+			//Undefined: undefined,一般不使用undefined做操作
+			//Null: null,一般不使用null做操作
+			
+			
+			//对象
+			//创建对象
+			//方法一
+			var obj = new Object();
+			//console.log(obj); //[object Object]
+			//console.log(typeof obj); //object
+			
+			//属性(变量): 表示静态的
+			obj.name = "张三";
+			obj.age = 22;
+			//console.log(obj.name); //张三
+			//console.log(obj.age); //22
+			//console.log(obj.age1); //undefined, 如果不存在该属性， 则返回undefined
+			
+			//方法（函数）：表示动态的
+			obj.eat = function(){
+				console.log("先闻一闻");
+				console.log("再泡一泡");
+				console.log("再尝一尝");
+			}
+			//obj.eat();
+			
+			
+			
+			//方法二：  字面量
+			/*
+			var obj = {}; 
+			obj.name1 = "老王";
+			obj.age1 = 60; 
+			obj.eat = function(){
+				console.log("吃饭");
+			}
+			console.log( obj.name1 + "," + obj.age1);
+			obj.eat();
+			*/
+			
+			var obj = {
+				"name1": "老王",  //键值对
+				age1: 60,
+				eat: function(){
+					console.log("吃饭");
+				},
+				a: 1
+			};
+			//console.log( obj.name1 + "," + obj.age1);
+			//obj.eat();
+			//obj.name1 = "老宋";
+			//obj["name1"] = "老宋";
+			
+			var a = "name1";
+			//console.log( obj.a ); //1
+			//console.log( obj[a] ); //老王
+			
+			
+			//属性名称可以添加引号（如果要添加最好使用双引号）
+			//如果属性名是一个变量，则必须使用中括号的方式obj["name1"]
+			
+			
+			//删除属性或方法
+			console.log(obj.name1); //老王
+			delete obj.name1;  
+			console.log(obj.name1); //undefined
+			
+			obj.eat();  //吃饭
+			delete obj.eat;
+			//obj.eat();  //obj.eat是undefined,报错， undefined is not a function
+			
+			
+			//for-in : 一般用来遍历对象
+			var obj = {
+				name: "老王",   //key-value: 键值对
+				age: 60,
+				eat: function(){
+					console.log("吃饭");
+				}
+			};
+			
+			for (var key in obj) {
+				//key : 属性名或方法名
+				console.log(key + " : " + obj[key]);   
+			}
+			
+			
+			//
+			var arr = new Array();
+			arr.name = "李四";
+			arr.age = 44;
+			console.log(arr.name + "," + arr.age);
+			
+			//Object : JS中顶级的类， 超类
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

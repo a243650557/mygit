@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//函数的提前声明
+			//相同的函数名会覆盖
+			//整个函数fn都会提前
+			/*
+			function fn(){
+				console.log("fn");
+			}
+			fn(); //fn2
+			
+			function fn(){
+				console.log("fn2");
+			}
+			*/
+			
+			/*
+			//普通函数
+			fn();
+			function fn(){
+				console.log("fn");
+			}
+			fn(); //fn
+			
+			//匿名函数
+			//fn2(); //报错 ， undefined is not a function
+			var fn2 = function(){
+				console.log("fn2");
+			}
+			fn2(); //fn2
+			
+			var fn3 = fn2;
+			fn3(); //fn2
+			
+			//函数名称： 既是函数名称， 也是指向该函数的变量（指针）
+			// 只要变量等于某个函数，则该变量就可以调用该函数
+			
+			//普通函数和匿名函数
+			// 普通函数可以在声明前调用
+			// 匿名函数要在声明后才能调用
+			
+			*/
+			
+			
+			//函数嵌套
+			/*
+			function fn1(){
+				console.log("fn1");
+				
+				//n相对于fn1来说是局部变量， 相对于fn2来说是全局变量
+				var n = 10;
+				
+				function fn2(){
+					console.log("fn2");
+				}
+			}
+			
+			fn1();
+			//fn2();  //报错
+			
+			//不能调用同级函数的内部函数
+			function fn3(){
+				//fn2(); //报错
+				fn1();
+			}
+			fn3();
+			*/
+			
+			
+			
+			function fn1(){
+				
+				//普通函数
+				/*function fn2(){
+					console.log("fn2");
+				}
+				return fn2;
+				*/
+				
+				//匿名函数
+				/*var fn2 = function(){
+					console.log("fn2");
+				}
+				return fn2;
+				*/
+				
+				//简化
+				return function(){
+					console.log("fn222");
+				}
+				
+			}
+			
+			var f2 = fn1(); //f2 = fn2
+			f2();
+			//fn1()();
+			
+			
+			
+			//自执行函数（自运行函数）
+			var fn3 = function (){
+				console.log("fn3");
+			}
+			fn3();
+			
+			//自运行函数
+			(function (){
+				console.log("fn3-2");
+			})();
+			
+			//传参
+			(function(n){
+				console.log("fn3-2， n=" + n);
+			})(6);
+			
+			
+			//使用自运行函数嵌套函数
+			/*
+			var f4 = (function(){
+				
+				return function(){
+					console.log("fn4");
+				}
+				
+			})();
+			
+			f4();
+			*/
+			
+			//传参
+			var f4 = (function(n){
+				
+				return function(m){
+					console.log("fn4, n=" + n + "，m=" + m );
+				}
+				
+			})(3);
+			
+			f4(4);
+			
+			
+			
+			//回调函数
+			function func1(n, fn){
+				fn(n+1); //回调
+			}
+			func1(3, function(m){
+				console.log("回调了,m="+m);
+			});
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

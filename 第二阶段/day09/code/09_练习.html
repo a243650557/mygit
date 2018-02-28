@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+					
+			var arr = [
+				{"id":0,"name":"王牌特工： 特工学院","img":"images/1.jpg","score":"7.4"},
+				{"id":1,"name":"王牌特工： 特工学院","img":"images/2.jpg","score":"9.1"},
+				{"id":2,"name":"王牌特工： 特工学院","img":"images/3.jpg","score":"6.1"},
+				{"id":3,"name":"王牌特工： 特工学院","img":"images/4.jpg","score":"6.9"},
+				{"id":4,"name":"王牌特工： 特工学院","img":"images/5.jpg","score":"8.2"},
+				{"id":5,"name":"王牌特工： 特工学院","img":"images/6.jpg","score":"9.3"},
+				{"id":6,"name":"王牌特工： 特工学院","img":"images/7.jpg","score":"8.4"},
+				{"id":7,"name":"王牌特工： 特工学院","img":"images/8.jpg","score":"7.7"},
+				{"id":8,"name":"王牌特工： 特工学院","img":"images/9.jpg","score":"6.5"},
+				{"id":9,"name":"王牌特工： 特工学院","img":"images/10.jpg","score":"7.3"},
+				{"id":10,"name":"王牌特工： 特工学院","img":"images/11.jpg","score":"6.1"},
+				{"id":11,"name":"王牌特工： 特工学院","img":"images/12.jpg","score":"9.2"},
+				{"id":12,"name":"王牌特工： 特工学院","img":"images/13.jpg","score":"7.3"},
+				{"id":13,"name":"王牌特工： 特工学院","img":"images/14.jpg","score":"9.1"},
+				{"id":14,"name":"王牌特工： 特工学院","img":"images/15.jpg","score":"7.6"},
+				{"id":15,"name":"王牌特工： 特工学院","img":"images/16.jpg","score":"7.5"},
+				{"id":16,"name":"王牌特工： 特工学院","img":"images/17.jpg","score":"6.3"},
+				{"id":17,"name":"王牌特工： 特工学院","img":"images/18.jpg","score":"8.3"},
+				{"id":18,"name":"王牌特工： 特工学院","img":"images/19.jpg","score":"6.6"},
+				{"id":19,"name":"王牌特工： 特工学院","img":"images/20.jpg","score":"9.7"}
+			];
+			
+			//按效果图2显示上面的数据（根据数组数据动态创建节点）
+			onload = function(){
+				var list = document.getElementById("list");
+				for(i=0; i<arr.length; i++){
+					var obj = arr[i];
+					var li = document.createElement("li");
+					list.appendChild(li);
+					li.innerHTML = "<img src='" +obj.img+"'>";
+					var p = document.createElement("p");
+					li.appendChild(p);
+					p.innerHTML=obj.name;
+					var p = document.createElement("p");
+					li.appendChild(p);
+					p.innerHTML=obj.score;
+					li.style.float="left";
+					list.style.overflow="hidden";
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<!--<li>
+				<img src=""/>
+				<p>王牌特工</p>
+				<p>9.0</p>
+			</li>
+			<li>
+				<img src=""/>
+				<p>王牌特工</p>
+				<p>9.0</p>
+			</li>-->
+		</ul>
+	</body>
+</html>

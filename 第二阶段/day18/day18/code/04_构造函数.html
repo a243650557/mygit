@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//构造函数(类)
+			
+			function Person(name, age){
+				//var obj = new Object();
+				//this = obj;
+				this.name = name;
+				this.age = age;
+				this.run = function(n){
+					console.log("跑了: "+ n + "km");
+				}
+			//	return this;
+			}
+			var p = Person(); //把Person当成普通函数来调用
+			console.log(p); //undefined
+			
+			//使用构造函数(类)， 创建对象
+			//var p = new Person("张三", 33); //把Person当成构造函数来使用, 该构造函数中的this就是p对象
+			//console.log(p);
+			//console.log(p.name);
+			//console.log(p.age);
+			//p.run(10);
+			
+
+			
+			//注意： 区分普通函数和构造函数：是否使用new
+			
+			//同一个类 可以创建任意多个具有相同属性和方法的不同的对象
+			var p1 = new Person("李四",44);
+			//console.log(p == p1);  //false
+			//console.log(p1.name);
+			//console.log(p1.age);
+			//p1.run(20);
+			
+			
+			
+			//instanceof
+			
+			//arr: 对象
+			//Array: 类（构造函数）
+			var arr = new Array();
+			
+			//判断arr对象是否有Array所创建的
+			//console.log(arr instanceof Array); //true
+			
+			//p2： 对象
+			//Person: 类（构造函数）
+			var p2 = new Person("李四",44);
+			//console.log(p2 instanceof Person); //true
+			
+			
+			
+			
+			
+			var p3 = new Person("老王",33);
+			var p4 = new Person("老王",33);
+			console.log(p3.name == p4.name); 
+			console.log(p3.age == p4.age); 
+			console.log(p3.run == p4.run);  //false, run方法是引用类型， 比较的是地址
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

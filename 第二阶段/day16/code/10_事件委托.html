@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; border: none; padding: 0;}
+			ul,li {list-style: none;}
+			#box {
+				width: 400px;
+				height: 400px;
+				border: 1px solid red;
+			}
+			ul {
+				background: pink;
+				overflow: hidden;
+			}
+			ul li {
+				width: 50px;
+				height: 50px;
+				margin: 10px;
+				border: 1px solid black;
+				background: pink;
+				float: left;
+			}
+			
+		</style>
+		<script>
+			onload = function(){
+				
+				//事件委托
+				var arr = [
+					["green", "green", "green", "green", "green", "green", "green", "green", "green"],
+					["red", "red", "red", "red", "red", "red", "red"],
+					["orange", "orange", "orange", "orange", "orange"]
+				];
+				
+				
+				//
+				var ul = document.getElementById("list");
+				
+				var aBtn = document.getElementsByTagName("button");
+				for (var i=0; i<aBtn.length; i++) {
+					aBtn[i].index = i;
+					aBtn[i].onclick = function(){
+						
+						//先清空原来的li节点
+						ul.innerHTML = "";
+						
+						//然后再添加新的li
+						var arr1 = arr[this.index];
+						for (var j=0; j<arr1.length; j++) {
+							var li = document.createElement("li");
+							ul.appendChild(li);
+							li.style.background = arr1[j];
+							li.className = "pox";
+						}
+					
+					}
+				}
+				
+				
+				//事件委托: 
+				// 将li的点击事件委托给ul添加 （要委托给父级元素）
+				ul.onclick = function(e){
+					//console.log("哈哈");
+					
+					e = e||event;
+					var target = e.target || e.srcElement; //兼容
+					if (target.className == "pox") {
+						console.log("点击了li");
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<!--<li class="pox">1</li>
+				<li class="pox">1</li>
+				<li>1</li>-->
+			</ul>
+		</div>
+		
+		<button>按钮1</button>
+		<button>按钮2</button>
+		<button>按钮3</button>
+	</body>
+</html>

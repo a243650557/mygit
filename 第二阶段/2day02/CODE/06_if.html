@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//分支语句： if, switch
+			
+			//if
+			
+			
+			//if 单分支 
+			//语法格式
+			/*
+				if (表达式或变量或值) {
+					代码
+					代码
+				}
+				
+			*/
+			
+			if (false) {
+				console.log("Dota2");
+			}
+			
+			if (-2) {
+				console.log("Dota");
+			} 
+			
+			//假false的情况： false, 0, NaN, "", null, undefined
+			
+			
+			if ( 3 > 4 ) {
+				console.log("LOL");
+			}
+			
+			var a = 10;
+			if ( a > 4 ) {
+				console.log("a>4");
+			}
+		
+			//大括号也可以不写， 那么if后面只会包含一条js语句，尽量写上括号
+			if (0) 
+				console.log("王者荣耀");
+			console.log("王者荣耀2");
+		
+			if (0) {
+				console.log("王者荣耀");
+				console.log("王者荣耀2");
+			}
+			
+			console.log(1);
+			
+		
+			//if双分支
+			/*
+			 if (表达式或变量或值) {
+			 	代码1
+			 } 
+			 else {
+			 	代码2
+			 }
+			 */
+			
+			
+			
+			//示例:
+			//    1、判断一个数是偶数还是奇数；
+			var n = 11;
+			if (n%2 == 0) {
+				console.log(n + "是偶数");
+			}
+			else {
+				console.log(n + "是奇数");
+			}
+			
+			//    2、求两个数的最大数；
+			var a = 10;
+			var b = 12;
+			if (a > b) {
+				console.log("最大值：" + a);
+			}
+			else {
+				console.log("最大值：" + b);
+			}
+			
+			//三目运算符： 其实就是一个双分支
+			var max = a>b ? a : b;
+			var min = a<b ? a : b;
+						
+			
+			//    3、判断一个年份是闰年还是平年； （1.能被4整除而不能被100整除.（如2004年就是闰年,1800年不是.）
+			//				         		2.能被400整除.（如2000年是闰年））
+			
+			var year = 2016;
+			if ( (year%4==0 && year%100!=0) || (year%400==0) ) {
+				console.log(year + "是闰年");
+			}
+			else {
+				console.log(year + "是平年"); 
+			}
+			
+			
+			
+			//if多分支
+			//语法格式
+			/*
+			 if (表达式或变量或值) {
+			 	代码1
+			 } 
+			 else if (表达式或变量或值){
+			 	代码2
+			 }
+			 else if (表达式或变量或值){
+			 	代码3
+			 }
+			 else {
+			 	代码4
+			 }
+			 
+			 */
+			
+			//成绩判定
+			//	大于85 优秀
+			//	大于等于75小于等于85 良好
+			//	大于等于60小于75 及格
+			//	小于60  不及格
+			
+			var grade = 59;
+			if (grade > 85) {
+				console.log("优秀");
+			}
+			else if (grade>=75 && grade<=85) {
+				console.log("良好");
+			}
+			else if (grade>=60 && grade<75) {
+				console.log("及格");
+			}
+			else {
+				console.log("不及格");
+			}
+			
+			//简化
+			var grade = 89;
+			if (grade > 85) {
+				console.log("优秀");
+			}
+			else if (grade >= 75) {
+				console.log("良好");
+			}
+			else if (grade >= 60) {
+				console.log("及格");
+			}
+			else {
+				console.log("不及格");
+			}
+			
+			//
+			var grade = 89;
+			if (grade > 100) {
+				console.log("输入有误");
+			}
+			else if (grade > 85) {
+				console.log("优秀");
+			}
+			else if (grade >= 75) {
+				console.log("良好");
+			}
+			else if (grade >= 60) {
+				console.log("及格");
+			}
+			else if (grade >= 0){
+				console.log("不及格");
+			}
+			else {
+				console.log("输入有误");
+			}
+			
+			
+			//计算y值并输出
+			var x = 2;
+			var y = 0;
+			if (x < 1) {
+				y = x;
+			}
+			else if (x < 10) {
+				y = 2*x + 1;
+			}
+			else {
+				y = 5*x - 17;
+			}
+			console.log("y=" + y);
+			
+			
+			//if 嵌套
+			
+			/*
+			var grade = 89;
+			if (grade > 85) {
+				console.log("优秀");
+			}
+			else if (grade >= 75) {
+				console.log("良好");
+			}
+			else if (grade >= 60) {
+				console.log("及格");
+			}
+			else {
+				console.log("不及格");
+			}
+			*/
+			
+			var grade = 69;
+			if (grade >= 60) {
+				
+				if (grade > 85){
+					console.log("优秀");
+				}
+				else if (grade >= 75) {
+					console.log("良好");
+				}
+				else {
+					console.log("及格");
+				}
+				
+			}
+			else {
+				console.log("不及格");
+				if (grade > 85){
+					console.log("优秀");
+				}
+				else if (grade >= 75) {
+					console.log("良好");
+				}
+				else {
+					console.log("及格");
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

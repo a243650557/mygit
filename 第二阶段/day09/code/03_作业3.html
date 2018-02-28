@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				//document.getElementById(); //得到的是对象
+				//document.getElementsByTagName(); //得到数组
+				//document.getElementsByName(); //得到数组
+				//document.getElementsByClassName(); //得到数组, IE9+，非IE
+				
+				var oUl = document.getElementsByTagName("ul")[0];
+				var aLi = oUl.getElementsByTagName("li");
+				
+				//遍历所有的li, 给每个li添加点击事件
+				for (var i=0; i<aLi.length; i++) {
+					
+					aLi[i].onclick = function(){
+						console.log(1);
+					}
+					
+					//
+					if (i%2 == 0) {
+						aLi[i].style.background = "red";
+					}
+					else {
+						aLi[i].style.background = "green";
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+	</body>
+</html>

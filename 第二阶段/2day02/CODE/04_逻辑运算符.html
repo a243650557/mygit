@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//逻辑运算符： &&, ||, !
+			
+			// && ： 且
+			// 只要有一个为假false则会为假false, 只有两个都为真true才为真true
+			console.log( true && true ); //true
+			console.log( true && false ); //false
+			console.log( false && true ); //false
+			console.log( false && false ); //false
+			
+			console.log( 3>4 && 4>3 );  //false
+			
+			
+			// || ： 或
+			//  只要有一个为真true则会真true， 两个都为false才会为false
+			console.log( true || true ); //true
+			console.log( true || false ); //true
+			console.log( false || true ); //true
+			console.log( false || false ); //false
+			
+			console.log( 3>4 || 4>3 );  //true
+			
+			// ！ ： 非， 取反
+			console.log( !true ); //false
+			console.log( !false ); //true
+			
+			console.log( !(3>4) ); //true
+			console.log( !3 ); //false
+			
+			
+			//&& 短路操作
+			//从左往右逐个判断是否为假false,如果是false则直接返回该操作数的值， 否则一直往右判断
+			var n = 3 && 4;
+			console.log(n); //4
+			
+			var n = undefined && 4;
+			console.log(n); //undefined
+			
+			
+			var n = 3 && null && 5;
+			console.log(n); //null
+			
+			var n = 3 && 4 && 0;
+			console.log(n); //0
+			
+			var n = 0 && 4 && 3;
+			console.log(n); //0
+
+			// || 短路操作
+			var n = 3 || 4; 
+			console.log(n); //3
+			
+			var n = undefined || 4;
+			console.log(n); //4
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

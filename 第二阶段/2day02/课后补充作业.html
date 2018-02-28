@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+			//		Day02-if分支语句
+			//1， 计算机表达式(x>y)?x:y,将值存入变量中，将值输出
+			//比如：
+			//输入 4 2 输出为4
+			//输入 6 8 输出为8
+			var x = 4;
+			var y = 2;
+			console.log((x>y)?x:y);
+			//
+			//2，利用条件表达式判断x和y，找出两个数的最小值，将最小值输出。
+			//比如：
+			//输入 4 2 输出为2
+			//输入 6 8 输出为6
+			var x = 4;
+			var y = 2;
+			console.log((x<y)?x:y);
+			//
+			//3，利用条件表达式判断x和y，找出两个数的最大值，将最大值输出。 
+			//比如：
+			//输入 4 2 输出为4
+			//输入 6 8 输出为
+			var x = 4;
+			var y = 2;
+			console.log((x>y)?x:y);
+			//
+			//4，利用条件表达式判断x和y，找出两个数中的最大值，将最大值乘以4倍，然后输出. 
+			//比如：
+			//输入 4 2 输出为16
+			//输入 6 8 输出为3
+			var x = 4;
+			var y = 2;
+			var max = ((x>y)?x:y);
+			console.log(max *4);
+			//
+			//5，利用条件表达式判断x和y，找出两个数中的最小值，将最小值除以2，然后输出
+			//比如：
+			//输入 4 2 输出为1
+			//输入 6 8 输出为3
+			var x = 4;
+			var y = 2;
+			var min = ((x<y)?x:y);
+			console.log(min / 2);
+			//
+			//6，利用条件表达式判断x，如果“x小于10并且x大于0”,输出字符串“x大于0并且小于10”。否则输出“x不在取值范围之内” .
+			//比如：
+			//输入 4 输出为x大于0并且小于10
+			//输入 61 输出为x不在取值范围之内
+			//
+			//7, 输入4个数，若第一个数第二个数相等，第三个数和第四个数的和与第一个数和第二个数的和相等，输出1，否则输出0
+			//比如：
+			//输入
+			//3 3 2 4
+			//输出为
+			//1
+			var a = 3, b = 3 , c = 2, d = 4;
+			if(a == b && (a + b == c + d)){
+				console.log('1');
+			}
+			else{
+				console.log(0);
+			}
+			//
+			//8,定义两个整型变量x,y，从键盘初始化变量值，判断两个变量的大小，将较大的值赋给变量max,将max输出,. 
+			//比如：
+			//输入 6 4 输出为6
+			//输入 2 1 输出为2
+//			var x = parseInt(prompt('请输入一个整数'));
+//			var y = parseInt(prompt('请输入第二个整数'));
+//			var max = ((x>y)?x:y);
+//			console.log(max);
+			//
+			//9,定义三个整型变量x,y,z，从键盘初始化变量值，判断三个变量的大小，将较大的值赋给变量max，将max输出,. 
+			//比如：
+			//输入 6 3 4 输出为6
+			//输入 2 7 1 输出为7
+//			var x = parseInt(prompt('请输入一个整数'));
+//			var y = parseInt(prompt('请输入第二个整数'));
+//			var z = parseInt(prompt('请输入第三个整数'));
+//			var max ;
+//			if(x > y){
+//				max = x;
+//			}
+//			else{
+//				max = y;
+//			}
+//			if(z > max){
+//				max = z;
+//			}
+//			console.log(max);
+			//
+			//10,输入一个月数，然后输出对应月份有多少天（不考虑闰年），将天数输出,. 
+			//比如：
+			//输入 6 输出为30
+			//输入 2 输出为28
+			var month = 5;
+			switch (month){
+				case 1:console.log(31);break;
+				case 2:console.log(28);break;
+				case 3:console.log(31);break;
+				case 4:console.log(30);break;
+				case 5:console.log(31);break;
+				case 6:console.log(30);break;
+				case 7:console.log(31);break;
+				
+				
+			}
+			//
+			//11, 输入两个数字，输出这两个数字的大小关系：
+			//比如：输入3 5 
+			//输出3<5
+			//输入5 5 
+			//输出5==5
+//			var x = parseInt(prompt('请输入一个整数'));
+//			var y = parseInt(prompt('请输入一个整数'));
+//			if(x > y){
+//				console.log(x + ' > ' + y);
+//			}
+//			else if(x < y){
+//				console.log(x + ' < ' + y);
+//			}
+//			else{
+//				console.log(x + ' == ' + y);
+//			}
+			//
+			//12,输入一个时间(分别给出时分秒)，输出该时间的下一秒：
+			//如：输入23:59:59
+			//输出 0: 0: 0
+			var hour = 23;
+			var minute = 59;
+			var sec = 59;
+			sec = sec +1;
+			if (sec == 60){
+				sec = 00;
+				minute = minute +1;
+				if(minute == 60){
+					minute =00;
+					hour = hour + 1;
+					if(hour == 24){
+						hour =00;
+					}
+				}
+			}
+			console.log(hour + ':' + minute + ':' + sec);
+			//
+			//13,输入一个年份，判断该年份是平年还是闰年：
+			//如：输入
+			//2008
+			//输出
+			//2008年是闰年
+			//输入
+			//2007
+			//输出
+			//2007年是平年
+			//
+			//14,输入两个整数，打印两数之差的绝对值。
+			//如：输入
+			//20 8
+			//输出
+			//12
+			//输入
+			//4 5
+			//输出
+			//1
+//			var x = parseInt(prompt('请输入一个整数'));
+//			var y = parseInt(prompt('请输入一个整数'));
+//			var z = x - y;
+//			console.log(Math.abs(z));
+			//
+			//15,输入一个3位数，判断该数是否是水仙花数 (即该数的值等于该数各位数字的立方和)：
+			//如：输入
+			//208
+			//输出
+			//否
+			//输入
+			//153
+			//输出
+			//是
+//			var x = parseInt(prompt('请输入一个三位整数'));
+//			var bai = parseInt(x / 100);
+//			var shi = parseInt(x % 100 /10);
+//			var ge  = (x % 10);
+//			if(bai * bai * bai + shi *shi * shi + ge * ge * ge == x){
+//				console.log(x + '是水仙花数');
+//			}
+//			else{
+//				console.log(x + '不是水仙花数');
+//			}
+			
+	</script>
+	<body>
+	</body>
+</html>

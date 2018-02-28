@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<script src="cookie1.js"></script>
+	<script>
+		window.onload = function(){
+		for(i=0; i<10000; i++){
+			if(getCookie("product" + i)){
+				console.log(getCookie("product" + i));
+				var div = document.createElement("div");
+				document.body.appendChild(div);
+				div.innerText = getCookie("product" + i);
+			}
+		}
+		}
+	</script>
+	<body>
+		<h2>我的购物车</h2>
+	</body>
+</html>

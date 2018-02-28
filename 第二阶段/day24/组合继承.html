@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		function Ipad(color){
+			this.color = color;
+		}
+		Ipad.prototype.music = function(){
+			console.log('听音乐');
+		}
+		
+		function Iphone(color,type){
+			Ipad.call(this,color)
+			this.type = type;
+		}
+		Iphone.prototype = new Ipad();
+		Iphone.prototype.playGame = function(){
+			console.log('打游戏');
+		}
+		
+		var iphoneX = new Iphone("粉色","iphonex");
+		console.log(iphoneX.color + iphoneX.type);
+		
+	</script>
+	<body>
+	</body>
+</html>

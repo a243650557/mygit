@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul,li {list-style: none;}
+			#list {
+				width: 400px;
+				height: 30px;
+				background: #F1DEFF;
+			}
+			#list >li {
+				float: left;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			#list > li ul {
+				width: 100px;
+				height: 0px;
+				background: #F2B179;
+				overflow: hidden;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+//			
+//			2, 如图, 
+//			当鼠标在导航栏上移动时, 可以显示二级菜单, 
+//			二级菜单的显示和隐藏都使用缓冲动画改变高度, 
+//			鼠标在二级菜单上移入移出也可以显示和隐藏蓝色的部分
+
+			
+			onload = function(){
+				
+				var list = document.getElementById("list");
+				var aLi = list.children;
+				
+				for (var i=0; i<aLi.length; i++) {
+					aLi[i].onmouseenter = function(){
+						move(this.children[0], "height", 200);
+					}
+					aLi[i].onmouseleave = function(){
+						move(this.children[0], "height", 0);
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>bbbbb
+				<ul>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+				</ul>
+			</li>
+			<li>bbbbb
+				<ul>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+				</ul>
+			</li>
+			<li>bbbbb
+				<ul>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+				</ul>
+			</li>
+			<li>bbbbb
+				<ul>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+					<li>aaaaa</li>
+				</ul>
+			</li>
+		</ul>
+		
+		
+	</body>
+</html>

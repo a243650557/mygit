@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="ajax.js"></script>
+		<script>
+			
+			//请求头和响应头
+			/*
+			var xhr = createXHR();
+			xhr.open("get", "http://60.205.181.47/myPHPCode2/checkname.php?regname=11", true);
+			
+			//设置请求头， 写在open和send中间
+			// 一般通过请求头发送一些隐私的数据，比如token, usetoken, id
+			xhr.setRequestHeader("token", "23F@$#$123fsdsf");
+			
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState==4 && xhr.status==200) {
+					
+					//获取响应头信息
+					console.log( xhr.getAllResponseHeaders() );
+					console.log( xhr.getResponseHeader("Content-Type") );
+				}
+			}
+			*/
+			
+			
+			//http://60.205.181.47/myPHPCode2/checkname.php?regname=11
+			//post
+			var xhr = createXHR();
+			
+			xhr.open("post", "http://60.205.181.47/myPHPCode2/checkname.php", true);
+			
+			//设置请求头, 模拟表单进行post提交
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			
+			xhr.send("regname=11&pwd=111");
+			
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState==4 && xhr.status==200) {
+					console.log(xhr.responseText);
+				}
+			}
+			
+			
+			//get和post的区别
+			//1, get和post都可以获取和提交数据， get提交的数据一般不超过2k， post可以提交很大的数据一般不超过4G, get以获取数据为主， post以提交为主 
+			//2, get比post快， 一般能用get就用get
+			//3, post比get更安全
+			//4, 传参， get是连接在url后， post是在body体中
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

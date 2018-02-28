@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.foo {
+				width: 200px;
+			}
+			#box2 {
+				width: 101px;
+			}
+			#box3 {
+				width: 300px;
+				height: 100px;
+				position: absolute;
+				left: 20px;
+				top: 260px;
+				border: 1px solid pink;
+			}
+			.pox {
+				width: 100px;
+				height: 30px;
+				border: 1px solid red;
+				float: left;
+			}
+		</style>
+		<script>
+			
+			onload = function(){
+				
+				//DOM
+				//DOM操作： 操作html和css
+				/*
+				var div = document.createElement("div"); //<div></div>
+				//document.getElementsByTagName("body")
+				document.body.appendChild(div);
+				
+				div.innerHTML = "<div>hello <b>world</b></div>";
+				
+				div.style.background = "green";
+				*/
+				
+				
+				//节点分类： 元素节点， 属性节点， 文本节点
+				//<div id="box">box</div>
+				//元素节点： <div></div>
+				//属性节点： id="box"
+				//文本节点：box 
+				
+				
+				//元素节点
+				//获取元素节点的方式：
+				//通过id获取
+				var oBox = document.getElementById("box"); 
+				//console.log(oBox); //[object HTMLDivElement]
+				
+				//如果id不存在， 则返回null
+				//var oBox1 = document.getElementById("box11"); 
+				//console.log(oBox1); //null
+				
+				
+				//代码的执行顺序问题： 有可能会导致获取到的元素节点为null
+				// 解决方式： 
+				// 1，把script写在body后面
+				// 2，写onload
+				
+				
+				//元素节点的属性
+				var oBox = document.getElementById("box"); 
+				//console.log(oBox.tagName); //DIV
+				//console.log(oBox.id); //box
+				//console.log(oBox.title); //haha
+				
+				//console.log(oBox.className); //foo, class的值
+				
+				//获取css样式（只能获取行间样式）
+				//console.log(oBox.style);  //[object CSSStyleDeclaration], css样式对象
+				console.log(oBox.style.width);  //100px
+				console.log(oBox.style.background); //red
+				console.log(oBox.style.fontSize);  //30px
+				
+				//设置css样式
+				oBox.style.width = 50 + "px";
+				oBox.style.fontSize = "40px";
+				
+				//innerHTML
+				//console.log(oBox.innerHTML); 
+				oBox.innerHTML = "boxbox2";
+				
+				//innerText： 不能解析html标签
+				//console.log(oBox.innerText);
+				//oBox.innerText = "<b>hello lol</b>"; 
+				
+				//value: 获取输入框的内容
+				var oTxt = document.getElementById("txt");
+				console.log(oTxt.value);
+				oTxt.value = "222";
+				
+				
+				//只读的属性：
+				//offsetWidth: 获取宽度
+				//offsetHeight: 获取高度
+				//offsetLeft: left值, 跟父级定位参照物有关
+				//offsetTop: top值， 跟父级定位参照物有关
+				var oBox2 = document.getElementById("box2");
+				console.log(oBox2.offsetWidth); //101
+				console.log(oBox2.offsetHeight); //50
+				console.log(oBox2.offsetLeft); //20
+				console.log(box4.offsetLeft); //102
+				console.log(oBox2.offsetTop); //200
+				
+				//offsetWidth和style.width的区别:
+				//1， offsetWidth获取的宽度没有单位，而且是数字类型
+				//2， offsetWidth可以获取不同地方的css样式属性值， 而style.width只能获取行间样式
+				
+				
+				//元素节点操作： 
+				//如果要获取： 使用offsetWidth,offsetHeight, offsetLeft, offsetTop
+				//如果要修改： 使用style.width, style.height, style.left, style.top
+			
+			
+				//通过tagName获取
+				var oUl = document.getElementById("list");
+				var aLi = oUl.getElementsByTagName("li"); //获取ul里面的所有li
+				console.log(aLi); //[object HTMLCollection], 节点列表，元素节点数组
+				console.log(aLi.length); //4
+				
+				//通过name获取
+				var aLi = document.getElementsByName("aa");
+				console.log(aLi); //[object NodeList], 节点列表， 元素节点的数组
+				console.log(aLi.length); //2
+				
+				//通过className获取： 不兼容IE8及以下
+				var aLi = document.getElementsByClassName("bb");
+				console.log(aLi); //[object HTMLCollection], 元素节点数组
+				console.log(aLi.length); //2
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" class="foo" title="haha" style="width: 100px; height: 50px; background: red; font-size: 30px;">
+			<p>boxbox</p>
+			<p>aa</p>
+			bb
+		</div>
+		
+		<input type="text" id="txt" value="111" />
+		
+		<div id="box2" style=" height: 50px; background: green; position: absolute; left: 20px; top: 200px;"></div>
+	
+		<div id="box3">
+			<div class="pox">11</div>
+			<div id="box4" class="pox">22</div>
+		</div>
+		
+		<ul id="list">
+			<li name="aa">1</li>
+			<li class="bb">2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul id="list2">
+			<li name="aa">1</li>
+			<li class="bb">2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</body>
+</html>

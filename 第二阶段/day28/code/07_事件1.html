@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//鼠标事件
+				//click, dbclick, mousedown, mouseup, mousemove, mouseenter, mouseleave, mouseover, mouseout
+				//键盘事件： keydown, keyup, keypress
+				//html事件： blur, focus, change, select, load, ready, resize, reset, submit, scroll,..
+				
+				
+				//jq的事件是一个方法， 没有on
+				$("button").click(function(e){
+					
+					console.log( e.button ); //0,1,2
+					console.log( e.which ); //1,2,3
+					console.log( e.type ); //click, 事件类型
+					
+					console.log( e.pageX + "," + e.pageY);
+					console.log( e.clientX + "," + e.clientY);
+					console.log( e.offsetX + "," + e.offsetY);
+					console.log( e.screenX + "," + e.screenY);
+					console.log( e.charCode);
+					console.log( e.keyCode);
+					
+					//阻止冒泡
+					e.stopPropagation();
+					
+					//阻止默认行为
+					e.preventDefault();
+										
+				})
+				
+				
+				//on() : 可以绑定事件
+				//off() ： 可以移除事件
+				
+				$("div").mouseenter(function(){
+					console.log("移入");
+				})
+				$("div").mouseleave(function(){
+					console.log("移出");
+				})
+				
+				//$("div").off(); //移除所有事件
+				//$("div").off("mouseenter");  //移除一个事件
+				$("div").off("mouseenter mouseleave");  //移除多个事件
+				
+				//hover
+				$("div").hover(function(e){
+					console.log(e.type); //mouseenter
+				}, 
+				function(e){
+					console.log(e.type); //mouseleave
+				})
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		<div>按钮</div>
+	</body>
+</html>

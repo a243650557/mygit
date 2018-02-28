@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//on()
+				//给button绑定一个点击事件
+				$("button").on("click", function(){
+					//console.log("click-on");
+				})
+				
+				//同时绑定多个事件
+				$("button").on({
+					"mouseenter": function(){
+						//console.log("移入")
+					}, 
+					"mouseleave": function(){
+						//console.log("移出")
+					}
+				})
+				
+				//off() : 解除事件
+				
+				
+				//普通方式添加点击
+				$("#box input").click(function(){
+					//console.log("点击了hello");
+				})
+				
+				//on()： 事件委托
+				// 将事件委托给box添加， 只会触发box后代节点中指定选择器（input标签选择器）的节点
+				$("#box").on("click", ".foo", function(){
+					console.log("点击了hello");
+				})
+				
+				//点击按钮， 添加hello按钮
+				$("button").click(function(){
+					$("<input class='foo' type='button' value='world' />").appendTo("#box")
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button>按钮</button>
+		
+		<div id="box" style="width: 300px; height: 100px; background: pink;">
+			
+			<input class="foo" type="button" value="hello" />
+			
+		</div>
+		
+	</body>
+</html>

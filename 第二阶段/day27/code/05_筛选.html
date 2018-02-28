@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//hasClass()
+				console.log( $("div").eq(0).hasClass("foo") ); //true
+				
+				//filter()
+				$("div").filter(".foo,.foo2").css({background: "red"});
+				
+				
+				//is()
+				//parent(): 父节点
+				//parents(): 所有父节点（祖先节点）
+				console.log( $("#is").parent().is(".form") ); //true
+				
+				//parent()
+				//parents()
+				console.log( $("#box1").parent()[0].nodeName ); //SPAN
+				console.log( $("#box1").parent().length ); //1
+				console.log( $("#box1").parents().length ); //4
+				console.log( $("#box1").parents()[0].nodeName ); //SPAN
+				console.log( $("#box1").parents()[1].nodeName ); //DIV
+				console.log( $("#box1").parents()[2].nodeName ); //BODY
+				console.log( $("#box1").parents()[3].nodeName ); //HTML
+				
+				//获取祖先节点中指定选择器的某一个或某一些节点
+				console.log( $("#box1").parents("#box")[0].id ); //box
+				
+				
+				//get(0) : 将jq对象转换成JSdom对象
+				//get()
+				//map() 
+				var arr = $("#map input").map(function(){
+					//console.log(this); //input节点
+					return $(this).val();
+				}).get();
+				//console.log(arr); //[3,4,5,6,7]
+				
+				
+				//has()
+				$("#list>li").has("ul").css("background","red");
+				
+				
+				
+				//常用：
+				//eq()
+				//first()
+				//children()
+				//find()
+				//parent(), parents()
+				//siblings()
+				//attr(), removeAttr()
+				//addClass(), removeClass()
+				//html(), val(), text()
+				
+				//选择器： 重点掌握基本选择器，层级选择器
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="foo">张三</div>
+		<div class="foo1">张三</div>
+		<div class="foo2">张三</div>
+		
+		<form class="form">
+			<input type="text" id="is" />
+		</form>
+		
+		<div id="box">
+			<span>
+				<div id="box1">box1</div>
+			</span>
+		</div>
+		
+		<div id="map">
+			<input type="checkbox" value="3" />
+			<input type="checkbox" value="4" />
+			<input type="checkbox" value="5" />
+			<input type="checkbox" value="6" />
+			<input type="checkbox" value="7" />
+		</div>
+		
+		<ul id="list">
+		    <li>list item 1</li>
+		    <li>list item 2
+		    	<ul>
+		     		<li>list item 2-a</li>
+		      		<li>list item 2-b</li>
+		    	</ul>
+		  	</li>
+		  	<li>list item 3</li>
+		  	<li>list item 4</li>
+		</ul>
+		
+	</body>
+</html>

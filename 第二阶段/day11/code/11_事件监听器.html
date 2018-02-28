@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(){
+				
+				var btn1 = document.getElementById("btn1");
+				var btn2 = document.getElementById("btn2");
+				
+				//按钮1： onclick： 这种方式添加的事件会覆盖
+				/*
+				btn1.onclick = function(){
+					console.log("btn1 点击1");
+				}
+				btn1["onclick"] = function(){
+					console.log("btn1 点击2");
+				}
+				*/
+				
+				//事件监听器: 支持IE9+， 非IE, 不支持IE8-
+				//特点： 可以添加多个相同事件， 事件不会覆盖
+				
+				//添加事件监听器： addEventListener(,,)
+				//移除事件监听器：removeEventListener(,,)
+				
+				//按钮1
+				/*
+				 * 第一个参数： click, 表示事件类型
+				 * 第二个参数：fn1, 事件执行函数
+				 * 第三个参数：false，事件流，如果是true则为事件捕获， 如果是false则为事件冒泡， 一般写false
+				 */
+				/*
+				btn1.addEventListener("click", fn1, false);
+				btn1.addEventListener("click", fn2, false);
+				function fn1(){
+					console.log("按钮1-点击1");
+				}
+				function fn2(){
+					console.log("按钮1-点击2");
+				}
+				
+				//按钮2
+				btn2.onclick = function(){
+					//移除事件
+//					btn1.removeEventListener("click", fn1, false);
+					btn1.removeEventListener("click", fn2, false);
+				}
+				*/
+				
+				
+				//IE8-
+				//添加事件： attachEvent() , 默认是事件冒泡
+				//移除事件：detachEvent()
+				/*
+				//按钮1
+				btn1.attachEvent("onclick", fn1);
+				btn1.attachEvent("onclick", fn2);
+				function fn1(){
+					alert("按钮1-点击1");
+				}
+				function fn2(){
+					alert("按钮1-点击2");
+				}
+				
+				//按钮2
+				btn2.onclick = function(){
+					btn1.detachEvent("onclick", fn1); //移除事件
+				}
+				*/
+				
+				
+				//封装事件监听器
+				//添加事件监听器： addEventListener(), attachEvent()
+				function addEvent(obj, type, fn, useCapture){
+					if (obj.addEventListener) {
+						obj.addEventListener(type, fn, useCapture);
+					}
+					else {
+						obj.attachEvent("on"+type, fn);
+					}
+				}
+				
+				//移除事件监听器： removeEventListener(), detachEvent()
+				function removeEvent(obj, type, fn, useCapture){
+					if (obj.removeEventListener) {
+						obj.removeEventListener(type, fn, useCapture);
+					}
+					else {
+						obj.detachEvent("on"+type, fn); 
+					}
+				}
+				
+				//按钮1
+				addEvent(btn1, "click", fn1, false);
+				function fn1(){
+					alert("按钮1-点击");
+				}
+				
+				//按钮2
+				btn2.onclick = function(){
+					removeEvent(btn1, "click", fn1, false); //移除事件
+				}
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="按钮1-添加事件" /> <br /><br />
+		<input id="btn2" type="button" value="按钮2-让按钮1事件移除" /> <br /><br />
+	</body>
+</html>

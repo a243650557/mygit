@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//函数 function : (方法，功能) 
+			// 作用： 封装一个功能
+			
+			//函数的简单定义
+			//function: 用来声明（定义）函数的关键字
+			//fn： 函数名
+			//函数的特点： 函数必须调用才会执行
+			function fn() {
+				console.log("hello world");
+			}
+			
+			//fn(); //函数调用
+			//fn(); 
+			
+			
+			//函数的标准定义
+			//a, b是参数，形参
+			//3, 4也是参数， 实参
+			//函数声明时的括号中的是形参
+			//函数调用时的括号中的是实参
+			
+			//如果不传参数，则a和b会为undefined
+			function fn2(a, b){  //var a; var b;
+				var sum =  a + b;
+				//console.log("a=" + a + ", b=" + b);
+				//console.log(sum);
+				console.log("return 之前的代码");
+				return sum;
+				console.log("return 之后的代码"); //不会打印
+			}
+			
+			console.log( fn2(3,4) ); 
+			
+			//return
+			// 1, 可以返回一个值， 如果没有return或return后没有值，则默认会返回undefined 
+			// 2, return退出函数, 之后的代码不会执行
+			
+			
+			
+			//练习: 
+			//1, 写一个函数计算1到n的和, 并返回结果打印出来;(n为函数参数)
+			//var sum = 0; //全局变量
+			function fn3(n){
+				var sum = 0;  //sum是局部变量
+				for (var i=1; i<=n; i++) {
+					sum += i;
+				}
+				return sum;
+			}
+			var res = fn3(4); //res会等于函数fn3的返回值
+			//console.log(sum); //报错， sum is not defined
+			console.log(res);
+			console.log(fn3(4));
+			
+			
+			//2, 写一个函数计算n的阶乘,并返回结果打印出来
+			function fn4(n){
+				var s = 1;
+				for (var i=1; i<=n; i++) {
+					s *= i;
+				}
+				//console.log(s);
+				return s;
+			}
+			var res = fn4(5);
+			console.log(res); //120
+			var res = fn4(10);
+			console.log(res); //3628800
+			
+			
+			//3, 写一个函数计算两个数的最小公倍数; 并返回结果打印出来
+			function fn5(a, b){
+				var max = a>b ? a : b;
+				for (var i=max; i<=a*b; i++) {
+					if (i%a==0 && i%b==0) {
+						return i; //会直接退出函数，并返回i的值
+					}
+				}
+			}
+			var res = fn5(9, 6);
+			console.log(res); //18
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

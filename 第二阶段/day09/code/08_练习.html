@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function(e){
+				
+				var aInput = document.getElementsByTagName("input");
+				var otab = document.getElementById("tab");
+				
+				//保存
+				aInput[3].onclick = function(){
+					
+					//先获取输入框的内容
+					var id = aInput[0].value;
+					var name = aInput[1].value;
+					var tel = aInput[2].value;
+					
+					//创建tr
+					var tr = document.createElement("tr");
+					//otab.getElementsByTagName("tbody")[0].appendChild(tr);
+					otab.children[0].appendChild(tr);
+					//tr.innerHTML = "<td>"+id+"</td><td>"+name+"</td><td>"+tel+"</td><td><a href='#'>删除</a></td>"; 
+					
+					//td
+					var td1 = document.createElement("td");
+					var td2 = document.createElement("td");
+					var td3 = document.createElement("td");
+					var td4 = document.createElement("td");
+					
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					tr.appendChild(td3);
+					tr.appendChild(td4);
+					
+					td1.innerHTML = id;
+					td2.innerHTML = name;
+					td3.innerHTML = tel;
+					td4.innerHTML = "<a href='#'>删除</a>";
+					
+					//删除
+					var a = td4.getElementsByTagName("a");
+					//console.log(a.length);
+					a[0].onclick = function(){
+						//删除当前a所在的tr节点
+						//this.parentNode.parentNode : tr
+						var tr = this.parentNode.parentNode;
+						tr.parentNode.removeChild(tr);
+						
+						//otab.deleteRow(tr.rowIndex);
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		ID:<input type="text" /> <br />
+		姓名:<input type="text" /> <br />
+		Tel:<input type="text" /> <br />
+		<input type="button" value="保存" />
+		
+		<table border="1" id="tab">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Tel</th>
+				<th>操作</th>
+			</tr>
+			<!--<tr>
+				<td>30</td>
+				<td>张三</td>
+				<td>13454547889</td>
+				<td><a href="#">删除</a></td>
+			</tr>-->
+		</table>
+		
+		
+	</body>
+</html>

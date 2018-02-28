@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.3.js"></script>
+		<script>
+			$(function(){
+				
+				//创建节点
+				var div1 = $("<div>你好<b> dd</b></div>"); //<div>你好</div>
+				
+				//append() : 在子元素末尾追加节点
+				$("#box").append(div1);
+				$("#box").append("<b>哈哈</b>");
+				
+				//appendTo()
+				$("<b>appendTo</b>").appendTo("#box");
+				
+				
+				//prepend() ： 在子元素前置节点
+				$("#box").prepend("<b>prepend</b>");
+				
+				//prependTo()
+				$("<b>prependTo</b>").prependTo("#box");
+				
+				
+				//after(): 在同级后添加节点
+				$("#box").after("<b>after</b>");
+				
+				//insertAfter()
+				$("<b>insertAfter</b>").insertAfter("#box");
+				
+				
+				//before() : 在同级前面添加节点
+				$("#box").before("<b>before</b>");
+				
+				//insertBefore()
+				$("<b>insertBefore</b>").insertBefore("#box");
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<p>hello</p>
+			<p>大吉大利， 晚上吃鸡</p>
+		</div>
+	</body>
+</html>

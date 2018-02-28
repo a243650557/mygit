@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {margin: 0; padding: 0; border: none;}
+			ul,li {list-style: none;}
+			
+			#box {
+				width: 300px;
+				height: 150px;
+				border: 5px solid black;
+				position: relative;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			
+			#list {
+				width: 120px;
+				position: absolute;
+				left: 0px;
+				top: 0;
+			}
+			#list li {
+				width: 300px;
+				height: 150px;
+				text-align: center;
+				line-height: 150px;
+				font-size: 50px;
+				float: left;
+			}
+			
+		</style>
+		<script src="move.js"></script>
+		<script>
+			onload = function(){
+				
+				var box = document.getElementById("box");
+				var ul = document.getElementById("list");
+				var aLi = ul.getElementsByTagName("li");
+				
+				//初始化
+				//复制第1个li到第5个
+				ul.appendChild(aLi[0].cloneNode(true));
+				
+				//li的宽度
+				var liW = aLi[0].offsetWidth;
+				
+				//li的数量
+				var size = aLi.length;
+				//console.log(size); //5
+				
+				//设置ul宽度
+				ul.style.width = liW * size + "px";
+				
+				//自动轮播
+				var n = 0;
+				var timer = setInterval(function(){
+					n++;
+					move();
+				}, 2000);
+				
+				//移动ul到显示第n个li
+				function move(){
+					
+					if (n >= size){
+						ul.style.left = 0; //将ul以非动画的方式瞬间变到第1张图（n=0）
+						n = 1; //并设置即将移动到第2张图n=1
+					}
+					
+					//动画移动
+					animate(ul, {left:-n*300});
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="list">
+				<li style="background: orange;">1</li>
+				<li style="background: green;">2</li>
+				<li style="background: red;">3</li>
+				<li style="background: purple;">4</li>
+			</ul>
+		</div>
+	</body>
+</html>

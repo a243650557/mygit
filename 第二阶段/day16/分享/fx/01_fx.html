@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload = function (){
+				var oBtn = document.getElementById("btn");
+				
+				//Ajax: 和服务器进行数据交互的技术
+				// Ajax核心对象： XMLHttpRequest
+				
+				oBtn.onclick = function (){
+					//创建Ajax对象
+					if (window.XMLHttpRequest){
+					var oAjax = new XMLHttpRequest();
+				
+					}
+					else {
+					var oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+					
+					}
+					//alert(oAjax.readyState);   没有初始化  没调用open
+					//连接服务器
+					//open(方法，文件名，异步传输)
+					//oAjax.open('GET','a.text？t=' + new Date().getTime(),true);
+					oAjax.open('GET','http://60.205.181.47/myPHPCode2/person.php',true);
+					
+					//发送请求
+					oAjax.send();
+					//alert(oAjax.readyState);  载入，已调用send
+					//接收返回
+					oAjax.onreadystatechange = function(){
+						//oAjax.readyState  //浏览器和服务器进行到哪一步
+						if (oAjax.readyState == 4){
+							if (oAjax.status == 200){
+								console.log("成功" + oAjax.responseText)
+							}
+							else{
+								console.log("失败" + oAjax.status)
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input id="btn" type="button" value="读取"/>
+	</body>
+</html>

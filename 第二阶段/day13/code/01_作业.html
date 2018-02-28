@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="cookie.js"></script>
+		<script>
+			onload = function(){
+				
+				/* 
+				 1, 记录图片位置:
+					     页面上有一个红色div, 可以对该div实现拖拽, 每次拖拽后需要保存位置
+					     下次重新进入该页面时, 该红色div还是在最后一次拖拽松开时的位置
+				*/	
+				
+				var box = document.getElementById("box");
+				
+				//先获取原来的cookie
+				var x = getCookie("x");
+				var y = getCookie("y");
+				if (x!="" && y!="") {
+					box.style.left = x + "px";
+					box.style.top = y + "px";
+					box.innerHTML = "x:" + box.offsetLeft + ",y:" + box.offsetTop;
+				}
+				
+				
+				box.onmousedown = function(e){
+					e = e||event;
+					e.preventDefault();
+					var disx = e.offsetX;
+					var disy = e.offsetY;
+					
+					document.onmousemove = function(e){
+						e = e||event;
+						box.style.left = e.pageX - disx + "px";
+						box.style.top = e.pageY - disy + "px";
+						box.innerHTML = "x:" + box.offsetLeft + ",y:" + box.offsetTop;
+					}
+					document.onmouseup = function(){
+						document.onmousemove = document.onmouseup = null;
+						
+						var d = new Date();
+						d.setDate(d.getDate()+30);
+						setCookie("x", box.offsetLeft, d);
+						setCookie("y", box.offsetTop, d);
+						//console.log(getCookie("x"));
+						//console.log(getCookie("y"));
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="width: 100px; height: 100px; background: red; position: absolute; left: 100px; top: 100px;"> x:0, y:0</div>
+	</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			/*
+			 1, 注册页面的简单数据校验
+				先去掉两个输入框中的空格
+				用户名长度不低于6，不高于20
+				用户名不可以用数字开头
+				密码不能为空
+				输入框中要有默认提示  (placeholder )
+				点击登录按钮检查是否合法
+			*/
+			window.onload = function(){
+				var tip = document.getElementById("tip");
+				var aInput = document.getElementsByTagName("input");
+				
+				//点击登录按钮
+				aInput[2].onclick = function(){
+					
+					//获取输入框内容要在点击事件里面
+					var username = aInput[0].value;  
+					var password = aInput[1].value;
+					//console.log(username + "," + password);
+					
+					//去掉空格
+					username = username.replace(/ /g, "");
+					password = password.replace(/ /g, "");
+					
+					if (username.length<6 || username.length>20) {
+						tip.innerHTML = "用户名输入有误";
+					}
+					else if (username[0]>='0' && username[0]<='9') {
+						tip.innerHTML = "用户名不能以数字开头";
+					}
+					else if (password.length == 0) {
+						tip.innerHTML = "密码不能为空";
+					}
+					else {
+						tip.innerHTML = "输入合法";
+					}
+					
+				}
+				
+			}
+			
+			//2, 字母数字组合验证码（四位） (如: 4YT8) (数字,大写字母随机)
+			var str = "";
+			for (var i=0; i<4; i++) {
+				var b = Math.random()>0.5 ? true : false;
+				if (b) {
+					str += parseInt(Math.random()*10);
+				}
+				else {
+					str += String.fromCharCode( 65 + parseInt(Math.random()*26) );
+				}
+			}
+			console.log(str);
+			
+			//3,  将字符串按照单词进行逆序，空格作为划分单词的唯一条件
+			//   如传入:”Welome to Beijing”改为 “Beijing to Welcome”
+			var str = "Welome to Beijing";
+			var arr = str.split(" ");
+			arr.reverse();
+			console.log( arr.join(" ") );
+			
+			//4,  实现函数，查找子串出现的次数，返回字符串str中出现子串的次数
+			//   如传入:”abcabcabc”, “abc”;   返回:3
+			//        “ababacccababa”  , “aba”  , 返回：4
+			var str = "ababacccababa";
+			var str1 = "aba";
+			var n = str.split(str1);
+			console.log(n.length - 1); //2
+			
+			var str = "ababacccababa";
+			var str1 = "aba";
+			var count = 0; //出现次数
+			while (str.indexOf(str1) != -1) {
+				count++;
+				str = str.substring( str.indexOf(str1)+1 );
+			}
+			console.log(count);
+			
+			//5,  已知千锋邮箱的用户名只能由数字字母下划线组成，域名为@1000phone.com
+			//,写一个函数，判断一个字符串是否是千锋邮箱，是返回true，不是返回false。
+			//  mail@1000phone.com  是
+			//  $mail@1000phone.com  不是
+			//  mail@1000phone.comp  不是
+			
+			function fn(email){
+				var arr = email.split("@");
+				if (arr.length != 2) {
+					return false;
+				}
+				
+				if (arr[1] != "1000phone.com") {
+					return false;
+				}
+				
+				//
+				var str = arr[0];
+				for (var i=0; i<str.length; i++) {
+					var ch = str[i];
+					if (ch>='0'&&ch<='9' || ch>='a'&&ch<='z' || ch>='A'&&ch<='Z' || ch=='_'){
+						//continue;
+					}
+					else {
+						return false;
+					}
+				}
+				
+				return true;
+			}
+			console.log( fn("mai@1000phone.com") );
+			
+			
+			//6, 将字符中单词用空格隔开
+			//    已知传入的字符串中只有字母,每个单词的首字母大写，请将每个单词用空格隔开，只保留第一个单词的首字母大写
+			//    传入:”HelloMyWorld”
+			//    返回:”Hello my world”
+			var str = "HelloMyWorld";
+			for (var i=1; i<str.length; i++) {
+				var ch = str[i];
+				if (ch>='A' && ch<='Z') {
+					str = str.replace(ch, " "+ch.toLowerCase());
+					//i++;
+				}
+			}
+			console.log(str);
+			
+			//7, 已知一个字符串对象中，英语单词用各种非字母字符分割，统计单词的个数
+			//    传入: “Yes,she****is%%my@love.”  ->Yes she is my love, 5个
+			var str = "Yes,she****is%%my@love.";
+			for (var i=0; i<str.length; i++) {
+				var ch = str[i];
+				if (ch>='a'&&ch<='z' || ch>='A'&&ch<='Z') {
+				}else {
+					str = str.replace(ch, " "); 
+				}
+			}
+			console.log(str); //"Yes she    is  my love "
+			
+			var arr = str.split(" ");
+			var count = 0;
+			for (var i=0; i<arr.length; i++) {
+				if (arr[i] != "") {
+					count++;
+				}
+			}
+			console.log(count);
+			
+		</script>
+	</head>
+	<body>
+		<p id="tip">提示</p>
+		<input type="text" placeholder="请输入用户名" />
+		<input type="password" placeholder="请输入密码" />
+		<input type="button" value="登录" />
+	</body>
+</html>
