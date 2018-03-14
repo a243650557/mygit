@@ -35,7 +35,9 @@
 			// 像工厂生产产品一样， 我们这里是生产对象（类似的对象）
 			//工厂模式 的作用： 创建类似的对象
 			function createPerson(name, age){
-				var person = {};
+				var person = new Object();
+				this = person;
+				console.log('this' + this);
 				person.name = name;
 				person.age = age;
 				person.run = function(){

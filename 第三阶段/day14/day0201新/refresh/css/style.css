@@ -1,0 +1,55 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html, body, .main{
+	width: 100%;
+	height: 100%;
+}
+.main{
+	overflow: hidden;
+}
+
+/*上下拉刷新样式*/
+.refresh, .load-more{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: red;
+}
+.refresh img, .load-more img{
+	width: 20px;
+	transition: 200ms transform;
+}
+.refresh img{
+	transform: rotate(180deg);
+}
+.refresh img.up{
+	transform: rotate(0);
+}
+.load-more img.down{
+	transform: rotate(180deg);
+}
+
+/*需要滚动的内容的样式*/
+.banner{
+	width: 100%;
+	height: 180px;
+	background: palegreen;
+}
+.actiity{
+	width: 100%;
+	height: 120px;
+	background: lightblue;
+}
+.list li{
+	width: 100%;
+	height: 50px;
+}
+.list li:nth-child(odd){
+	background: lightcoral;
+}
+.list li:nth-child(even){
+	background: lightseagreen;
+}
